@@ -22,6 +22,8 @@ public class ExcluirSalaUseCase {
         if (salaDAO.isAtivo(sala.getStatus())) {
             throw new InactiveObjectException("Não é possível excluir uma sala ativa");
         }
+
+        //id é um long primitivo e não pode ser null
         return salaDAO.deleteByKey(id);
     }
 
