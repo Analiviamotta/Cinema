@@ -4,9 +4,18 @@ import br.edu.ifsp.cinema.domain.entities.sala.Sala;
 import br.edu.ifsp.cinema.domain.entities.sala.SalaStatus;
 import br.edu.ifsp.cinema.domain.usecases.utils.DAO;
 
+import java.util.List;
 import java.util.Optional;
 
-public interface SalaDAO extends DAO<Sala, Integer> {
+public interface SalaDAO extends DAO<Sala, Long> {
     Optional<Sala> findByNumber(int numero);
     Boolean isAtivo(SalaStatus status);
+
+
+    Sala create(Sala sala);
+    Optional<Sala> findOne(long id);
+    List<Sala> findAll();
+    boolean update(Sala sala);
+    boolean deleteByKey(long id);
+    boolean delete(Sala sala);
 }

@@ -13,7 +13,7 @@ public class CriarSalaUseCase {
         this.salaDAO = salaDAO;
     } // a classe nao precisa saber qual o banco, desde que ele seja um DAO de sala
 
-    public Integer insert(Sala sala) {
+    public Sala insert(Sala sala) {
         Validator<Sala> validator= new SalaInputRequestValidator();
         Notification notification = validator.validate(sala);
 

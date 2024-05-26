@@ -1,10 +1,12 @@
 package br.edu.ifsp.cinema.domain.usecases.utils;
+import br.edu.ifsp.cinema.domain.entities.sala.Sala;
+
 import java.util.List;
 import java.util.Optional;
 
 public interface DAO<T, K> {
-    K create(T entity);
-    Optional<T> findOne(long key);
+    T create(T entity);
+    Optional<T> findOne(K key);
     List<T> findAll();
     boolean update(T entity);
     boolean deleteByKey(K key);

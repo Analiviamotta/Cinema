@@ -28,7 +28,7 @@ public class EditarSalaUseCase {
         }
         if(salaDAO.isAtivo(sala.getStatus())){
             throw new InactiveObjectException("Não é possível editar uma sala ativa");
-        }
+        } // fluxo alternativo 4
 
         return salaDAO.update(sala);
     }
