@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface FilmeDAO extends DAO<Filme, Long> {
-        //Optional<Filme> findByTitulo(String Titulo);
+        Optional<Filme> findByTitulo(String Titulo);
 
         Filme create(Filme filme);
         Optional<Filme> findOne(long id);

@@ -1,6 +1,5 @@
 package br.edu.ifsp.cinema.domain.entities.sala;
 
-
 public enum SalaStatus {
 
     ATIVO("Ativo"),

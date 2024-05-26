@@ -1,5 +1,10 @@
 package br.edu.ifsp.cinema.domain.entities.sala;
 
+import br.edu.ifsp.cinema.domain.entities.assento.Assento;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Sala {
     private long id;
     private int numero;
@@ -7,18 +12,21 @@ public class Sala {
     private int numColunas;
     private int capacidade;
     private SalaStatus status;
+    private List<Assento> assentoList;
 
     public Sala(){
         status = SalaStatus.ATIVO;
+        this.assentoList = new ArrayList<>();
     }
 
-    public Sala(long id, int number, int numLinhas, int numColunas, int capacidade, SalaStatus status) {
+    public Sala(long id, int numero, int numLinhas, int numColunas, int capacidade, List<Assento> assentoList) {
         this.id = id;
-        this.numero = number;
+        this.numero = numero;
         this.numLinhas = numLinhas;
         this.numColunas = numColunas;
         this.capacidade = capacidade;
-        this.status = status;
+        this.assentoList = (assentoList != null) ? assentoList : new ArrayList<>();
+        this.status = SalaStatus.ATIVO;
     }
 
     public long getId() {
@@ -69,6 +77,14 @@ public class Sala {
         this.status = status;
     }
 
+    public List<Assento> getAssentoList() {
+        return assentoList;
+    }
+
+    public void setAssentoList(List<Assento> assentoList) {
+        this.assentoList = assentoList;
+    }
+
     public void inativarSala(){
         this.status = SalaStatus.INATIVO;
     }
@@ -79,6 +95,16 @@ public class Sala {
 
     @Override
     public String toString() {
+        StringBuilder assentosString = new StringBuilder();
+        for (Assento assento : assentoList) {
+            assentosString.append(assento.toString()).append(", ");
+        }
+
+        // tira a ultima virgula e espaço
+        if (assentosString.length() > 0) {
+            assentosString.setLength(assentosString.length() - 2);
+        }
+
         return "Sala{" +
                 "id=" + id +
                 ", numero=" + numero +
@@ -86,6 +112,7 @@ public class Sala {
                 ", numColunas=" + numColunas +
                 ", capacidade=" + capacidade +
                 ", status=" + status +
-                '}';
+                ", assentoList=[" + assentosString +
+                "]}";
     }
 }
