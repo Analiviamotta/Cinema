@@ -11,10 +11,10 @@ public interface FilmeDAO extends DAO<Filme, Long> {
         Optional<Filme> findByTitulo(String Titulo);
 
         Filme create(Filme filme);
-        Optional<Filme> findOne(long id);
+        Optional<Filme> findOne(Long id);
         List<Filme> findAll();
         boolean update(Filme filme);
-        boolean deleteByKey(long id);
+        boolean deleteByKey(Long id);
         boolean delete(Filme filme);
-        boolean isAtivo(FilmeStatus status);
+        boolean isAtivo(Long id);
 }

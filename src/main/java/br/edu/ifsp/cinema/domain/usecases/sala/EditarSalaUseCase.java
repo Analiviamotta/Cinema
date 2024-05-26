@@ -26,7 +26,7 @@ public class EditarSalaUseCase {
         if(salaDAO.findOne(id).isEmpty()){
             throw new EntityNotFoundException("A sala informada não existe");
         }
-        if(salaDAO.isAtivo(sala.getStatus())){
+        if(salaDAO.isAtivo(sala.getId())){
             throw new InactiveObjectException("Não é possível editar uma sala ativa");
         } // fluxo alternativo 4
 

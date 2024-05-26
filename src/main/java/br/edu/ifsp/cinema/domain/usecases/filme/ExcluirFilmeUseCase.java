@@ -14,13 +14,13 @@ public class ExcluirFilmeUseCase {
         this.filmeDAO = filmeDAO;
     }
 
-    public boolean remove(long id) {
+    public boolean remove(Long id) {
         Optional<Filme> filmeOpt = filmeDAO.findOne(id);
         if (filmeOpt.isEmpty()) {
             throw new EntityNotFoundException("Filme não encontrado");
         }
         Filme filme = filmeOpt.get();
-        if (filmeDAO.isAtivo(filme.getStatus())) {
+        if (filmeDAO.isAtivo(filme.getId())) {
             throw new InactiveObjectException("Não é possível excluir um filme ativo");
         }
 
@@ -37,7 +37,7 @@ public class ExcluirFilmeUseCase {
         if (filmeOpt.isEmpty()) {
             throw new EntityNotFoundException("Filme não encontrado");
         }
-        if (filmeDAO.isAtivo(filme.getStatus())) {
+        if (filmeDAO.isAtivo(filme.getId())) {
             throw new InactiveObjectException("Não é possível excluir um filme ativo");
         }
         return filmeDAO.delete(filme);

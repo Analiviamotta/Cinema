@@ -1,4 +1,4 @@
-package br.edu.ifsp.cinema.main;
+package br.edu.ifsp.cinema.application.main;
 
 public class Main {
     public static void main(String[] args) {

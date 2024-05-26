@@ -13,13 +13,13 @@ public class ExcluirSalaUseCase {
         this.salaDAO = salaDAO;
     }
 
-    public boolean remove(long id) {
+    public boolean remove(Long id) {
         Optional<Sala> salaOpt = salaDAO.findOne(id);
         if (salaOpt.isEmpty()) {
             throw new EntityNotFoundException("Sala não encontrada");
         }
         Sala sala = salaOpt.get();
-        if (salaDAO.isAtivo(sala.getStatus())) {
+        if (salaDAO.isAtivo(sala.getId())) {
             throw new InactiveObjectException("Não é possível excluir uma sala ativa");
         }
 
@@ -36,7 +36,7 @@ public class ExcluirSalaUseCase {
         if (salaOpt.isEmpty()) {
             throw new EntityNotFoundException("Sala não encontrada");
         }
-        if (salaDAO.isAtivo(sala.getStatus())) {
+        if (salaDAO.isAtivo(sala.getId())) {
             throw new InactiveObjectException("Não é possível excluir uma sala ativa");
         }
         return salaDAO.delete(sala);
