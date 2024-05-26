@@ -4,9 +4,10 @@ import br.edu.ifsp.cinema.domain.entities.filme.Filme;
 import br.edu.ifsp.cinema.domain.usecases.sala.SalaDAO;
 import br.edu.ifsp.cinema.domain.usecases.utils.Notification;
 import br.edu.ifsp.cinema.domain.usecases.utils.Validator;
+import br.edu.ifsp.cinema.domain.usecases.filme.FilmeDAO;
 
 public class CriarFilmeUseCase {
-    private br.edu.ifsp.cinema.domain.usecases.filme.FilmeDAO filmeDAO;
+    private FilmeDAO filmeDAO;
 
     public CriarFilmeUseCase(SalaDAO salaDAO) {
         this.filmeDAO= filmeDAO;
