@@ -4,7 +4,7 @@ import java.util.Optional;
 
 public interface DAO<T, K> {
     K create(T entity);
-    Optional<T> findOne(K key);
+    Optional<T> findOne(long key);
     List<T> findAll();
     boolean update(T entity);
     boolean deleteByKey(K key);
