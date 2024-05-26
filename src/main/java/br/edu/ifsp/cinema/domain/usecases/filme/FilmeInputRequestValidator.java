@@ -16,6 +16,10 @@ public class FilmeInputRequestValidator extends Validator<Filme> {
                 return notification;
             }
 
+//            if(nullOrEmpty(Collections.singleton(filme.getNome()))) {
+//                notification.addError("Nome do filme is null or empty");
+//            }
+//
             if(nullOrEmpty(Collections.singleton(filme.getGenero()))) {
                 notification.addError("Genero do filme is null or empty");
             }

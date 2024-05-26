@@ -2,12 +2,9 @@ package br.edu.ifsp.cinema.domain.usecases.sala;
 
 import br.edu.ifsp.cinema.domain.entities.sala.Sala;
 import br.edu.ifsp.cinema.domain.entities.sala.SalaStatus;
-import br.edu.ifsp.cinema.domain.usecases.utils.EntityAlreadyExistsException;
 import br.edu.ifsp.cinema.domain.usecases.utils.EntityNotFoundException;
-import br.edu.ifsp.cinema.domain.usecases.utils.InactiveObjectException;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ConsultarSalasUseCase {

@@ -3,7 +3,6 @@ package br.edu.ifsp.cinema.domain.usecases.filme;
 import br.edu.ifsp.cinema.domain.entities.filme.Filme;
 import br.edu.ifsp.cinema.domain.entities.sala.Sala;
 import br.edu.ifsp.cinema.domain.usecases.sala.SalaDAO;
-import br.edu.ifsp.cinema.domain.usecases.sala.SalaInputRequestValidator;
 import br.edu.ifsp.cinema.domain.usecases.utils.EntityNotFoundException;
 import br.edu.ifsp.cinema.domain.usecases.utils.InactiveObjectException;
 import br.edu.ifsp.cinema.domain.usecases.utils.Notification;
