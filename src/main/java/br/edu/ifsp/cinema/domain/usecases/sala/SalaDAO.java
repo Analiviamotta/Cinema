@@ -6,5 +6,5 @@ import br.edu.ifsp.cinema.domain.usecases.utils.DAO;
 import java.util.Optional;
 
 public interface SalaDAO extends DAO<Sala, Integer> {
-    Optional<Sala> findByNumer(int numero);
+    Optional<Sala> findByNumber(int numero);
 }
