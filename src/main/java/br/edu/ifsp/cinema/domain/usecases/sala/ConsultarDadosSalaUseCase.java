@@ -24,6 +24,7 @@ public class ConsultarDadosSalaUseCase {
             throw new InactiveObjectException("Sala inativa");
         }
 
+        //id é um long primitivo e não pode ser null
         return salaOpt;
     }
 }

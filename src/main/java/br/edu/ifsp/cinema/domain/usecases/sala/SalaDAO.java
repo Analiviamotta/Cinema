@@ -9,8 +9,6 @@ import java.util.Optional;
 
 public interface SalaDAO extends DAO<Sala, Long> {
     Optional<Sala> findByNumber(int numero);
-    Boolean isAtivo(SalaStatus status);
-
 
     Sala create(Sala sala);
     Optional<Sala> findOne(long id);
@@ -18,4 +16,5 @@ public interface SalaDAO extends DAO<Sala, Long> {
     boolean update(Sala sala);
     boolean deleteByKey(long id);
     boolean delete(Sala sala);
+    boolean isAtivo(SalaStatus status);
 }
