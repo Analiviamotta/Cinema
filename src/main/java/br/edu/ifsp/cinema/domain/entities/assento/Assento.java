@@ -1,15 +1,14 @@
 package br.edu.ifsp.cinema.domain.entities.assento;
 
 public class Assento {
-    private long id;
+    private Long id;
     private int coluna;
     private int linha;
 
     public Assento() {
     }
 
-    public Assento(long id, int coluna, int linha) {
-        this.id = id;
+    public Assento(int coluna, int linha) {
         this.coluna = coluna;
         this.linha = linha;
     }
@@ -18,9 +17,9 @@ public class Assento {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+//    public void setId(long id) {
+//        this.id = id;
+//    }
 
     public int getColuna() {
         return coluna;

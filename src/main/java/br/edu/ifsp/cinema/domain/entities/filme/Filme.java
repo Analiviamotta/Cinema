@@ -1,7 +1,7 @@
 package br.edu.ifsp.cinema.domain.entities.filme;
 
 public class Filme {
-    private long id;
+    private Long id;
     private String titulo;
     private FilmeGenero genero;
     private String sinopse;
@@ -12,8 +12,7 @@ public class Filme {
         status = FilmeStatus.ATIVO;
     }
 
-    public Filme(long id, String titulo, FilmeGenero genero, String sinopse, String classificacaoIndicativa, FilmeStatus status) {
-        this.id = id;
+    public Filme(String titulo, FilmeGenero genero, String sinopse, String classificacaoIndicativa, FilmeStatus status) {
         this.titulo = titulo;
         this.genero = genero;
         this.sinopse = sinopse;
@@ -25,9 +24,9 @@ public class Filme {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+//    public void setId(long id) {
+//        this.id = id;
+//    }
 
     public FilmeGenero getGenero() {
         return genero;

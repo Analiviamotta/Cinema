@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sala {
-    private long id;
+    private Long id;
     private int numero;
     private int numLinhas;
     private int numColunas;
@@ -19,8 +19,7 @@ public class Sala {
         this.assentoList = new ArrayList<>();
     }
 
-    public Sala(long id, int numero, int numLinhas, int numColunas, int capacidade, List<Assento> assentoList) {
-        this.id = id;
+    public Sala(int numero, int numLinhas, int numColunas, int capacidade, List<Assento> assentoList) {
         this.numero = numero;
         this.numLinhas = numLinhas;
         this.numColunas = numColunas;
@@ -33,9 +32,9 @@ public class Sala {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+//    public void setId(long id) {
+//        this.id = id;
+//    }
 
     public int getNumber() {
         return numero;

@@ -5,14 +5,13 @@ import br.edu.ifsp.cinema.domain.entities.sala.Sala;
 import br.edu.ifsp.cinema.domain.entities.sessao.Sessao;
 
 public class Exibicao {
-    private long id;
+    private Long id;
     private Sessao sessao;
     private Filme filme;
     private Sala sala;
     private int qntIngressosDisponiveis;
 
-    public Exibicao(long id, Sessao sessao, Filme filme, Sala sala, int qntIngressosDisponiveis) {
-        this.id = id;
+    public Exibicao( Sessao sessao, Filme filme, Sala sala, int qntIngressosDisponiveis) {
         this.sessao = sessao;
         this.filme = filme;
         this.sala = sala;
@@ -23,9 +22,9 @@ public class Exibicao {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+//    public void setId(long id) {
+//        this.id = id;
+//    }
 
     public Sessao getSessao() {
         return sessao;
