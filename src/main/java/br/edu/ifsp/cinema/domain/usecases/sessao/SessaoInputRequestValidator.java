@@ -30,6 +30,9 @@ public class SessaoInputRequestValidator extends Validator<Sessao> {
         if(nullOrEmpty((Collections.singleton(sessao.getTempo())))){
             notification.addError(("Tempo de exibição is null or empty"));
         }
+        if(nullOrEmpty((Collections.singleton(sessao.getFilme())))){
+            notification.addError("Filme is null or empty ");
+        }
 
         return notification;
     }

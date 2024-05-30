@@ -74,7 +74,7 @@ public class Sessao {
         sb.append(", diaSemana=").append(diaSemana);
         sb.append(", tempo=").append(tempo);
         sb.append(", hora=").append(hora);
-        sb.append(", filme=").append(filme);
+        sb.append(", filme=").append(filme != null ? filme.toString() : "null");
         sb.append('}');
         return sb.toString();
     }
