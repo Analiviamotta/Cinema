@@ -1,6 +1,7 @@
 package br.edu.ifsp.cinema.domain.entities.sala;
 
 import br.edu.ifsp.cinema.domain.entities.assento.Assento;
+import br.edu.ifsp.cinema.domain.entities.ingresso.Ingresso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,12 +20,15 @@ public class Sala {
         this.assentoList = new ArrayList<>();
     }
 
-    public Sala(int numero, int numLinhas, int numColunas, int capacidade, List<Assento> assentoList) {
+    public Sala(int numero, int numLinhas, int numColunas, int capacidade, Assento ... assentos) {
         this.numero = numero;
         this.numLinhas = numLinhas;
         this.numColunas = numColunas;
         this.capacidade = capacidade;
-        this.assentoList = (assentoList != null) ? assentoList : new ArrayList<>();
+        // Adiciona cada assento à lista
+        for (Assento assento : assentos) {
+            this.assentoList.add(assento);
+        }
         this.status = SalaStatus.ATIVO;
     }
 
