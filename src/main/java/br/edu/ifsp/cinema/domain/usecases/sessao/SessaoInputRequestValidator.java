@@ -24,6 +24,12 @@ public class SessaoInputRequestValidator extends Validator<Sessao> {
         if (nullOrEmpty(Collections.singleton(sessao.getHora()))) {
             notification.addError("Hora das sessão is null or empty");
         }
+        if (nullOrEmpty(Collections.singleton(sessao.getHora()))) {
+            notification.addError("Hora das sessão is null or empty");
+        }
+        if(nullOrEmpty((Collections.singleton(sessao.getTempo())))){
+            notification.addError(("Tempo de exibição is null or empty"));
+        }
 
         return notification;
     }

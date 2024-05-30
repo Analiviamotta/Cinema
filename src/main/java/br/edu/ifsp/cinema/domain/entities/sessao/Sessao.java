@@ -1,17 +1,24 @@
 package br.edu.ifsp.cinema.domain.entities.sessao;
+import br.edu.ifsp.cinema.domain.entities.filme.Filme;
+
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 
 public class Sessao {
-    private long id;
+    private Long id;
     private SessaoDiaSemana diaSemana;
-    private int hora;
+    private LocalTime tempo;
+    private LocalTime hora;
+    private Filme filme;
 
     public Sessao(){
     }
 
-    public Sessao(long id, SessaoDiaSemana diaSemana, int hora) {
-        this.id = id;
+    public Sessao(SessaoDiaSemana diaSemana, LocalTime tempo, LocalTime hora, Filme filme) {
         this.diaSemana = diaSemana;
+        this.tempo = tempo;
         this.hora = hora;
+        this.filme = filme;
     }
 
     public long getId() {
@@ -30,20 +37,46 @@ public class Sessao {
         this.diaSemana = diaSemana;
     }
 
-    public int getHora() {
+    public LocalTime getTempo() {
+        return tempo;
+    }
+
+    public void setTempo(LocalTime tempo) {
+        this.tempo = tempo;
+    }
+
+    public LocalTime getHora() {
         return hora;
     }
 
-    public void setHora(int hora) {
-        this.hora = hora;
+    public void setHora(String horaStr) {
+        try {
+           this.hora = LocalTime.parse(horaStr);
+        } catch (DateTimeParseException e) {
+            // formato correto hh:mm
+            System.out.println("Formato de hora inválido: " + horaStr);
+        }
+    }
+
+    public Filme getFilme() {
+        return filme;
+    }
+
+    public void setFilme(Filme filme) {
+        this.filme = filme;
     }
 
     @Override
     public String toString() {
-        return "Sessao{" +
-                "id=" + id +
-                ", diaSemana=" + diaSemana +
-                ", hora=" + hora +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Sessao{");
+        sb.append("id=").append(id);
+        sb.append(", diaSemana=").append(diaSemana);
+        sb.append(", tempo=").append(tempo);
+        sb.append(", hora=").append(hora);
+        sb.append(", filme=").append(filme);
+        sb.append('}');
+        return sb.toString();
     }
 }
+
