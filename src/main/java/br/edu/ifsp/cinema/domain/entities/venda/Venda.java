@@ -6,29 +6,35 @@ import br.edu.ifsp.cinema.domain.entities.ingresso.Ingresso;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Venda {
-    private long id;
+    private Long id;
     private List<Ingresso> ingressoList;
     private Exibicao exibicao;
     private Date data;
     private BigDecimal valorTotal;
 
 
-    public Venda(long id, List<Ingresso> ingressoList, Exibicao exibicao, Date data) {
-        this.id = id;
-        this.ingressoList = ingressoList;
+    public Venda(Exibicao exibicao, Date data, Ingresso... ingressos) {
         this.exibicao = exibicao;
         this.data = data;
+        this.ingressoList = new ArrayList<>();
+
+        // Adiciona cada ingresso à lista
+        for (Ingresso ingresso : ingressos) {
+            this.ingressoList.add(ingresso);
+        }
+        setValorTotal(this.ingressoList);
     }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+//    public void setId(long id) {
+//        this.id = id;
+//    }
 
     public List<Ingresso> getIngressoList() {
         return ingressoList;
