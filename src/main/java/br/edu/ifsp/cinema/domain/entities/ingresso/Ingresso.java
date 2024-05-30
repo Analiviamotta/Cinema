@@ -3,15 +3,18 @@ package br.edu.ifsp.cinema.domain.entities.ingresso;
 import br.edu.ifsp.cinema.domain.entities.assento.Assento;
 import br.edu.ifsp.cinema.domain.entities.sessao.Sessao;
 
+import java.math.BigDecimal;
+
 public class Ingresso {
-    private long id;
+    private Long id;
     private Assento assento;
     private Sessao sessaoExibicao;
+    private BigDecimal preco;
 
-    public Ingresso(long id, Assento assento, Sessao sessaoExibicao) {
-        this.id = id;
+    public Ingresso(Assento assento, Sessao sessaoExibicao, BigDecimal preco) {
         this.assento = assento;
         this.sessaoExibicao = sessaoExibicao;
+        this.preco = preco;
     }
 
     public long getId() {
@@ -38,17 +41,29 @@ public class Ingresso {
         this.sessaoExibicao = sessaoExibicao;
     }
 
+    public BigDecimal getPreco() {
+        return preco;
+    }
+
+    public void setPreco(String precoStr) {
+            try {
+                this.preco = new BigDecimal(precoStr);
+            }
+            catch (NumberFormatException e) {
+                //formato errado deve ser 00 ou 00.00
+                System.err.println("Formato de valor errado: " + e.getMessage());
+            }
+
+    }
+
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append("Ingresso{");
-        sb.append("id=").append(id);
-        sb.append(", assento=").append(assento != null ? assento.toString() : "null");
-        sb.append(", sessaoExibicao=").append(sessaoExibicao != null ? sessaoExibicao.toString() : "null");
-        sb.append("}");
-
-        return sb.toString();
+        return "Ingresso{" +
+                "id=" + id +
+                ", assento=" + (assento != null ? assento.toString() : "null") +
+                ", sessaoExibicao=" + (sessaoExibicao != null ? sessaoExibicao.toString() : "null") +
+                ", preco=" + preco +
+                '}';
     }
 
     // to do:
