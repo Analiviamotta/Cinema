@@ -61,9 +61,7 @@ public class Venda {
     }
 
     private void atualizarIngressosDisponiveis() {
-        int qntIngressosVendidos = ingressoList.size();
-        int qntIngressosDisponiveis = exibicao.getQntIngressosDisponiveis();
-        exibicao.setQntIngressosDisponiveis(qntIngressosDisponiveis - qntIngressosVendidos);
+        exibicao.setQntIngressosDisponiveis(exibicao.getQntIngressosDisponiveis() - 1);
     }
 
 
