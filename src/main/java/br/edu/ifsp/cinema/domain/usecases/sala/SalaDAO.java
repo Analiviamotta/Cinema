@@ -9,12 +9,4 @@ import java.util.Optional;
 
 public interface SalaDAO extends DAO<Sala, Long> {
     Optional<Sala> findByNumber(int numero);
-
-    Sala create(Sala sala);
-    Optional<Sala> findOne(Long id);
-    List<Sala> findAll();
-    boolean update(Sala sala);
-    boolean deleteByKey(Long id);
-    boolean delete(Sala sala);
-    boolean isAtivo(Long id);
 }
