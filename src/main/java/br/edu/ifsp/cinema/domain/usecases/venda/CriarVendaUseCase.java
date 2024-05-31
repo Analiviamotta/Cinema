@@ -3,7 +3,6 @@ package br.edu.ifsp.cinema.domain.usecases.venda;
 import br.edu.ifsp.cinema.domain.entities.exibicao.Exibicao;
 import br.edu.ifsp.cinema.domain.entities.ingresso.Ingresso;
 import br.edu.ifsp.cinema.domain.entities.venda.Venda;
-import br.edu.ifsp.cinema.domain.entities.venda.VendaDAO;
 import br.edu.ifsp.cinema.domain.usecases.exibicao.ConsultarExibicaoUseCase;
 import br.edu.ifsp.cinema.domain.usecases.utils.EntityNotFoundException;
 import br.edu.ifsp.cinema.domain.usecases.utils.Notification;

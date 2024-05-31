@@ -1,5 +1,6 @@
-package br.edu.ifsp.cinema.domain.entities.venda;
+package br.edu.ifsp.cinema.domain.usecases.venda;
 import br.edu.ifsp.cinema.domain.entities.ingresso.Ingresso;
+import br.edu.ifsp.cinema.domain.entities.venda.Venda;
 import br.edu.ifsp.cinema.domain.usecases.utils.DAO;
 
 import java.util.List;
