@@ -28,7 +28,7 @@ public class Venda {
     }
 
     public List<Ingresso> getIngressoList() {
-        return ingressoList;
+        return new ArrayList<>(ingressoList);
     }
 
     public Exibicao getExibicao() {

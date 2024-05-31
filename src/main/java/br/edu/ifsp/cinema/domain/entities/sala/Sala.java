@@ -81,7 +81,7 @@ public class Sala {
     }
 
     public List<Assento> getAssentoList() {
-        return assentoList;
+        return new ArrayList<>(assentoList);
     }
 
     public void setAssentoList(List<Assento> assentoList) {
