@@ -13,10 +13,12 @@ public class Venda {
     private List<Ingresso> ingressoList;
     private Exibicao exibicao;
     private String data;
+    private VendaStatus status;
 
     public Venda(Exibicao exibicao, String data, Ingresso... ingressos) {
         this.exibicao = exibicao;
         this.data = data;
+        this.status = VendaStatus.EFETUADA;
         this.ingressoList = new ArrayList<>();
         for (Ingresso ingresso : ingressos) {
             adicionarIngresso(ingresso);
@@ -64,6 +66,13 @@ public class Venda {
         exibicao.setQntIngressosDisponiveis(exibicao.getQntIngressosDisponiveis() - 1);
     }
 
+    public void cancelarVenda(){
+        status = VendaStatus.CANCELADA;
+    }
+
+    public VendaStatus getStatus() {
+        return status;
+    }
 
     @Override
     public String toString() {
