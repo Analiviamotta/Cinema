@@ -12,37 +12,24 @@ public class Venda {
     private Long id;
     private List<Ingresso> ingressoList;
     private Exibicao exibicao;
-    private Date data;
-    private BigDecimal valorTotal;
+    private String data;
 
-
-    public Venda(Exibicao exibicao, Date data, Ingresso... ingressos) {
+    public Venda(Exibicao exibicao, String data, Ingresso... ingressos) {
         this.exibicao = exibicao;
         this.data = data;
         this.ingressoList = new ArrayList<>();
-
-        // Adiciona cada ingresso à lista
         for (Ingresso ingresso : ingressos) {
-            this.ingressoList.add(ingresso);
+            adicionarIngresso(ingresso);
         }
-        setValorTotal(this.ingressoList);
     }
 
     public long getId() {
         return id;
     }
 
-//    public void setId(long id) {
-//        this.id = id;
-//    }
-
     public List<Ingresso> getIngressoList() {
         return ingressoList;
     }
-
-//    public void setIngressoList(List<Ingresso> ingressoList) {
-//        this.ingressoList = ingressoList;
-//    }
 
     public Exibicao getExibicao() {
         return exibicao;
@@ -52,38 +39,33 @@ public class Venda {
         this.exibicao = exibicao;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
     public void adicionarIngresso(Ingresso ingresso) {
         this.ingressoList.add(ingresso);
+        atualizarIngressosDisponiveis();
     }
 
-    public void atualizarIngressosDisponiveis (List<Ingresso> ingressoList) {
-        int qntIngressosVendidos = ingressoList.size();
-        int qntIngressosDisponiveis = this.exibicao.getQntIngressosDisponiveis();
-        this.exibicao.setQntIngressosDisponiveis(qntIngressosDisponiveis - qntIngressosVendidos);
-    }
-
-    public BigDecimal getValorTotal() {
-        return valorTotal;
-    }
-
-    public void setValorTotal(List<Ingresso> ingressos) {
-        BigDecimal total = BigDecimal.ZERO;
-
-        for (Ingresso ingresso : ingressos) {
-            BigDecimal precoIngresso = ingresso.getPreco();
-            total = total.add(precoIngresso);
+    public BigDecimal getPrecoTotal() {
+        BigDecimal precoTotal = BigDecimal.ZERO;
+        for (Ingresso ingresso : ingressoList) {
+            precoTotal = precoTotal.add(ingresso.getPreco());
         }
-
-        this.valorTotal = total;
+        return precoTotal;
     }
+
+    private void atualizarIngressosDisponiveis() {
+        int qntIngressosVendidos = ingressoList.size();
+        int qntIngressosDisponiveis = exibicao.getQntIngressosDisponiveis();
+        exibicao.setQntIngressosDisponiveis(qntIngressosDisponiveis - qntIngressosVendidos);
+    }
+
 
     @Override
     public String toString() {
@@ -107,7 +89,6 @@ public class Venda {
             sb.append(", ingressoList=null");
         }
 
-        sb.append(", valorTotal=").append(valorTotal);
         sb.append("}");
 
         return sb.toString();

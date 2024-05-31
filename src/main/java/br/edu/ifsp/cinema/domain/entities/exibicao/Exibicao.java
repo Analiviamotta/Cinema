@@ -7,13 +7,11 @@ import br.edu.ifsp.cinema.domain.entities.sessao.Sessao;
 public class Exibicao {
     private Long id;
     private Sessao sessao;
-    private Filme filme;
     private Sala sala;
     private int qntIngressosDisponiveis;
 
-    public Exibicao( Sessao sessao, Filme filme, Sala sala, int qntIngressosDisponiveis) {
+    public Exibicao( Sessao sessao, Sala sala, int qntIngressosDisponiveis) {
         this.sessao = sessao;
-        this.filme = filme;
         this.sala = sala;
         this.qntIngressosDisponiveis = qntIngressosDisponiveis;
     }
@@ -32,14 +30,6 @@ public class Exibicao {
 
     public void setSessao(Sessao sessao) {
         this.sessao = sessao;
-    }
-
-    public Filme getFilme() {
-        return filme;
-    }
-
-    public void setFilme(Filme filme) {
-        this.filme = filme;
     }
 
     public Sala getSala() {
@@ -65,7 +55,6 @@ public class Exibicao {
         sb.append("Exibicao{");
         sb.append("id=").append(id);
         sb.append(", sessao=").append(sessao != null ? sessao.toString() : "null");
-        sb.append(", filme=").append(filme != null ? filme.toString() : "null");
         sb.append(", sala=").append(sala != null ? sala.toString() : "null");
         sb.append(", qntIngressosDisponiveis=").append(qntIngressosDisponiveis);
         sb.append("}");

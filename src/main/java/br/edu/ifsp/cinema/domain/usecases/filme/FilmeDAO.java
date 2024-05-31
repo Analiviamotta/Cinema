@@ -9,12 +9,4 @@ import java.util.Optional;
 
 public interface FilmeDAO extends DAO<Filme, Long> {
         Optional<Filme> findByTitulo(String Titulo);
-
-        Filme create(Filme filme);
-        Optional<Filme> findOne(Long id);
-        List<Filme> findAll();
-        boolean update(Filme filme);
-        boolean deleteByKey(Long id);
-        boolean delete(Filme filme);
-        boolean isAtivo(Long id);
 }
