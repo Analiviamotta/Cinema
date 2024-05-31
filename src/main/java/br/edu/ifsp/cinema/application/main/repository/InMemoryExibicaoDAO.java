@@ -1,0 +1,43 @@
+package br.edu.ifsp.cinema.application.main.repository;
+
+import br.edu.ifsp.cinema.domain.entities.exibicao.Exibicao;
+import br.edu.ifsp.cinema.domain.entities.sessao.Sessao;
+import br.edu.ifsp.cinema.domain.usecases.exibicao.ExibicaoDAO;
+
+import java.util.*;
+
+public class InMemoryExibicaoDAO implements ExibicaoDAO {
+    private static final Map<Long, Exibicao> db = new LinkedHashMap<>();
+
+    private static long idCont;
+    @Override
+    public List<Exibicao> findAll() {
+        return new ArrayList<>(db.values());
+    }
+
+    @Override
+    public List<Sessao> listarSessoesDaExibicao(Exibicao exibicao) {
+        return null;
+    }//ver isso
+
+    @Override
+    public Exibicao create(Exibicao exibicao) {
+        exibicao.setId(idCont++);
+        db.put(exibicao.getId(), exibicao);
+        return exibicao;
+    }
+
+    @Override
+    public boolean update(Exibicao exibicao) {
+        if (db.containsKey(exibicao.getId())) {
+            db.put(exibicao.getId(), exibicao);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Optional<Exibicao> findOne(Long id){
+        return Optional.ofNullable(db.get(id));
+    }
+}

@@ -48,6 +48,10 @@ public class Exibicao {
         this.qntIngressosDisponiveis = qntIngressosDisponiveis;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -61,4 +65,6 @@ public class Exibicao {
 
         return sb.toString();
     }
+
+
 }
