@@ -29,6 +29,10 @@ public class Venda {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public List<Ingresso> getIngressoList() {
         return new ArrayList<>(ingressoList);
     }
