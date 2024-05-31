@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +58,7 @@ public class HelloApplication extends Application {
         Ingresso ingresso2 = new Ingresso(assento1, sessao, valorIngresso);
         Ingresso ingresso3 = new Ingresso(assento1, sessao, valorIngresso);
 
-        Venda venda = new Venda(exibicao, "49", ingresso);
+        Venda venda = new Venda(exibicao, ingresso);
         venda.adicionarIngresso(ingresso2);
         venda.adicionarIngresso(ingresso3);
 
