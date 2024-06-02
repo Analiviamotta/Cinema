@@ -70,4 +70,8 @@ public class Ingresso {
     public void imprimirIngresso(){
 
     }
+
+    public Object getFilme() {
+        return sessaoExibicao.getFilme();
+    }
 }
