@@ -4,6 +4,7 @@ import br.edu.ifsp.cinema.domain.entities.exibicao.Exibicao;
 import br.edu.ifsp.cinema.domain.entities.ingresso.Ingresso;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
@@ -12,11 +13,13 @@ public class Venda {
     private Long id;
     private List<Ingresso> ingressoList;
     private Exibicao exibicao;
-    private String data;
+    private LocalDate data;
+    private VendaStatus status;
 
-    public Venda(Exibicao exibicao, String data, Ingresso... ingressos) {
+    public Venda(Exibicao exibicao, Ingresso... ingressos) {
         this.exibicao = exibicao;
-        this.data = data;
+        this.data = LocalDate.now();
+        this.status = VendaStatus.EFETUADA;
         this.ingressoList = new ArrayList<>();
         for (Ingresso ingresso : ingressos) {
             adicionarIngresso(ingresso);
@@ -27,8 +30,12 @@ public class Venda {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public List<Ingresso> getIngressoList() {
-        return ingressoList;
+        return new ArrayList<>(ingressoList);
     }
 
     public Exibicao getExibicao() {
@@ -39,13 +46,14 @@ public class Venda {
         this.exibicao = exibicao;
     }
 
-    public String getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(String data) {
-        this.data = data;
-    }
+//    public void setData(LocalDate data) {
+//        this.data = data;
+//    }
+    //acho que não tem mais sentido alterar aqui, já que é sempre a data do dia em que foi criada
 
     public void adicionarIngresso(Ingresso ingresso) {
         this.ingressoList.add(ingresso);
@@ -61,11 +69,16 @@ public class Venda {
     }
 
     private void atualizarIngressosDisponiveis() {
-        int qntIngressosVendidos = ingressoList.size();
-        int qntIngressosDisponiveis = exibicao.getQntIngressosDisponiveis();
-        exibicao.setQntIngressosDisponiveis(qntIngressosDisponiveis - qntIngressosVendidos);
+        exibicao.setQntIngressosDisponiveis(exibicao.getQntIngressosDisponiveis() - 1);
     }
 
+    public void cancelarVenda(){
+        status = VendaStatus.CANCELADA;
+    }
+
+    public VendaStatus getStatus() {
+        return status;
+    }
 
     @Override
     public String toString() {
