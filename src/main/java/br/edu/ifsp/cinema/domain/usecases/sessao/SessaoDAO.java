@@ -8,5 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface SessaoDAO extends DAO<Sessao, Long>{
+    List<Sessao> findAllByFilmeId(Long filmeId);
+
     Optional<Sessao> findOne(Long id);
 }

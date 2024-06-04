@@ -42,6 +42,21 @@ public class InMemorySessao implements SessaoDAO {
     }
 
     @Override
+    public boolean deleteByKey(Long key) {
+        return false;
+    }
+
+    @Override
+    public boolean delete(Sessao entity) {
+        return false;
+    }
+
+    @Override
+    public boolean isAtivo(Long key) {
+        return false;
+    }
+
+    @Override
     public Optional<Sessao> findOne(Long id) {
         if (db.containsKey(id))
             return Optional.of(db.get(id));
