@@ -4,6 +4,8 @@ import br.edu.ifsp.cinema.domain.entities.exibicao.Exibicao;
 import br.edu.ifsp.cinema.domain.usecases.utils.Notification;
 import br.edu.ifsp.cinema.domain.usecases.utils.Validator;
 
+import java.time.LocalDateTime;
+
 public class ExibicaoInputRequestValidator extends Validator<Exibicao> {
 
     @Override
@@ -25,6 +27,10 @@ public class ExibicaoInputRequestValidator extends Validator<Exibicao> {
 
         if (exibicao.getQntIngressosDisponiveis() < 0) {
             notification.addError("Quantidade de ingressos disponíveis is invalid");
+        }
+
+        if (exibicao.getSessao().getDataHora().isBefore(LocalDateTime.now())) {
+            notification.addError("Não é possível criar uma exibição para uma data/hora passada");
         }
 
         return notification;

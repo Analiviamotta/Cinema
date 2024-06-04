@@ -4,6 +4,7 @@ import br.edu.ifsp.cinema.domain.entities.exibicao.Exibicao;
 import br.edu.ifsp.cinema.domain.entities.sala.Sala;
 import br.edu.ifsp.cinema.domain.entities.sala.SalaStatus;
 import br.edu.ifsp.cinema.domain.entities.sessao.Sessao;
+import br.edu.ifsp.cinema.domain.entities.sessao.SessaoStatus;
 import br.edu.ifsp.cinema.domain.usecases.sala.SalaDAO;
 import br.edu.ifsp.cinema.domain.usecases.sessao.SessaoDAO;
 import br.edu.ifsp.cinema.domain.usecases.utils.EntityNotFoundException;
@@ -43,6 +44,13 @@ public class CriarExibicaoUseCase {
         Optional<Sessao> sessao = sessaoDAO.findOne(exibicao.getSessao().getId());
         if (sessao.isEmpty()) {
             throw new EntityNotFoundException("Sessão não encontrada");
+        }
+        if (sessao.get().getStatus() != SessaoStatus.ATIVO){
+            throw new InactiveObjectException("A sessão não está ativa");
+        }
+
+        if (exibicao.getQntIngressosDisponiveis() < 0) {
+            throw new IllegalArgumentException("A quantidade de ingressos disponíveis não pode ser negativa");
         }
 
         return exibicaoDAO.create(exibicao);

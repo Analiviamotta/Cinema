@@ -24,7 +24,6 @@ public class ExcluirFilmeUseCase {
             throw new InactiveObjectException("Não é possível excluir um filme ativo");
         }
 
-        //id é um long primitivo e não pode ser null
         return filmeDAO.deleteByKey(id);
     }
 
