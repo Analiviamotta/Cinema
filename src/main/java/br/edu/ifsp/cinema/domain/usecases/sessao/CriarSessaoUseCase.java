@@ -1,23 +1,27 @@
 package br.edu.ifsp.cinema.domain.usecases.sessao;
 
+import br.edu.ifsp.cinema.domain.entities.filme.Filme;
+import br.edu.ifsp.cinema.domain.entities.filme.FilmeStatus;
 import br.edu.ifsp.cinema.domain.entities.sala.Sala;
 import br.edu.ifsp.cinema.domain.entities.sala.SalaStatus;
 import br.edu.ifsp.cinema.domain.entities.sessao.Sessao;
+import br.edu.ifsp.cinema.domain.usecases.filme.FilmeDAO;
 import br.edu.ifsp.cinema.domain.usecases.sala.SalaDAO;
 import br.edu.ifsp.cinema.domain.usecases.utils.EntityNotFoundException;
 import br.edu.ifsp.cinema.domain.usecases.utils.InactiveObjectException;
 import br.edu.ifsp.cinema.domain.usecases.utils.Notification;
 import br.edu.ifsp.cinema.domain.usecases.utils.Validator;
 
+import java.util.List;
 import java.util.Optional;
 
 
 public class CriarSessaoUseCase {
-    private SalaDAO salaDAO;
+    private FilmeDAO filmeDAO;
     private SessaoDAO sessaoDAO;
 
-    public CriarSessaoUseCase(SalaDAO salaDAO, SessaoDAO sessaoDAO) {
-        this.salaDAO = salaDAO;
+    public CriarSessaoUseCase(FilmeDAO filmeDAO, SessaoDAO sessaoDAO) {
+        this.filmeDAO= filmeDAO;
         this.sessaoDAO = sessaoDAO;
     }
 
@@ -29,19 +33,15 @@ public class CriarSessaoUseCase {
             throw new IllegalArgumentException(notification.errorMessage());
         }
 
-        Optional<Sala> sala = salaDAO.findOne(sessao.getId());
-        if(sala.isEmpty()){
-            throw  new EntityNotFoundException("Sala não encontrada");
+        Filme filme = filmeDAO.findByTitulo(sessao.getFilme().getTitulo())
+                .orElseThrow(() -> new IllegalArgumentException("O filme selecionado não existe"));
+
+        if (filme.getStatus() != FilmeStatus.ATIVO) {
+            throw new InactiveObjectException("O filme selecionado não está ativo");
         }
 
-        if (sala.get().getStatus() != SalaStatus.ATIVO) {
-            throw new InactiveObjectException("A sala selecionada não está ativa");
-        }
-
-        // to do: verificar "sala disponivel"
+        sessao.setFilme(filme);
 
         return sessaoDAO.create(sessao);
     }
-
-
 }

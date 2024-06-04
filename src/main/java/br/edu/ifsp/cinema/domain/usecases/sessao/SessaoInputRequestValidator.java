@@ -17,21 +17,23 @@ public class SessaoInputRequestValidator extends Validator<Sessao> {
             notification.addError("Sessao is null");
             return notification;
         }
-
-        if (nullOrEmpty(Collections.singleton(sessao.getDiaSemana()))) {
+        if (sessao.getDiaSemana() == null || sessao.getDiaSemana().isEmpty()) {
             notification.addError("Dia da semana is null or empty");
         }
-        if (nullOrEmpty(Collections.singleton(sessao.getHora()))) {
-            notification.addError("Hora das sessão is null or empty");
+        if (sessao.getHorarios() == null || sessao.getHorarios().isEmpty()) {
+            notification.addError("Horarios is null or empty");
         }
-        if (nullOrEmpty(Collections.singleton(sessao.getHora()))) {
-            notification.addError("Hora das sessão is null or empty");
+        if (sessao.getDataInicio() == null) {
+            notification.addError("Data de inicio is null");
         }
-        if(nullOrEmpty((Collections.singleton(sessao.getTempo())))){
-            notification.addError(("Tempo de exibição is null or empty"));
+        if (sessao.getDataFim() == null) {
+            notification.addError("Data de fim is null");
         }
-        if(nullOrEmpty((Collections.singleton(sessao.getFilme())))){
-            notification.addError("Filme is null or empty ");
+        if (sessao.getTempoDuracao() == null) {
+            notification.addError("Tempo de duracao is null");
+        }
+        if (sessao.getFilme() == null) {
+            notification.addError("Filme is null");
         }
 
         return notification;

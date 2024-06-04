@@ -21,10 +21,6 @@ public class Ingresso {
         return id;
     }
 
-//    public void setId(long id) {
-//        this.id = id;
-//    }
-
     public Assento getAssento() {
         return assento;
     }
@@ -55,7 +51,6 @@ public class Ingresso {
             }
 
     }
-
     @Override
     public String toString() {
         return "Ingresso{" +

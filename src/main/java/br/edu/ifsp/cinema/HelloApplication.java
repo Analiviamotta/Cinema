@@ -16,9 +16,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class HelloApplication extends Application {
@@ -45,12 +45,25 @@ public class HelloApplication extends Application {
 
         Sala sala = new Sala(10, 10, 5, 300, assentos);
 
-        Sessao sessao = new Sessao(SessaoDiaSemana.DOMINGO, LocalTime.of(18, 0), LocalTime.of(20, 0), filme);
+        Duration duracao = Duration.ofMinutes(120);
+
+        Sessao sessao = new Sessao(
+                Arrays.asList(SessaoDiaSemana.QUINTA, SessaoDiaSemana.SEXTA),
+                Duration.ofHours(2),
+                LocalDate.of(2024, Month.JUNE, 10),
+                LocalDate.of(2024, Month.AUGUST, 31),
+                Arrays.asList(
+                        LocalTime.of(14, 0),
+                        LocalTime.of(16, 30)
+                ),
+                filme
+        );
 
         Exibicao exibicao = new Exibicao(sessao, sala, 100);
 
         Assento assento = new Assento(10, 2);
         Assento assento1 = new Assento(10, 3);
+
 
         BigDecimal valorIngresso = new BigDecimal("20.00");
 

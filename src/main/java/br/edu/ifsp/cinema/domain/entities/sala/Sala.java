@@ -25,10 +25,21 @@ public class Sala {
         this.numLinhas = numLinhas;
         this.numColunas = numColunas;
         this.capacidade = capacidade;
-        // Adiciona cada assento à lista
+        this.assentoList = new ArrayList<>();
+
+        List<Assento> assentosInvalidos = new ArrayList<>();
+
         for (Assento assento : assentos) {
-            this.assentoList.add(assento);
+            if (!verificarAssentoValido(assento)) {
+                assentosInvalidos.add(assento);
+            } else {
+                this.assentoList.add(assento);
+            }
         }
+        if (!assentosInvalidos.isEmpty()) {
+            throw new IllegalArgumentException("Os seguintes assentos são inválidos para esta sala: " + assentosInvalidos);
+        }
+
         this.status = SalaStatus.ATIVO;
     }
 
@@ -53,6 +64,9 @@ public class Sala {
     }
 
     public void setNumLinhas(int numLinhas) {
+        if (!assentoList.isEmpty()) {
+            throw new IllegalStateException("Não é possível alterar o número de linhas após a adição de assentos à sala.");
+        }
         this.numLinhas = numLinhas;
     }
 
@@ -61,6 +75,9 @@ public class Sala {
     }
 
     public void setNumColunas(int numColunas) {
+        if (!assentoList.isEmpty()) {
+            throw new IllegalStateException("Não é possível alterar o número de colunas após a adição de assentos à sala.");
+        }
         this.numColunas = numColunas;
     }
 
@@ -96,6 +113,11 @@ public class Sala {
         this.status = SalaStatus.ATIVO;
     }
 
+    public boolean verificarAssentoValido(Assento assento) {
+        return assento.getLinha() >= 1 && assento.getLinha() <= numLinhas &&
+                assento.getColuna() >= 1 && assento.getColuna() <= numColunas;
+    }
+
     @Override
     public String toString() {
         StringBuilder assentosString = new StringBuilder();
@@ -103,7 +125,6 @@ public class Sala {
             assentosString.append(assento.toString()).append(", ");
         }
 
-        // tira a ultima virgula e espaço
         if (assentosString.length() > 0) {
             assentosString.setLength(assentosString.length() - 2);
         }

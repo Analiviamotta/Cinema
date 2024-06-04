@@ -18,7 +18,7 @@ public class InMemoryExibicaoDAO implements ExibicaoDAO {
     @Override
     public List<Sessao> listarSessoesDaExibicao(Exibicao exibicao) {
         return null;
-    }//ver isso
+    }
 
     @Override
     public Exibicao create(Exibicao exibicao) {
@@ -33,6 +33,21 @@ public class InMemoryExibicaoDAO implements ExibicaoDAO {
             db.put(exibicao.getId(), exibicao);
             return true;
         }
+        return false;
+    }
+
+    @Override
+    public boolean deleteByKey(Long key) {
+        return false;
+    }
+
+    @Override
+    public boolean delete(Exibicao entity) {
+        return false;
+    }
+
+    @Override
+    public boolean isAtivo(Long key) {
         return false;
     }
 

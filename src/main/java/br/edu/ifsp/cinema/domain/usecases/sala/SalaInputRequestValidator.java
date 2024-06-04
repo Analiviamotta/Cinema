@@ -15,7 +15,6 @@ public class SalaInputRequestValidator extends Validator<Sala> {
             return notification;
         }
 
-        //singleton para a collection receber apenas um elemento
         if(nullOrEmpty(Collections.singleton(sala.getNumber()))){
             notification.addError("Número da sala is null or empty");
         }
