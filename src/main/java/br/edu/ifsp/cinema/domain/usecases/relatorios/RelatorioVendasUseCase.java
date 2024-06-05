@@ -1,17 +1,16 @@
-package br.edu.ifsp.cinema.domain.usecases.venda;
+package br.edu.ifsp.cinema.domain.usecases.relatorios;
 
 import br.edu.ifsp.cinema.domain.entities.venda.Venda;
 import br.edu.ifsp.cinema.domain.usecases.utils.EntityNotFoundException;
 import br.edu.ifsp.cinema.domain.usecases.venda.VendaDAO;
 
-
 import java.time.LocalDate;
 import java.util.List;
 
-public class CreateVendaReportUseCase {
+public class RelatorioVendasUseCase {
     private VendaDAO vendaDAO;
 
-    public CreateVendaReportUseCase(VendaDAO vendaDAO) {
+    public RelatorioVendasUseCase(VendaDAO vendaDAO) {
         this.vendaDAO = vendaDAO;
     }
 
@@ -23,4 +22,5 @@ public class CreateVendaReportUseCase {
         }
         return vendas;
     }
+
 }

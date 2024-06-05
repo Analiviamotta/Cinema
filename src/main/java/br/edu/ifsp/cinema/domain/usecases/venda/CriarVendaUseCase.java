@@ -13,15 +13,13 @@ import java.util.List;
 public class CriarVendaUseCase {
     private VendaDAO vendaDAO;
     private ConsultarExibicaoUseCase consultarExibicaoUseCase;
-    private VendaInputRequestValidator validator;
+    private VendaInputRequestValidator validator = new VendaInputRequestValidator();
 
     public CriarVendaUseCase(
             VendaDAO vendaDAO,
-            ConsultarExibicaoUseCase consultarExibicaoUseCase,
-            VendaInputRequestValidator validator) {
+            ConsultarExibicaoUseCase consultarExibicaoUseCase) {
         this.vendaDAO = vendaDAO;
         this.consultarExibicaoUseCase = consultarExibicaoUseCase;
-        this.validator = validator;
     }
 
     public Venda criarVenda(Long exibicaoId, List<Ingresso> ingressos) {
