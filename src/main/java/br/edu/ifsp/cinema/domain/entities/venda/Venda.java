@@ -26,6 +26,17 @@ public class Venda {
         }
     }
 
+    public Venda(Long id, Exibicao exibicao, Ingresso... ingressos) {
+        this.id = id;
+        this.exibicao = exibicao;
+        this.data = LocalDate.now();
+        this.status = VendaStatus.EFETUADA;
+        this.ingressoList = new ArrayList<>();
+        for (Ingresso ingresso : ingressos) {
+            adicionarIngresso(ingresso);
+        }
+    }
+
     public long getId() {
         return id;
     }

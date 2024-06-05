@@ -5,6 +5,7 @@ import br.edu.ifsp.cinema.domain.entities.venda.Venda;
 import br.edu.ifsp.cinema.domain.usecases.venda.VendaDAO;
 import br.edu.ifsp.cinema.domain.entities.venda.VendaStatus;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class InMemoryVendaDAO implements VendaDAO {
@@ -64,5 +65,10 @@ public class InMemoryVendaDAO implements VendaDAO {
     @Override
     public List<Ingresso> listarIngressosDaVenda(Venda venda) {
         return venda.getIngressoList();
+    }
+
+    @Override
+    public List<Venda> findAllByPeriod(LocalDate inicio, LocalDate fim) {
+        return new ArrayList<>(db.values()).stream().filter(e -> !(e.getData().isAfter(fim)) && !(e.getData().isBefore(inicio))).toList();
     }
 }

@@ -3,6 +3,7 @@ import br.edu.ifsp.cinema.domain.entities.ingresso.Ingresso;
 import br.edu.ifsp.cinema.domain.entities.venda.Venda;
 import br.edu.ifsp.cinema.domain.usecases.utils.DAO;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,4 +28,8 @@ public interface VendaDAO extends DAO<Venda, Long> {
     @Override
     boolean isAtivo(Long key);
     List<Ingresso> listarIngressosDaVenda(Venda venda);
+
+
+    List<Venda> findAllByPeriod(LocalDate inicio, LocalDate fim);
+
 }

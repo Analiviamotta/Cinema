@@ -10,8 +10,8 @@ import br.edu.ifsp.cinema.domain.usecases.filme.FilmeDAO;
 public class CriarFilmeUseCase {
     private FilmeDAO filmeDAO;
 
-    public CriarFilmeUseCase(SalaDAO salaDAO) {
-        this.filmeDAO= filmeDAO;
+    public CriarFilmeUseCase(FilmeDAO filmeDAO) {
+        this.filmeDAO = filmeDAO;
     } // a classe nao precisa saber qual o banco, desde que ele seja um DAO de sala
 
     public Filme insert(Filme filme) {

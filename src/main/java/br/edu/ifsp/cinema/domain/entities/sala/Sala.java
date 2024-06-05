@@ -20,6 +20,7 @@ public class Sala {
         this.assentoList = new ArrayList<>();
     }
 
+
     public Sala(int numero, int numLinhas, int numColunas, int capacidade, List<Assento> assentos) {
         this.numero = numero;
         this.numLinhas = numLinhas;
