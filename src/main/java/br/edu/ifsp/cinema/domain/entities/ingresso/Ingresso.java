@@ -61,10 +61,7 @@ public class Ingresso {
                 '}';
     }
 
-    // to do:
-    public void imprimirIngresso(){
 
-    }
 
     public Object getFilme() {
         return sessaoExibicao.getFilme();

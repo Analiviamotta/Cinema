@@ -21,6 +21,7 @@ import br.edu.ifsp.cinema.domain.usecases.sala.SalaDAO;
 import br.edu.ifsp.cinema.domain.usecases.sessao.CriarSessaoUseCase;
 import br.edu.ifsp.cinema.domain.usecases.sessao.SessaoDAO;
 import br.edu.ifsp.cinema.domain.usecases.utils.export.PDFExporter;
+import br.edu.ifsp.cinema.domain.usecases.utils.export.PDFExporterIngressos;
 import br.edu.ifsp.cinema.domain.usecases.venda.CreateVendaReportUseCase;
 import br.edu.ifsp.cinema.domain.usecases.venda.CriarVendaUseCase;
 import br.edu.ifsp.cinema.domain.usecases.venda.VendaDAO;
@@ -103,6 +104,10 @@ public class HelloApplication extends Application {
 
         //tive que criar novas coisas para gerar o relatorio, pois estava com o ID nulo
 
+        List<Ingresso> ingressos = new ArrayList<>();
+        ingressos.add(ingresso);
+        ingressos.add(ingresso2);
+
         List<Venda> vendas = new ArrayList<>();
         vendas.add(venda2);
         vendas.add(venda3);
@@ -153,6 +158,10 @@ public class HelloApplication extends Application {
 
         List<Venda> vendasRelatorio = relatorio1.findAllByPeriod(LocalDate.of(2024, Month.JANUARY, 9), LocalDate.of(2024,Month.AUGUST, 10 ));
         exportadorpdf1.generatesExportableReport(vendasRelatorio);
+
+        PDFExporterIngressos exportadorIngressos1 = new PDFExporterIngressos("ingressos1.pdf");
+        exportadorIngressos1.generatesExportableReport(ingressos);
+
 
 
     }
