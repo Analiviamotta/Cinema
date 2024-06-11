@@ -1,5 +1,8 @@
 package br.edu.ifsp.cinema.domain.usecases.venda;
 
+// tem que repor os ingressos que estariam vendidos (chamar IngressoDisponivel)
+
+
 import br.edu.ifsp.cinema.domain.entities.venda.Venda;
 import br.edu.ifsp.cinema.domain.usecases.utils.Notification;
 
@@ -32,6 +35,4 @@ public class CancelarVendaUseCase {
         venda.cancelarVenda();
         return vendaDAO.update(venda);
     }
-
-
 }

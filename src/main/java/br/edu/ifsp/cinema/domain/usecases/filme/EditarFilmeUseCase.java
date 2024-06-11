@@ -25,9 +25,13 @@ public class EditarFilmeUseCase {
         if(filmeDAO.findOne(id).isEmpty()){
             throw new EntityNotFoundException("O filme informado não existe");
         }
-        if(filmeDAO.isAtivo(filme.getId())){
+        /*if(filmeDAO.isAtivo(filme.getId())){
             throw new InactiveObjectException("Não é possível editar um filme ativo");
-        } // fluxo alternativo 4
+        }*/
+
+        // só pode editar um filme que está ativo
+        // não pode editar um filme que está em uma sessão
+        // não pode editar o nome
 
         return filmeDAO.update(filme);
     }

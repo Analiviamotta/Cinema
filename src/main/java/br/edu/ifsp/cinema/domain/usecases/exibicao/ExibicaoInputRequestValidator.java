@@ -30,6 +30,8 @@ public class ExibicaoInputRequestValidator extends Validator<Exibicao> {
             notification.addError("Quantidade de ingressos disponíveis is invalid");
         }
 
+
+        // excluir esse getSessao
         if (exibicao.getSessao().getDataInicio().isBefore(LocalDate.now())) {
             notification.addError("Não é possível criar uma exibição para uma data/hora passada");
         }

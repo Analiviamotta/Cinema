@@ -6,14 +6,32 @@ import br.edu.ifsp.cinema.domain.entities.sessao.Sessao;
 
 public class Exibicao {
     private Long id;
-    private Sessao sessao;
+    // private Sessao sessao;
     private Sala sala;
+    private Filme filme;
+    private LocalDateTime horarioData;
+    private Duration tempoDuracao;
     private int qntIngressosDisponiveis;
+    private ExibicaoStatus status;
 
     public Exibicao( Sessao sessao, Sala sala, int qntIngressosDisponiveis) {
         this.sessao = sessao;
         this.sala = sala;
         this.qntIngressosDisponiveis = qntIngressosDisponiveis;
+    }
+
+    public Exibicao(Sessao sessao, Sala sala, Filme filme, LocalDateTime horarioData, Duration tempoDuracao, int qntIngressosDisponiveis, ExibicaoStatus status) {
+        this.sessao = sessao;
+        this.sala = sala;
+        this.filme = filme;
+        this.horarioData = horarioData;
+        this.tempoDuracao = tempoDuracao;
+        this.qntIngressosDisponiveis = qntIngressosDisponiveis;
+        this.status = ExibicaoStatus.EFETUADA;
+    }
+
+    public Exibicao() {
+
     }
 
     public long getId() {

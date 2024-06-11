@@ -7,6 +7,10 @@ import br.edu.ifsp.cinema.domain.usecases.utils.Validator;
 
 import java.time.LocalDateTime;
 
+
+// olhar para o InputRequestValidator, mas basicamente vai manter
+// as mesmas verificações do CriarExibicao
+
 public class EditarExibicaoUseCase {
     private ExibicaoDAO exibicaoDAO;
 
@@ -17,7 +21,7 @@ public class EditarExibicaoUseCase {
     public Boolean update(Exibicao exibicao) {
         Validator<Exibicao> validator = new ExibicaoInputRequestValidator();
         Notification notification = validator.validate(exibicao);
-        
+
         if (notification.hasErros()) {
             throw new IllegalArgumentException(notification.errorMessage());
         }
@@ -42,4 +46,3 @@ public class EditarExibicaoUseCase {
 
 
 
-  

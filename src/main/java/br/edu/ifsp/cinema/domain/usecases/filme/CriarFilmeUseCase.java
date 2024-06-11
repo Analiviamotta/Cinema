@@ -12,7 +12,7 @@ public class CriarFilmeUseCase {
 
     public CriarFilmeUseCase(FilmeDAO filmeDAO) {
         this.filmeDAO = filmeDAO;
-    } // a classe nao precisa saber qual o banco, desde que ele seja um DAO de sala
+    }
 
     public Filme insert(Filme filme) {
         Validator<Filme> validator = new FilmeInputRequestValidator();

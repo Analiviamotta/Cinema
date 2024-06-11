@@ -36,6 +36,8 @@ public class ExcluirSalaUseCase {
         if (salaOpt.isEmpty()) {
             throw new EntityNotFoundException("Sala não encontrada");
         }
+
+        // chamar o inativarSalaUseCase para verificar se a sala não está em uma exibição
         if (salaDAO.isAtivo(sala.getId())) {
             throw new InactiveObjectException("Não é possível excluir uma sala ativa");
         }

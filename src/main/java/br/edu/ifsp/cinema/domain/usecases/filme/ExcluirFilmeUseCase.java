@@ -39,6 +39,7 @@ public class ExcluirFilmeUseCase {
         if (filmeDAO.isAtivo(filme.getId())) {
             throw new InactiveObjectException("Não é possível excluir um filme ativo");
         }
+
         return filmeDAO.delete(filme);
     }
 

@@ -10,6 +10,10 @@ import br.edu.ifsp.cinema.domain.usecases.utils.Notification;
 
 import java.util.List;
 
+// nao pode vender mais ingressos do que estão disponíveis
+// não pode vender um ingresso que está vendido
+
+
 public class CriarVendaUseCase {
     private VendaDAO vendaDAO;
     private ConsultarExibicaoUseCase consultarExibicaoUseCase;

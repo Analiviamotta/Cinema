@@ -42,13 +42,13 @@ public class Ingresso {
     }
 
     public void setPreco(String precoStr) {
-            try {
-                this.preco = new BigDecimal(precoStr);
-            }
-            catch (NumberFormatException e) {
-                //formato errado deve ser 00 ou 00.00
-                System.err.println("Formato de valor errado: " + e.getMessage());
-            }
+        try {
+            this.preco = new BigDecimal(precoStr);
+        }
+        catch (NumberFormatException e) {
+            //formato errado deve ser 00 ou 00.00
+            System.err.println("Formato de valor errado: " + e.getMessage());
+        }
 
     }
     @Override
@@ -60,6 +60,8 @@ public class Ingresso {
                 ", preco=" + preco +
                 '}';
     }
+
+    // colocar exibição
 
 
 
