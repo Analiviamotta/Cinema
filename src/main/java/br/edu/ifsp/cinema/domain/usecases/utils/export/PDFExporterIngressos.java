@@ -11,7 +11,7 @@ import java.io.FileOutputStream;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
-
+/*
 public class PDFExporterIngressos implements Exportable<Ingresso> {
     private String filePath;
 
@@ -51,3 +51,4 @@ public class PDFExporterIngressos implements Exportable<Ingresso> {
     }
 
 }
+*/

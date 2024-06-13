@@ -1,3 +1,5 @@
+package br.edu.ifsp.cinema.domain.entities.exibicao;
+
 public enum ExibicaoStatus {
     EFETUADA("Efetuada"),
     CANCELADA("Cancelada");

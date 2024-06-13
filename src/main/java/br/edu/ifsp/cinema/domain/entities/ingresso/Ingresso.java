@@ -1,17 +1,16 @@
 package br.edu.ifsp.cinema.domain.entities.ingresso;
 
 import br.edu.ifsp.cinema.domain.entities.assento.Assento;
-import br.edu.ifsp.cinema.domain.entities.sessao.Sessao;
-
+import br.edu.ifsp.cinema.domain.entities.exibicao.Exibicao;
 import java.math.BigDecimal;
 
 public class Ingresso {
     private Long id;
     private Assento assento;
-    private Sessao sessaoExibicao;
+    private Exibicao sessaoExibicao;
     private BigDecimal preco;
 
-    public Ingresso(Assento assento, Sessao sessaoExibicao, BigDecimal preco) {
+    public Ingresso(Assento assento, Exibicao sessaoExibicao, BigDecimal preco) {
         this.assento = assento;
         this.sessaoExibicao = sessaoExibicao;
         this.preco = preco;
@@ -29,14 +28,6 @@ public class Ingresso {
         this.assento = assento;
     }
 
-    public Sessao getSessaoExibicao() {
-        return sessaoExibicao;
-    }
-
-    public void setSessaoExibicao(Sessao sessaoExibicao) {
-        this.sessaoExibicao = sessaoExibicao;
-    }
-
     public BigDecimal getPreco() {
         return preco;
     }
@@ -49,7 +40,6 @@ public class Ingresso {
             //formato errado deve ser 00 ou 00.00
             System.err.println("Formato de valor errado: " + e.getMessage());
         }
-
     }
     @Override
     public String toString() {
@@ -62,7 +52,6 @@ public class Ingresso {
     }
 
     // colocar exibição
-
 
 
     public Object getFilme() {
