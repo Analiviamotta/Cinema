@@ -13,7 +13,7 @@ public class InativarFilmeUseCase {
         this.filmeDAO = filmeDAO;
     }
 
-    public void desativarFilme(Long id) {
+    public void inativarFilme(Long id) {
         Filme filme = filmeDAO.findOne(id)
                 .orElseThrow(() -> new EntityNotFoundException("Filme não encontrado"));
 

@@ -117,6 +117,18 @@ public class Sala {
                 assento.getColuna() >= 1 && assento.getColuna() <= numColunas;
     }
 
+    public void addAssento(Assento novoAssento) {
+        if (!verificarAssentoValido(novoAssento)) {
+            throw new IllegalArgumentException("O assento não é válido para esta sala");
+        }
+        assentoList.add(novoAssento);
+    }
+
+    public void removeAssento(Assento assentoParaExcluir) {
+        assentoList.remove(assentoParaExcluir);
+    }
+
+
     @Override
     public String toString() {
         StringBuilder assentosString = new StringBuilder();

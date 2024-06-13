@@ -21,6 +21,9 @@ import java.util.Optional;
 // não pode adicionar uma exibição que o duration de outra exibição dá conflito
 // duracao deve ser maior que zero
 
+// já coloquei algumas dessas verificações em ExibicaoInputRequestValidator
+// O QUE FALTA: Negócio do DURATION e QTD DE INGRESSO SETADA
+
 
 public class CriarExibicaoUseCase {
     private ExibicaoDAO exibicaoDAO;
@@ -34,17 +37,8 @@ public class CriarExibicaoUseCase {
             throw new IllegalArgumentException(notification.errorMessage());
         }
 
-        Optional<Sala> sala = salaDAO.findOne(exibicao.getSala().getId());
-        if (sala.isEmpty()) {
-            throw new EntityNotFoundException("Sala não encontrada");
-        }
-
-        if (sala.get().getStatus() != SalaStatus.ATIVO) {
-            throw new InactiveObjectException("A sala selecionada não está ativa");
-        }
-
-        if (exibicao.getQntIngressosDisponiveis() < 0) {
-            throw new IllegalArgumentException("A quantidade de ingressos disponíveis não pode ser negativa");
+        if (exibicaoDAO.exibicaoExistenteNaMesmaDataHorarioSala(exibicao)) {
+            throw new IllegalArgumentException("Já existe uma exibição na mesma data, horário e sala");
         }
 
         return exibicaoDAO.create(exibicao);

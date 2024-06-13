@@ -26,17 +26,13 @@ public class EditarExibicaoUseCase {
             throw new IllegalArgumentException(notification.errorMessage());
         }
 
-        if (exibicao.getSessao().getDataFim().atTime(exibicao.getSessao().getHorarios().get(exibicao.getSessao().getHorarios().size() - 1)).isBefore(LocalDateTime.now())) {
-            throw new IllegalArgumentException("Não é possível atualizar uma exibição que já ocorreu");
-        }
-
-        if (exibicao.getQntIngressosDisponiveis() < 0) {
-            throw new IllegalArgumentException("A quantidade de ingressos disponíveis não pode ser negativa");
-        }
-
         long id = exibicao.getId();
         if (exibicaoDAO.findOne(id).isEmpty()) {
             throw new EntityNotFoundException("A exibição informada não existe");
+        }
+
+        if (exibicaoDAO.exibicaoExistenteNaMesmaDataHorarioSala(exibicao)) {
+            throw new IllegalArgumentException("Já existe uma exibição na mesma data, horário e sala");
         }
 
         return exibicaoDAO.update(exibicao);

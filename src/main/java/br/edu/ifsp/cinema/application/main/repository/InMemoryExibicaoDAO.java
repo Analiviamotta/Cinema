@@ -55,4 +55,19 @@ public class InMemoryExibicaoDAO implements ExibicaoDAO {
         return List.of();
     }
 
+    @Override
+    public List<Exibicao> findBySalaId(long id) {
+        return List.of();
+    }
+
+    @Override
+    public boolean exibicaoExistenteNaMesmaDataHorarioSala(Exibicao exibicao) {
+        for (Exibicao exib : db.values()) {
+            if (exib.getSala().getId() == exibicao.getSala().getId() &&
+                    exib.getHorarioData().isEqual(exibicao.getHorarioData())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

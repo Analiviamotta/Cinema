@@ -2,18 +2,17 @@ package br.edu.ifsp.cinema.domain.usecases.sala;
 
 import br.edu.ifsp.cinema.domain.entities.sala.Sala;
 import br.edu.ifsp.cinema.domain.entities.sala.SalaStatus;
-import br.edu.ifsp.cinema.domain.usecases.filme.FilmeDAO;
 import br.edu.ifsp.cinema.domain.usecases.utils.EntityAlreadyExistsException;
 import br.edu.ifsp.cinema.domain.usecases.utils.EntityNotFoundException;
 
 public class AtivarSalaUseCase {
     private SalaDAO salaDAO;
 
-    public AtivarSalaUseCase (FilmeDAO filmeDAO) {
+    public AtivarSalaUseCase (SalaDAO salaDAO) {
         this.salaDAO = salaDAO;
     }
 
-    public void ativarFilme(Long id) {
+    public void ativarSala(Long id) {
         Sala sala = salaDAO.findOne(id)
                 .orElseThrow(() -> new EntityNotFoundException("Sala não encontrada"));
 
