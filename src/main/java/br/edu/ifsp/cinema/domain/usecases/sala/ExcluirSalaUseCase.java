@@ -23,7 +23,10 @@ public class ExcluirSalaUseCase {
             throw new InactiveObjectException("Não é possível excluir uma sala ativa");
         }
 
-        //id é um long primitivo e não pode ser null
+        if (salaDAO.isInExibicao(sala.getId())) {
+            throw new IllegalArgumentException("Não é possível excluir uma sala que está em uma exibição");
+        }
+
         return salaDAO.deleteByKey(id);
     }
 
@@ -36,9 +39,15 @@ public class ExcluirSalaUseCase {
         if (salaOpt.isEmpty()) {
             throw new EntityNotFoundException("Sala não encontrada");
         }
+
         if (salaDAO.isAtivo(sala.getId())) {
             throw new InactiveObjectException("Não é possível excluir uma sala ativa");
         }
+
+        if (salaDAO.isInExibicao(sala.getId())) {
+            throw new IllegalArgumentException("Não é possível excluir uma sala que está em uma exibição");
+        }
+
         return salaDAO.delete(sala);
     }
 

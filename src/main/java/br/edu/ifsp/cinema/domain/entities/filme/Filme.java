@@ -1,7 +1,5 @@
 package br.edu.ifsp.cinema.domain.entities.filme;
 
-import br.edu.ifsp.cinema.domain.entities.sala.SalaStatus;
-
 public class Filme {
     private Long id;
     private String titulo;

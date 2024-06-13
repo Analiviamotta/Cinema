@@ -24,6 +24,10 @@ public class ExcluirFilmeUseCase {
             throw new InactiveObjectException("Não é possível excluir um filme ativo");
         }
 
+        if (filmeDAO.isInExibicao(filme.getId())) {
+            throw new IllegalArgumentException("Não é possível excluir um filme que está em uma exibição");
+        }
+
         return filmeDAO.deleteByKey(id);
     }
 
@@ -39,6 +43,11 @@ public class ExcluirFilmeUseCase {
         if (filmeDAO.isAtivo(filme.getId())) {
             throw new InactiveObjectException("Não é possível excluir um filme ativo");
         }
+
+        if (filmeDAO.isInExibicao(filme.getId())) {
+            throw new IllegalArgumentException("Não é possível excluir um filme que está em uma exibição");
+        }
+
         return filmeDAO.delete(filme);
     }
 

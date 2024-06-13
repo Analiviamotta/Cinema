@@ -14,6 +14,7 @@ public class CriarSalaUseCase {
     }
 
     public Sala insert(Sala sala) {
+        // chamar aqui o criarAssento
         Validator<Sala> validator= new SalaInputRequestValidator();
         Notification notification = validator.validate(sala);
 
@@ -28,4 +29,5 @@ public class CriarSalaUseCase {
 
         return salaDAO.create(sala);
     }
+
 }

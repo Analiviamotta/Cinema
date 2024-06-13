@@ -7,8 +7,6 @@ import br.edu.ifsp.cinema.domain.entities.filme.Filme;
 import br.edu.ifsp.cinema.domain.entities.filme.FilmeGenero;
 import br.edu.ifsp.cinema.domain.entities.ingresso.Ingresso;
 import br.edu.ifsp.cinema.domain.entities.sala.Sala;
-import br.edu.ifsp.cinema.domain.entities.sessao.Sessao;
-import br.edu.ifsp.cinema.domain.entities.sessao.SessaoDiaSemana;
 import br.edu.ifsp.cinema.domain.entities.venda.Venda;
 import br.edu.ifsp.cinema.domain.usecases.exibicao.ConsultarExibicaoUseCase;
 import br.edu.ifsp.cinema.domain.usecases.exibicao.CriarExibicaoUseCase;
@@ -18,8 +16,6 @@ import br.edu.ifsp.cinema.domain.usecases.filme.FilmeDAO;
 import br.edu.ifsp.cinema.domain.usecases.relatorios.RelatorioVendasUseCase;
 import br.edu.ifsp.cinema.domain.usecases.sala.CriarSalaUseCase;
 import br.edu.ifsp.cinema.domain.usecases.sala.SalaDAO;
-import br.edu.ifsp.cinema.domain.usecases.sessao.CriarSessaoUseCase;
-import br.edu.ifsp.cinema.domain.usecases.sessao.SessaoDAO;
 import br.edu.ifsp.cinema.domain.usecases.utils.export.PDFExporter;
 import br.edu.ifsp.cinema.domain.usecases.utils.export.PDFExporterIngressos;
 import br.edu.ifsp.cinema.domain.usecases.venda.CreateVendaReportUseCase;
@@ -49,7 +45,7 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
         //launch();
-        Filme filme = new Filme("Titanic", FilmeGenero.DRAMA, "Sinopse1", "14");
+        /*Filme filme = new Filme("Titanic", FilmeGenero.DRAMA, "Sinopse1", "14");
         System.out.println("Informações do Filme:");
         System.out.println("Título: " + filme.getTitulo());
         System.out.println("Gênero: " + filme.getGenero());
@@ -162,7 +158,7 @@ public class HelloApplication extends Application {
         PDFExporterIngressos exportadorIngressos1 = new PDFExporterIngressos("ingressos1.pdf");
         exportadorIngressos1.generatesExportableReport(ingressos);
 
-
+*/
 
     }
 }

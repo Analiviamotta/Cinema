@@ -1,8 +1,6 @@
 package br.edu.ifsp.cinema.domain.entities.sala;
 
 import br.edu.ifsp.cinema.domain.entities.assento.Assento;
-import br.edu.ifsp.cinema.domain.entities.ingresso.Ingresso;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -118,6 +116,18 @@ public class Sala {
         return assento.getLinha() >= 1 && assento.getLinha() <= numLinhas &&
                 assento.getColuna() >= 1 && assento.getColuna() <= numColunas;
     }
+
+    public void addAssento(Assento novoAssento) {
+        if (!verificarAssentoValido(novoAssento)) {
+            throw new IllegalArgumentException("O assento não é válido para esta sala");
+        }
+        assentoList.add(novoAssento);
+    }
+
+    public void removeAssento(Assento assentoParaExcluir) {
+        assentoList.remove(assentoParaExcluir);
+    }
+
 
     @Override
     public String toString() {

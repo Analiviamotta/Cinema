@@ -4,8 +4,10 @@ import br.edu.ifsp.cinema.domain.entities.filme.Filme;
 import br.edu.ifsp.cinema.domain.entities.filme.FilmeStatus;
 import br.edu.ifsp.cinema.domain.entities.sala.Sala;
 import br.edu.ifsp.cinema.domain.entities.sala.SalaStatus;
+import br.edu.ifsp.cinema.domain.usecases.exibicao.ExibicaoDAO;
 import br.edu.ifsp.cinema.domain.usecases.sala.SalaDAO;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class InMemorySalaDAO implements SalaDAO {
@@ -13,6 +15,7 @@ public class InMemorySalaDAO implements SalaDAO {
     private static final Map<Long, Sala> db = new LinkedHashMap<>();
     //mantém a ordem de inserção
     private static long idCont;
+    private ExibicaoDAO exibicaoDAO;
 
     @Override
     public Optional<Sala> findByNumber(int number) {
@@ -20,6 +23,12 @@ public class InMemorySalaDAO implements SalaDAO {
                 .filter(sala -> sala.getNumber() == number)
                 .findAny();
                 // se nao encontrar retorna Optional.Empty
+    }
+
+    @Override
+    public boolean isInExibicao(long salaId) {
+        return exibicaoDAO.findBySalaId(salaId).stream()
+                .anyMatch(exibicao -> exibicao.getHorarioData().isAfter(LocalDateTime.now()));
     }
 
     @Override

@@ -12,7 +12,7 @@ public class EditarSalaUseCase {
 
     public EditarSalaUseCase(SalaDAO salaDAO) {
         this.salaDAO = salaDAO;
-    } // a classe nao precisa saber qual o banco, desde que ele seja um DAO de sala
+    }
 
     public Boolean update(Sala sala) {
         Validator<Sala> validator= new SalaInputRequestValidator();
@@ -29,6 +29,16 @@ public class EditarSalaUseCase {
         if(salaDAO.isAtivo(sala.getId())){
             throw new InactiveObjectException("Não é possível editar uma sala ativa");
         }
+        if (salaDAO.isInExibicao(sala.getId())) {
+            throw new IllegalArgumentException("Não é possível editar uma sala que está em uma exibição");
+        }
+        if (!sala.getAssentoList().equals(salaDAO.findOne(id).get().getAssentoList())) {
+            throw new IllegalArgumentException("Não é possível editar os assentos da sala");
+        }
+
+        // tem que estar inativa
+        // não pode editar uma sala que está na exibição
+        // não pode editar os assentos
 
         return salaDAO.update(sala);
     }
