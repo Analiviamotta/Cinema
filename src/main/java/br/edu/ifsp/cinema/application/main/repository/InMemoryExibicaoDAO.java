@@ -1,7 +1,6 @@
 package br.edu.ifsp.cinema.application.main.repository;
 
 import br.edu.ifsp.cinema.domain.entities.exibicao.Exibicao;
-import br.edu.ifsp.cinema.domain.entities.sessao.Sessao;
 import br.edu.ifsp.cinema.domain.usecases.exibicao.ExibicaoDAO;
 
 import java.util.*;
@@ -13,11 +12,6 @@ public class InMemoryExibicaoDAO implements ExibicaoDAO {
     @Override
     public List<Exibicao> findAll() {
         return new ArrayList<>(db.values());
-    }
-
-    @Override
-    public List<Sessao> listarSessoesDaExibicao(Exibicao exibicao) {
-        return null;
     }
 
     @Override
@@ -55,4 +49,10 @@ public class InMemoryExibicaoDAO implements ExibicaoDAO {
     public Optional<Exibicao> findOne(Long id){
         return Optional.ofNullable(db.get(id));
     }
+
+    @Override
+    public List<Exibicao> findByFilmeId(long id) {
+        return List.of();
+    }
+
 }

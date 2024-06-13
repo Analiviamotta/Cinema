@@ -2,21 +2,29 @@ package br.edu.ifsp.cinema.application.main.repository;
 
 import br.edu.ifsp.cinema.domain.entities.filme.Filme;
 import br.edu.ifsp.cinema.domain.entities.filme.FilmeStatus;
+import br.edu.ifsp.cinema.domain.usecases.exibicao.ExibicaoDAO;
 import br.edu.ifsp.cinema.domain.usecases.filme.FilmeDAO;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class InMeMemoryFilmeDAO implements FilmeDAO {
     private static final Map<Long, Filme> db = new LinkedHashMap<>();
     //mantém a ordem de inserção
     private static long idCont;
+    private ExibicaoDAO exibicaoDAO;
 
     @Override
     public Optional<Filme> findByTitulo(String titulo) {
         return db.values().stream()
                 .filter(filme -> filme.getTitulo().equals(titulo))
                 .findAny();
-                // se nao encontrar retorna Optional.Empty
+    }
+
+    @Override
+    public boolean isInExibicao(long filmeId) {
+        return exibicaoDAO.findByFilmeId(filmeId).stream()
+                .anyMatch(exibicao -> exibicao.getHorarioData().isAfter(LocalDateTime.now()));
     }
 
     @Override

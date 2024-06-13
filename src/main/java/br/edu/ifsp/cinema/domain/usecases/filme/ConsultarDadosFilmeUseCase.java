@@ -24,7 +24,6 @@ public class ConsultarDadosFilmeUseCase {
             throw new InactiveObjectException("Filme inativo");
         }
 
-        //id é um long primitivo e não pode ser null
         return filmeOpt;
     }
 }
