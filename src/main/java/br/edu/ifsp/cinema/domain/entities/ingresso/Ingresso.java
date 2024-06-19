@@ -9,11 +9,13 @@ public class Ingresso {
     private Assento assento;
     private Exibicao sessaoExibicao;
     private BigDecimal preco;
+    private boolean vendido;
 
     public Ingresso(Assento assento, Exibicao sessaoExibicao, BigDecimal preco) {
         this.assento = assento;
         this.sessaoExibicao = sessaoExibicao;
         this.preco = preco;
+        this.vendido = false;
     }
 
     public long getId() {
@@ -41,6 +43,15 @@ public class Ingresso {
             System.err.println("Formato de valor errado: " + e.getMessage());
         }
     }
+
+    public boolean isVendido() {
+        return vendido;
+    }
+
+    public void setVendido(boolean vendido) {
+        this.vendido = vendido;
+    }
+
     @Override
     public String toString() {
         return "Ingresso{" +

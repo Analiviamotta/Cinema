@@ -67,8 +67,13 @@ public class Venda {
     //acho que não tem mais sentido alterar aqui, já que é sempre a data do dia em que foi criada
 
     public void adicionarIngresso(Ingresso ingresso) {
+        ingresso.setVendido(true);
         this.ingressoList.add(ingresso);
         atualizarIngressosDisponiveis();
+    }
+
+    private void atualizarIngressosDisponiveis() {
+        exibicao.setQntIngressosDisponiveis(exibicao.getQntIngressosDisponiveis() - 1);
     }
 
     public BigDecimal getPrecoTotal() {
@@ -77,10 +82,6 @@ public class Venda {
             precoTotal = precoTotal.add(ingresso.getPreco());
         }
         return precoTotal;
-    }
-
-    private void atualizarIngressosDisponiveis() {
-        exibicao.setQntIngressosDisponiveis(exibicao.getQntIngressosDisponiveis() - 1);
     }
 
     public void cancelarVenda(){

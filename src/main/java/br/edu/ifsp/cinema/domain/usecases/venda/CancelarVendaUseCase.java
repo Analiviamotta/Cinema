@@ -1,8 +1,9 @@
 package br.edu.ifsp.cinema.domain.usecases.venda;
 
-// tem que repor os ingressos que estariam vendidos (chamar IngressoDisponivel)
+// tem que repor os ingressos que estariam vendidos (FEITO)
 
 
+import br.edu.ifsp.cinema.domain.entities.ingresso.Ingresso;
 import br.edu.ifsp.cinema.domain.entities.venda.Venda;
 import br.edu.ifsp.cinema.domain.usecases.utils.Notification;
 
@@ -17,10 +18,15 @@ public class CancelarVendaUseCase {
     }
 
     public boolean cancel(Long id){
-
         Optional<Venda> optionalVenda = vendaDAO.findOne(id);
         if(optionalVenda.isPresent()) {
             Venda venda = optionalVenda.get();
+
+            //repondo os ingressos
+            for (Ingresso ingresso : venda.getIngressoList()) {
+                ingresso.setVendido(false);
+            }
+
             venda.cancelarVenda();
             return vendaDAO.update(venda);
         }
@@ -31,6 +37,9 @@ public class CancelarVendaUseCase {
         Notification notification = validator.validate(venda);
         if (notification.hasErros()) {
             throw new IllegalArgumentException(notification.errorMessage());
+        }
+        for (Ingresso ingresso : venda.getIngressoList()) {
+            ingresso.setVendido(false);
         }
         venda.cancelarVenda();
         return vendaDAO.update(venda);
