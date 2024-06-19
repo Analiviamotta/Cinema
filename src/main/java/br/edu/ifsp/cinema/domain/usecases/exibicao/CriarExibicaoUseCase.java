@@ -1,18 +1,9 @@
 package br.edu.ifsp.cinema.domain.usecases.exibicao;
 
 import br.edu.ifsp.cinema.domain.entities.exibicao.Exibicao;
-import br.edu.ifsp.cinema.domain.entities.sala.Sala;
-import br.edu.ifsp.cinema.domain.entities.sala.SalaStatus;
 import br.edu.ifsp.cinema.domain.usecases.sala.SalaDAO;
-import br.edu.ifsp.cinema.domain.usecases.utils.EntityNotFoundException;
-import br.edu.ifsp.cinema.domain.usecases.utils.InactiveObjectException;
 import br.edu.ifsp.cinema.domain.usecases.utils.Notification;
 import br.edu.ifsp.cinema.domain.usecases.utils.Validator;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
-import java.util.Optional;
 
 
 // sala ativa, filme ativo, data posterior à atual, exibicao ativa,

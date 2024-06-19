@@ -12,7 +12,7 @@ import java.util.List;
 
 // nao pode vender mais ingressos do que estão disponíveis
 // não pode vender um ingresso que está vendido
-
+// FEITO
 
 public class CriarVendaUseCase {
     private VendaDAO vendaDAO;
@@ -32,6 +32,17 @@ public class CriarVendaUseCase {
 
         if (ingressos.isEmpty()) {
             throw new IllegalArgumentException("Lista de Ingressos não pode estar vazia");
+        }
+
+        if (ingressos.size() > exibicao.getQntIngressosDisponiveis()) {
+            throw new IllegalArgumentException("Número de ingressos não pode exceder a quantidade disponível.");
+        }
+
+        for (Ingresso ingresso : ingressos) {
+            if (ingresso.isVendido()) {
+                throw new IllegalArgumentException("Não é possível vender um ingresso que já está vendido.");
+            }
+            ingresso.setVendido(true);
         }
 
         Venda venda = new Venda(exibicao, ingressos.toArray(new Ingresso[0]));
