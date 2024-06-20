@@ -18,7 +18,10 @@ import br.edu.ifsp.cinema.domain.usecases.utils.Validator;
 
 public class CriarExibicaoUseCase {
     private ExibicaoDAO exibicaoDAO;
-    private SalaDAO salaDAO;
+
+    public CriarExibicaoUseCase(ExibicaoDAO exibicaoDAO) {
+        this.exibicaoDAO = exibicaoDAO;
+    }
 
     public Exibicao insert(Exibicao exibicao) {
         Validator<Exibicao> validator = new ExibicaoInputRequestValidator();

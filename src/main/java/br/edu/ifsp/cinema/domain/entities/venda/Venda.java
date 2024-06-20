@@ -67,6 +67,9 @@ public class Venda {
     //acho que não tem mais sentido alterar aqui, já que é sempre a data do dia em que foi criada
 
     public void adicionarIngresso(Ingresso ingresso) {
+        if(ingresso.isVendido()) {
+            throw new IllegalArgumentException("Não é possível vender um ingresso que já está vendido.");
+        }
         ingresso.setVendido(true);
         this.ingressoList.add(ingresso);
         atualizarIngressosDisponiveis();

@@ -38,12 +38,15 @@ public class CriarVendaUseCase {
             throw new IllegalArgumentException("Número de ingressos não pode exceder a quantidade disponível.");
         }
 
-        for (Ingresso ingresso : ingressos) {
-            if (ingresso.isVendido()) {
-                throw new IllegalArgumentException("Não é possível vender um ingresso que já está vendido.");
-            }
-            ingresso.setVendido(true);
-        }
+
+        // eu extrai essa verificacao daqui pra entidade venda, e por isso ja não é necessario ter essa verificacao aqui
+
+//        for (Ingresso ingresso : ingressos) {
+//            if (ingresso.isVendido()) {
+//                throw new IllegalArgumentException("Não é possível vender um ingresso que já está vendido.");
+//            }
+//            ingresso.setVendido(true);
+//        }
 
         Venda venda = new Venda(exibicao, ingressos.toArray(new Ingresso[0]));
 
