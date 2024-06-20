@@ -59,6 +59,7 @@ public class HelloApplication extends Application {
         Sala sala = new Sala(10, 10, 5, 300, assentos);
 
         Duration duracao = Duration.ofMinutes(120);
+        System.out.println(duracao);
 
         Exibicao exibicao1 = new Exibicao(sala, filme, LocalDateTime.of(2024, 7, 3, 14, 30),duracao, 100);
 
