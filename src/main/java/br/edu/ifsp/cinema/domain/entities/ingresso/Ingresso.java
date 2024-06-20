@@ -7,13 +7,13 @@ import java.math.BigDecimal;
 public class Ingresso {
     private Long id;
     private Assento assento;
-    private Exibicao sessaoExibicao;
+    private Exibicao exibicao;
     private BigDecimal preco;
     private boolean vendido;
 
-    public Ingresso(Assento assento, Exibicao sessaoExibicao, BigDecimal preco) {
+    public Ingresso(Assento assento, Exibicao exibicao, BigDecimal preco) {
         this.assento = assento;
-        this.sessaoExibicao = sessaoExibicao;
+        this.exibicao = exibicao;
         this.preco = preco;
         this.vendido = false;
     }
@@ -52,12 +52,20 @@ public class Ingresso {
         this.vendido = vendido;
     }
 
+    public Object getFilme() {
+        return exibicao.getFilme();
+    }
+
+    public Exibicao getExibicao() {
+        return exibicao;
+    }
+
     @Override
     public String toString() {
         return "Ingresso{" +
                 "id=" + id +
                 ", assento=" + (assento != null ? assento.toString() : "null") +
-                ", sessaoExibicao=" + (sessaoExibicao != null ? sessaoExibicao.toString() : "null") +
+                ", sessaoExibicao=" + (exibicao != null ? exibicao.toString() : "null") +
                 ", preco=" + preco +
                 '}';
     }
@@ -65,7 +73,4 @@ public class Ingresso {
     // colocar exibição
 
 
-    public Object getFilme() {
-        return sessaoExibicao.getFilme();
-    }
 }

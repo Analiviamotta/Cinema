@@ -3,13 +3,11 @@ package br.edu.ifsp.cinema.application.main;
 import br.edu.ifsp.cinema.domain.entities.assento.Assento;
 import br.edu.ifsp.cinema.domain.entities.filme.FilmeGenero;
 import br.edu.ifsp.cinema.domain.entities.sala.Sala;
-import br.edu.ifsp.cinema.domain.entities.sessao.SessaoDiaSemana;
 import br.edu.ifsp.cinema.domain.usecases.utils.export.PDFExporter;
 import br.edu.ifsp.cinema.domain.usecases.utils.export.Exportable;
 import br.edu.ifsp.cinema.domain.entities.venda.Venda;
 import br.edu.ifsp.cinema.domain.entities.ingresso.Ingresso;
 import br.edu.ifsp.cinema.domain.entities.exibicao.Exibicao;
-import br.edu.ifsp.cinema.domain.entities.sessao.Sessao;
 import br.edu.ifsp.cinema.domain.entities.filme.Filme;
 
 import java.math.BigDecimal;
