@@ -1,4 +1,4 @@
-package br.edu.ifsp.cinema.application.view;
+package br.edu.ifsp.cinema.application.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

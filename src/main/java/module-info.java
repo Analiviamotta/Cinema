@@ -7,5 +7,8 @@ module br.edu.ifsp.cinema {
 
 
     opens br.edu.ifsp.cinema.application.view to javafx.fxml;
+    opens br.edu.ifsp.cinema.application.controller to javafx.fxml;
+
     exports br.edu.ifsp.cinema.application.view;
+    exports br.edu.ifsp.cinema.application.controller;
 }
