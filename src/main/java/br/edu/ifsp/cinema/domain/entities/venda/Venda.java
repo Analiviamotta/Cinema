@@ -5,7 +5,6 @@ import br.edu.ifsp.cinema.domain.entities.ingresso.Ingresso;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 

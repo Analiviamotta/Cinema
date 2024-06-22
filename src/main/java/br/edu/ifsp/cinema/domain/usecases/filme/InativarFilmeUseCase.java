@@ -1,10 +1,9 @@
 package br.edu.ifsp.cinema.domain.usecases.filme;
 
+import br.edu.ifsp.cinema.domain.usecases.utils.EntityNotFoundException;
+import br.edu.ifsp.cinema.domain.usecases.utils.InactiveObjectException;
 import br.edu.ifsp.cinema.domain.entities.filme.Filme;
 import br.edu.ifsp.cinema.domain.entities.filme.FilmeStatus;
-import br.edu.ifsp.cinema.domain.usecases.sala.SalaDAO;
-import br.edu.ifsp.cinema.domain.usecases.utils.*;
-import br.edu.ifsp.cinema.domain.usecases.filme.FilmeDAO;
 
 public class InativarFilmeUseCase {
     private FilmeDAO filmeDAO;

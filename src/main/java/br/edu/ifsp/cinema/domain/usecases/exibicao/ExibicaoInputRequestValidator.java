@@ -1,8 +1,8 @@
 package br.edu.ifsp.cinema.domain.usecases.exibicao;
 
+import br.edu.ifsp.cinema.domain.entities.sala.SalaStatus;
 import br.edu.ifsp.cinema.domain.entities.exibicao.Exibicao;
 import br.edu.ifsp.cinema.domain.entities.filme.FilmeStatus;
-import br.edu.ifsp.cinema.domain.entities.sala.SalaStatus;
 import br.edu.ifsp.cinema.domain.usecases.utils.Notification;
 import br.edu.ifsp.cinema.domain.usecases.utils.Validator;
 

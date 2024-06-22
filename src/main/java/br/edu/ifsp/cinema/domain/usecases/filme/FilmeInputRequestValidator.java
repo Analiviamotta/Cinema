@@ -1,8 +1,8 @@
 package br.edu.ifsp.cinema.domain.usecases.filme;
 
+import br.edu.ifsp.cinema.domain.usecases.utils.Validator;
 import br.edu.ifsp.cinema.domain.entities.filme.Filme;
 import br.edu.ifsp.cinema.domain.usecases.utils.Notification;
-import br.edu.ifsp.cinema.domain.usecases.utils.Validator;
 
 import java.util.Collections;
 

@@ -2,6 +2,7 @@ package br.edu.ifsp.cinema.domain.entities.exibicao;
 
 import br.edu.ifsp.cinema.domain.entities.filme.Filme;
 import br.edu.ifsp.cinema.domain.entities.sala.Sala;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 

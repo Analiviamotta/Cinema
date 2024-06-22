@@ -1,8 +1,7 @@
 package br.edu.ifsp.cinema.domain.usecases.venda;
 
-import br.edu.ifsp.cinema.domain.entities.venda.Venda;
 import br.edu.ifsp.cinema.domain.usecases.utils.EntityNotFoundException;
-import br.edu.ifsp.cinema.domain.usecases.venda.VendaDAO;
+import br.edu.ifsp.cinema.domain.entities.venda.Venda;
 
 
 import java.time.LocalDate;

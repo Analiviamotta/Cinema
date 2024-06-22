@@ -1,6 +1,5 @@
 package br.edu.ifsp.cinema.application.main;
 
-import br.edu.ifsp.cinema.HelloApplication;
 import br.edu.ifsp.cinema.application.main.repository.sqlite.util.DatabaseBuilder;
 
 
@@ -8,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         initializeUseCase();
         createDatabase();
-        HelloApplication.main(args);  // mudar para a view root/home do projeto
+//        HelloApplication.main(args);  // mudar para a view root/home do projeto
     }
 
     private static void createDatabase(){

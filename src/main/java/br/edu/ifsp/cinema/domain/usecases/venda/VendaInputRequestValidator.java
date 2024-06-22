@@ -4,8 +4,6 @@ import br.edu.ifsp.cinema.domain.entities.venda.Venda;
 import br.edu.ifsp.cinema.domain.usecases.utils.Notification;
 import br.edu.ifsp.cinema.domain.usecases.utils.Validator;
 
-import java.util.Collections;
-
 public class VendaInputRequestValidator extends Validator<Venda>{
 
     @Override

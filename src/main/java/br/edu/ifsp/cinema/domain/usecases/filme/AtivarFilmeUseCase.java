@@ -1,15 +1,9 @@
 package br.edu.ifsp.cinema.domain.usecases.filme;
 
-import br.edu.ifsp.cinema.domain.entities.filme.Filme;
-import br.edu.ifsp.cinema.domain.entities.filme.FilmeStatus;
-import br.edu.ifsp.cinema.domain.usecases.sala.SalaDAO;
 import br.edu.ifsp.cinema.domain.usecases.utils.EntityAlreadyExistsException;
 import br.edu.ifsp.cinema.domain.usecases.utils.EntityNotFoundException;
-import br.edu.ifsp.cinema.domain.usecases.utils.Notification;
-import br.edu.ifsp.cinema.domain.usecases.utils.Validator;
-import br.edu.ifsp.cinema.domain.usecases.filme.FilmeDAO;
-
-import java.util.Optional;
+import br.edu.ifsp.cinema.domain.entities.filme.Filme;
+import br.edu.ifsp.cinema.domain.entities.filme.FilmeStatus;
 
 public class AtivarFilmeUseCase {
     private FilmeDAO filmeDAO;

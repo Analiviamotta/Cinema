@@ -5,8 +5,6 @@ import br.edu.ifsp.cinema.domain.usecases.utils.EntityNotFoundException;
 import br.edu.ifsp.cinema.domain.usecases.utils.Notification;
 import br.edu.ifsp.cinema.domain.usecases.utils.Validator;
 
-import java.time.LocalDateTime;
-
 
 // olhar para o InputRequestValidator, mas basicamente vai manter
 // as mesmas verificações do CriarExibicao

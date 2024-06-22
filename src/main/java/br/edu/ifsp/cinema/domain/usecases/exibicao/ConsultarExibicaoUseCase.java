@@ -2,7 +2,6 @@ package br.edu.ifsp.cinema.domain.usecases.exibicao;
 
 
 import br.edu.ifsp.cinema.domain.entities.exibicao.Exibicao;
-import br.edu.ifsp.cinema.domain.usecases.utils.EntityNotFoundException;
 
 import java.util.Optional;
 
