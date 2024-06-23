@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #bf0603;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.cinema.application.controller.FilmeUIController">
+   <children>
+      <Label layoutX="62.0" layoutY="67.0" text="Título: " textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="16.0" />
+         </font>
+      </Label>
+      <TextField layoutX="136.0" layoutY="63.0" prefHeight="26.0" prefWidth="396.0" style="-fx-background-color: #ffccd5; -fx-border-radius: 60px;">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="62.0" layoutY="108.0" text="Gênero:" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="16.0" />
+         </font>
+      </Label>
+      <ComboBox layoutX="136.0" layoutY="105.0" prefHeight="26.0" prefWidth="396.0" style="-fx-background-color: #ffccd5; -fx-border-radius: 60px;" />
+      <Label layoutX="62.0" layoutY="148.0" text="Sinopse:" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="16.0" />
+         </font>
+      </Label>
+      <TextArea layoutX="143.0" layoutY="148.0" prefHeight="66.0" prefWidth="389.0" style="-fx-background-color: #bf0603; -fx-border-radius: 60px;">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font>
+      </TextArea>
+      <Label layoutX="56.0" layoutY="238.0" text="Classificação Indicativa:" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="16.0" />
+         </font>
+      </Label>
+      <ComboBox layoutX="300.0" layoutY="234.0" prefHeight="26.0" prefWidth="231.0" style="-fx-background-color: #ffccd5;" />
+      <Button layoutX="57.0" layoutY="298.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="481.0" style="-fx-background-color: #ffccd5;" text="Cadastrar" textFill="#bf0603">
+         <font>
+            <Font name="Monospaced Regular" size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,4 +1,4 @@
-package br.edu.ifsp.cinema.application.main.repository.sqlite.util;
+package br.edu.ifsp.cinema.main.repository.sqlite.util;
 
 import org.sqlite.SQLiteDataSource;
 

@@ -1,11 +1,9 @@
-package br.edu.ifsp.cinema.application.main.repository;
+package br.edu.ifsp.cinema.main.repository;
 
-import br.edu.ifsp.cinema.domain.entities.filme.Filme;
-import br.edu.ifsp.cinema.domain.entities.filme.FilmeStatus;
 import br.edu.ifsp.cinema.domain.entities.sala.Sala;
 import br.edu.ifsp.cinema.domain.entities.sala.SalaStatus;
-import br.edu.ifsp.cinema.domain.usecases.exibicao.ExibicaoDAO;
 import br.edu.ifsp.cinema.domain.usecases.sala.SalaDAO;
+import br.edu.ifsp.cinema.domain.usecases.exibicao.ExibicaoDAO;
 
 import java.time.LocalDateTime;
 import java.util.*;

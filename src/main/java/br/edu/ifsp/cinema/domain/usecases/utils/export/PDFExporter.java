@@ -1,10 +1,10 @@
 package br.edu.ifsp.cinema.domain.usecases.utils.export;
 
+import br.edu.ifsp.cinema.domain.entities.venda.Venda;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-import br.edu.ifsp.cinema.domain.entities.venda.Venda;
 
 
 import java.io.FileNotFoundException;

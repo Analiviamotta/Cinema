@@ -1,9 +1,9 @@
-package br.edu.ifsp.cinema.application.main.repository;
+package br.edu.ifsp.cinema.main.repository;
 
 import br.edu.ifsp.cinema.domain.entities.ingresso.Ingresso;
 import br.edu.ifsp.cinema.domain.entities.venda.Venda;
-import br.edu.ifsp.cinema.domain.usecases.venda.VendaDAO;
 import br.edu.ifsp.cinema.domain.entities.venda.VendaStatus;
+import br.edu.ifsp.cinema.domain.usecases.venda.VendaDAO;
 
 import java.time.LocalDate;
 import java.util.*;

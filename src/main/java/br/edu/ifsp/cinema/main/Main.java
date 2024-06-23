@@ -1,7 +1,7 @@
-package br.edu.ifsp.cinema.application.main;
+package br.edu.ifsp.cinema.main;
 
-import br.edu.ifsp.cinema.HelloApplication;
-import br.edu.ifsp.cinema.application.main.repository.sqlite.util.DatabaseBuilder;
+import br.edu.ifsp.cinema.application.view.HelloApplication;
+import br.edu.ifsp.cinema.main.repository.sqlite.util.DatabaseBuilder;
 
 
 public class Main {

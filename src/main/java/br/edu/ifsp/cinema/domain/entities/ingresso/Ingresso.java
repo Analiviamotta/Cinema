@@ -1,7 +1,8 @@
 package br.edu.ifsp.cinema.domain.entities.ingresso;
 
-import br.edu.ifsp.cinema.domain.entities.assento.Assento;
 import br.edu.ifsp.cinema.domain.entities.exibicao.Exibicao;
+import br.edu.ifsp.cinema.domain.entities.assento.Assento;
+
 import java.math.BigDecimal;
 
 public class Ingresso {

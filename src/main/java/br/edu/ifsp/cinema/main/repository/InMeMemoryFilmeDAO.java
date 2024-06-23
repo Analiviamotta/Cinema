@@ -1,4 +1,4 @@
-package br.edu.ifsp.cinema.application.main.repository;
+package br.edu.ifsp.cinema.main.repository;
 
 import br.edu.ifsp.cinema.domain.entities.filme.Filme;
 import br.edu.ifsp.cinema.domain.entities.filme.FilmeStatus;

@@ -1,6 +1,7 @@
 package br.edu.ifsp.cinema.domain.entities.sala;
 
 import br.edu.ifsp.cinema.domain.entities.assento.Assento;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -6,6 +6,8 @@ module br.edu.ifsp.cinema {
     requires sqlite.jdbc;
 
 
-    opens br.edu.ifsp.cinema to javafx.fxml;
-    exports br.edu.ifsp.cinema;
+    opens br.edu.ifsp.cinema.application.view to javafx.fxml;
+    exports br.edu.ifsp.cinema.application.view;
+    exports br.edu.ifsp.cinema.application.controller;
+    opens br.edu.ifsp.cinema.application.controller to javafx.fxml;
 }
