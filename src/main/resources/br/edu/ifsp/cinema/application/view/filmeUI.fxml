@@ -38,15 +38,20 @@
             <Font name="Monospaced Regular" size="16.0" />
          </font>
       </Label>
-      <ComboBox layoutX="267.0" layoutY="210.0" prefHeight="26.0" prefWidth="293.0" style="-fx-background-color: #ffffff;" />
-      <Button layoutX="22.0" layoutY="274.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="495.0" style="-fx-background-color: #001d3d;" text="Cadastrar" textFill="#fcfcfc">
+      <Button layoutX="22.0" layoutY="274.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="241.0" style="-fx-background-color: #001d3d;" text="Cadastrar" textFill="#fcfcfc">
          <font>
             <Font name="Monospaced Regular" size="16.0" />
          </font>
       </Button>
-      <ImageView fitHeight="101.0" fitWidth="90.0" layoutX="506.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="101.0" fitWidth="90.0" layoutX="521.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/pipocafofs.png" />
          </image></ImageView>
+      <Button layoutX="277.0" layoutY="274.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="242.0" style="-fx-background-color: #001d3d;" text="Cancelar" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="16.0" />
+         </font>
+      </Button>
+      <TextField layoutX="263.0" layoutY="211.0" prefHeight="26.0" prefWidth="300.0" style="-fx-background-color: #ffffff;" />
    </children>
 </AnchorPane>
