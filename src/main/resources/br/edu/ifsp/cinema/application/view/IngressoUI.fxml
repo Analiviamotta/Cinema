@@ -4,16 +4,26 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.cinema.application.controller.IngressoUIController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #a4161a;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.cinema.application.controller.IngressoUIController">
    <children>
-      <Button layoutX="41.0" layoutY="312.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #001d3d;" text="Salvar" textFill="WHITE">
+      <TableView layoutX="58.0" layoutY="46.0" prefHeight="200.0" prefWidth="483.0">
+        <columns>
+          <TableColumn fx:id="cAssento" prefWidth="78.40001678466797" style="-fx-background-color: #fdf0d5 #fdf0d5;" text="Assento" />
+          <TableColumn fx:id="cExibicao" prefWidth="189.60000610351562" style="-fx-background-color: #fdf0d5 #fdf0d5;" text="Exibição" />
+            <TableColumn fx:id="cPreco" prefWidth="72.79998779296875" style="-fx-background-color: #fdf0d5 #fdf0d5;" text="Preço" />
+            <TableColumn fx:id="cDataHora" prefWidth="71.0" style="-fx-background-color: #fdf0d5 #fdf0d5;" text="Data/Hora" />
+            <TableColumn fx:id="cSala" prefWidth="72.19998168945312" style="-fx-background-color: #fdf0d5 #fdf0d5;" text="Sala" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnVoltar" layoutX="32.0" layoutY="280.0" mnemonicParsing="false" onAction="#backToPreviousScene" prefHeight="26.0" prefWidth="97.0" style="-fx-background-color: #001d3d #001d3d;" text="Voltar" textFill="WHITE">
          <font>
             <Font name="Monospaced Regular" size="14.0" />
-         </font></Button>
-      <Button layoutX="304.0" layoutY="312.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #001d3d;" text="Cancelar" textFill="WHITE">
+         </font>
+      </Button>
+      <Button fx:id="btnImprimir" layoutX="474.0" layoutY="281.0" mnemonicParsing="false" onAction="#print" style="-fx-background-color: #001d3d;" text="Imprimir" textFill="WHITE">
          <font>
             <Font name="Monospaced Regular" size="14.0" />
-         </font></Button>
-      <Label layoutX="42.0" layoutY="48.0" text="Assento:" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
