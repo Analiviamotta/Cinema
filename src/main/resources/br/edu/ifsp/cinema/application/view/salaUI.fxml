@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #a4161a;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.cinema.application.controller.SalaUIfxml">
+   <children>
+      <Label layoutX="34.0" layoutY="70.0" text="Número:" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="16.0" />
+         </font></Label>
+      <Label layoutX="35.0" layoutY="109.0" text="Número de Linhas:" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="16.0" />
+         </font></Label>
+      <Label layoutX="36.0" layoutY="151.0" text="Número de Colunas:" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="16.0" />
+         </font></Label>
+      <Label layoutX="36.0" layoutY="201.0" text="Capacidade:" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="16.0" />
+         </font></Label>
+      <TextField fx:id="txtNumero" layoutX="113.0" layoutY="64.0" prefHeight="26.0" prefWidth="458.0" />
+      <TextField fx:id="txtnumLinhas" layoutX="217.0" layoutY="106.0" prefHeight="26.0" prefWidth="354.0" />
+      <TextField fx:id="txtnumColunas" layoutX="219.0" layoutY="147.0" prefHeight="26.0" prefWidth="354.0" />
+      <TextField fx:id="txtCapacidade" layoutX="146.0" layoutY="197.0" prefHeight="26.0" prefWidth="427.0" />
+      <Button fx:id="btnSalvar" layoutX="36.0" layoutY="251.0" mnemonicParsing="false" onAction="#btnSave" prefHeight="26.0" prefWidth="160.0" style="-fx-background-color: #001d3d;" text="Salvar" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCancelar" layoutX="412.0" layoutY="249.0" mnemonicParsing="false" onAction="#backToPreviousScene" prefHeight="26.0" prefWidth="160.0" style="-fx-background-color: #001d3d;" text="Cancelar" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnAssentos" layoutX="225.0" layoutY="250.0" mnemonicParsing="false" onAction="#btnOpenAssentosScene" prefHeight="26.0" prefWidth="160.0" style="-fx-background-color: #001d3d;" text="Assentos" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
