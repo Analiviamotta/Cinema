@@ -8,11 +8,11 @@
    <children>
       <TableView layoutX="14.0" layoutY="35.0" prefHeight="210.0" prefWidth="572.0" style="-fx-background-color: #001d3d;">
         <columns>
-          <TableColumn prefWidth="75.0" style="-fx-background-color: #a4161a;" text="Título" />
-          <TableColumn prefWidth="90.20001220703125" style="-fx-background-color: #a4161a;" text="Gênero" />
-            <TableColumn prefWidth="106.60002136230469" style="-fx-background-color: #a4161a;" text="Sinopse" />
-            <TableColumn prefWidth="169.60003662109375" style="-fx-background-color: #a4161a;" text="Classificação Indicativa" />
-            <TableColumn prefWidth="132.4000244140625" style="-fx-background-color: #a4161a;" text="Status" />
+          <TableColumn prefWidth="75.0" style="-fx-background-color: #fdf0d5;" text="Título" />
+          <TableColumn prefWidth="90.20001220703125" style="-fx-background-color: #fdf0d5;" text="Gênero" />
+            <TableColumn prefWidth="106.60002136230469" style="-fx-background-color: #fdf0d5;" text="Sinopse" />
+            <TableColumn prefWidth="169.60003662109375" style="-fx-background-color: #fdf0d5;" text="Classificação Indicativa" />
+            <TableColumn prefWidth="132.4000244140625" style="-fx-background-color: #fdf0d5;" text="Status" />
         </columns>
       </TableView>
       <Button layoutX="181.0" layoutY="277.0" mnemonicParsing="false" style="-fx-background-color: #001d3d;" text="Adicionar" textFill="WHITE">
