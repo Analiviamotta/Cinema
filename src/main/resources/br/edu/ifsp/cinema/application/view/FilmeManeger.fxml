@@ -10,9 +10,9 @@
         <columns>
           <TableColumn fx:id="cTitulo" prefWidth="75.0" style="-fx-background-color: #fdf0d5;" text="Título" />
           <TableColumn fx:id="cGenero" prefWidth="90.20001220703125" style="-fx-background-color: #fdf0d5;" text="Gênero" />
-            <TableColumn fx:id="cSinopse" prefWidth="106.60002136230469" style="-fx-background-color: #fdf0d5;" text="Sinopse" />
-            <TableColumn fx:id="cClassificacaoIndicativa" prefWidth="169.60003662109375" style="-fx-background-color: #fdf0d5;" text="Classificação Indicativa" />
-            <TableColumn fx:id="cStatus" prefWidth="132.4000244140625" style="-fx-background-color: #fdf0d5;" text="Status" />
+           <TableColumn fx:id="cSinopse" prefWidth="106.60002136230469" style="-fx-background-color: #fdf0d5;" text="Sinopse" />
+           <TableColumn fx:id="cClassificacaoIndicativa" prefWidth="169.60003662109375" style="-fx-background-color: #fdf0d5;" text="Classificação Indicativa" />
+           <TableColumn fx:id="cStatus" prefWidth="132.4000244140625" style="-fx-background-color: #fdf0d5;" text="Status" />
         </columns>
       </TableView>
       <Button fx:id="btnAdicionar" layoutX="181.0" layoutY="328.0" mnemonicParsing="false" onAction="#addFilme" style="-fx-background-color: #001d3d;" text="Adicionar" textFill="WHITE">
