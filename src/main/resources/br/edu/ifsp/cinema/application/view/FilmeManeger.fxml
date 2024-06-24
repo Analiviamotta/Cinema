@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #a4161a;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.cinema.application.controller.FilmeManegerUIController">
+   <children>
+      <TableView layoutX="14.0" layoutY="35.0" prefHeight="210.0" prefWidth="572.0" style="-fx-background-color: #001d3d;">
+        <columns>
+          <TableColumn prefWidth="75.0" style="-fx-background-color: #a4161a;" text="Título" />
+          <TableColumn prefWidth="90.20001220703125" style="-fx-background-color: #a4161a;" text="Gênero" />
+            <TableColumn prefWidth="106.60002136230469" style="-fx-background-color: #a4161a;" text="Sinopse" />
+            <TableColumn prefWidth="169.60003662109375" style="-fx-background-color: #a4161a;" text="Classificação Indicativa" />
+            <TableColumn prefWidth="132.4000244140625" style="-fx-background-color: #a4161a;" text="Status" />
+        </columns>
+      </TableView>
+      <Button layoutX="181.0" layoutY="277.0" mnemonicParsing="false" style="-fx-background-color: #001d3d;" text="Adicionar" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="298.0" layoutY="277.0" mnemonicParsing="false" style="-fx-background-color: #001d3d;" text="Deletar" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="407.0" layoutY="277.0" mnemonicParsing="false" style="-fx-background-color: #001d3d;" text="Detalhar" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="509.0" layoutY="277.0" mnemonicParsing="false" style="-fx-background-color: #001d3d;" text="Editar" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="19.0" layoutY="278.0" mnemonicParsing="false" style="-fx-background-color: #001d3d;" text="Voltar" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
