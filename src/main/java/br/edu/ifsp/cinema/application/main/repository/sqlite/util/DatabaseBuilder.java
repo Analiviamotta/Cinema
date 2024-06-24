@@ -37,7 +37,7 @@ public class DatabaseBuilder {
         return """
                 CREATE TABLE Movie (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    title VARCHAR(255),
+                    title VARCHAR(255) UNIQUE,
                     genre VARCHAR(255),
                     synopsis VARCHAR(255),
                     parental_rating VARCHAR(255),
@@ -50,7 +50,7 @@ public class DatabaseBuilder {
         return """
                 CREATE TABLE Room (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    number INT,
+                    number INT UNIQUE,
                     line_num INT,
                     column_num INT,
                     capacity INT,

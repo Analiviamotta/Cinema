@@ -8,17 +8,17 @@ import br.edu.ifsp.cinema.domain.usecases.filme.FilmeDAO;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
 public class MovieDaoSqlite implements FilmeDAO {
+
     @Override
-    public Optional<Filme> findByTitulo(String Titulo) {
-        String sql = "SELECT * FROM Movie WHERE titulo = ?";
+    public Optional<Filme> findByTitulo(String titulo) {
+        String sql = "SELECT * FROM Movie WHERE title = ?";
         Filme filme = null;
         try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
-            stmt.setString(1, Titulo);
+            stmt.setString(1, titulo);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 filme = mapResultSetToFilme(rs);
@@ -36,20 +36,28 @@ public class MovieDaoSqlite implements FilmeDAO {
 
     @Override
     public Filme create(Filme entity) {
-        String sql = "INSERT INTO Movie(title, genre, synopsis, parental_rating, status) VALUES (?, ?, ?, ?, ?)";
-        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)){
+        String sql = "INSERT INTO Movie (title, genre, synopsis, parental_rating, status) VALUES (?, ?, ?, ?, ?)";
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, entity.getTitulo());
             stmt.setString(2, entity.getGenero().toString());
-            stmt.setString(3,entity.getSinopse());
-            stmt.setString(4,entity.getClassificacaoIndicativa());
+            stmt.setString(3, entity.getSinopse());
+            stmt.setString(4, entity.getClassificacaoIndicativa());
             stmt.setString(5, entity.getStatus().toString());
-            stmt.setLong(6, entity.getId());
-            stmt.execute();
+            int affectedRows = stmt.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Creating movie failed, no rows affected.");
+            }
+            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    entity.setId(generatedKeys.getLong(1));
+                } else {
+                    throw new SQLException("Creating movie failed, no ID obtained.");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        catch (SQLException exception) {
-            exception.printStackTrace();
-        }
-        return null;
+        return entity;
     }
 
     @Override
@@ -60,14 +68,23 @@ public class MovieDaoSqlite implements FilmeDAO {
             stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                filme = mapResultSetToFilme(rs);
+                String generoDoBanco = rs.getString("genre").toLowerCase();
+                FilmeGenero generoEnum = FilmeGenero.valueOf(generoDoBanco.toUpperCase());
+
+                filme = new Filme(
+                        rs.getString("title"),
+                        generoEnum,
+                        rs.getString("synopsis"),
+                        rs.getString("parental_rating")
+                );
+                filme.setId(rs.getLong("id"));
+                return Optional.of(filme);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return Optional.ofNullable(filme);
+        return Optional.empty();
     }
-
 
 
     @Override
@@ -75,7 +92,7 @@ public class MovieDaoSqlite implements FilmeDAO {
         String sql = "SELECT * FROM Movie";
         List<Filme> filmes = new ArrayList<>();
         try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql);
-             ResultSet rs = stmt.executeQuery(sql)) {
+             ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 filmes.add(mapResultSetToFilme(rs));
             }
@@ -83,12 +100,11 @@ public class MovieDaoSqlite implements FilmeDAO {
             System.out.println(e.getMessage());
         }
         return filmes;
-
     }
 
     @Override
     public boolean update(Filme entity) {
-        String sql = "UPDATE Movie SET title = ?, genre = ?, synopsis = ?, parental_rating = ?, status = ? WHERE id = ?";
+        String sql = "UPDATE Movie SET titulo = ?, genero = ?, sinopse = ?, classificacaoIndicativa = ?, status = ? WHERE id = ?";
         try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setString(1, entity.getTitulo());
             stmt.setString(2, entity.getGenero().name());
@@ -102,19 +118,6 @@ public class MovieDaoSqlite implements FilmeDAO {
             System.out.println(e.getMessage());
         }
         return false;
-        //n sei qual melhor jeito de deixar
-//        try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)){
-//            stmt.setString(1, entity.getTitulo());
-//            stmt.setString(2,entity.getGenero().toString());
-//            stmt.setString(3,entity.getSinopse());
-//            stmt.setString(4,entity.getClassificacaoIndicativa());
-//            stmt.setString(5,entity.getStatus().toString());
-//        }
-//        catch (SQLException exception){
-//            exception.printStackTrace();
-//            return false;
-//        };
-//        return true;
     }
 
     @Override
@@ -150,15 +153,15 @@ public class MovieDaoSqlite implements FilmeDAO {
         return false;
     }
 
-
     private Filme mapResultSetToFilme(ResultSet rs) throws SQLException {
         Filme filme = new Filme();
         filme.setId(rs.getLong("id"));
-        filme.setTitulo(rs.getString("titulo"));
-        filme.setGenero(FilmeGenero.valueOf(rs.getString("genero")));
-        filme.setSinopse(rs.getString("sinopse"));
-        filme.setClassificacaoIndicativa(rs.getString("classificacaoIndicativa"));
-        filme.setStatus(FilmeStatus.valueOf(rs.getString("status")));
+        filme.setTitulo(rs.getString("title"));
+        filme.setGenero(FilmeGenero.valueOf(rs.getString("genre").toUpperCase()));
+        filme.setSinopse(rs.getString("synopsis"));
+        filme.setClassificacaoIndicativa(rs.getString("parental_rating"));
+        filme.setStatus(FilmeStatus.valueOf(rs.getString("status").toUpperCase()));
         return filme;
     }
+
 }
