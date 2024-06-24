@@ -41,7 +41,7 @@ public class DatabaseBuilder {
                     genre VARCHAR(255),
                     synopsis VARCHAR(255),
                     parental_rating VARCHAR(255),
-                    status BOOLEAN
+                    status VARCHAR(255)
                 );
                 """;
     }
@@ -54,7 +54,7 @@ public class DatabaseBuilder {
                     line_num INT,
                     column_num INT,
                     capacity INT,
-                    status BOOLEAN
+                    status VARCHAR(255)
                 );
                 """;
     }
