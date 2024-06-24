@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.cinema.application.controller.IngressoUIController">
+   <children>
+      <Button layoutX="41.0" layoutY="312.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #001d3d;" text="Salvar" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font></Button>
+      <Button layoutX="304.0" layoutY="312.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #001d3d;" text="Cancelar" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font></Button>
+      <Label layoutX="42.0" layoutY="48.0" text="Assento:" />
+   </children>
+</AnchorPane>

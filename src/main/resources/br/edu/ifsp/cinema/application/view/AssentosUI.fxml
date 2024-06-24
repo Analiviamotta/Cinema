@@ -12,12 +12,17 @@
           <TableColumn fx:id="cLinha" prefWidth="276.0" style="-fx-background-color: #fdf0d5;" text="Linha" />
         </columns>
       </TableView>
-      <Button fx:id="btnVoltar" layoutX="267.0" layoutY="338.0" mnemonicParsing="false" onAction="#backToPreviousScene" prefHeight="26.0" prefWidth="124.0" style="-fx-background-color: #001d3d;" text="Voltar" textFill="WHITE">
+      <Button fx:id="btnVoltar" layoutX="126.0" layoutY="340.0" mnemonicParsing="false" onAction="#backToPreviousScene" prefHeight="26.0" prefWidth="124.0" style="-fx-background-color: #001d3d;" text="Voltar" textFill="WHITE">
          <font>
             <Font name="Monospaced Regular" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnDeletar" layoutX="422.0" layoutY="337.0" mnemonicParsing="false" onAction="#deletAssento" prefHeight="26.0" prefWidth="132.0" style="-fx-background-color: #001d3d;" text="Deletar" textFill="WHITE">
+      <Button fx:id="btnDeletar" layoutX="413.0" layoutY="338.0" mnemonicParsing="false" onAction="#deletAssento" prefHeight="26.0" prefWidth="124.0" style="-fx-background-color: #001d3d;" text="Deletar" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnAdicionar" layoutX="269.0" layoutY="339.0" mnemonicParsing="false" onAction="#addAssento" prefHeight="26.0" prefWidth="124.0" style="-fx-background-color: #001d3d;" text="Adicionar" textFill="WHITE">
          <font>
             <Font name="Monospaced Regular" size="14.0" />
          </font>

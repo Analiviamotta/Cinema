@@ -8,4 +8,7 @@ public class AssentosUIController {
 
     public void deletAssento(ActionEvent actionEvent) {
     }
+
+    public void addAssento(ActionEvent actionEvent) {
+    }
 }
