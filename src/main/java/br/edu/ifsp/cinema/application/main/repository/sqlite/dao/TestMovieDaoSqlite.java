@@ -26,6 +26,17 @@ public class TestMovieDaoSqlite {
                         "parental_rating TEXT," +
                         "status TEXT NOT NULL" +
                         ")");
+                stmt.execute("CREATE TABLE Exhibition (" +
+                        "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "date_time DATETIME," +
+                        "duration INTEGER," +
+                        "tickets_number INT," +
+                        "status BOOLEAN," +
+                        "movie_id INT," +
+                        "room_id INT," +
+                        "FOREIGN KEY (movie_id) REFERENCES Movie(id)," +
+                        "FOREIGN KEY (room_id) REFERENCES Room(id)" +
+                        ")");
             }
 
             MovieDaoSqlite movieDao = new MovieDaoSqlite();
@@ -35,6 +46,11 @@ public class TestMovieDaoSqlite {
             filme.setStatus(FilmeStatus.ATIVO);
             movieDao.create(filme);
             System.out.println("Created: " + filme);
+
+            // Testar isInExibicao
+            if (movieDao.isInExibicao(filme.getId())) {
+                throw new IllegalArgumentException("Não é possível criar um filme que está em uma exibição");
+            }
 
             // Encontrar o filme recém-criado pelo ID
             Optional<Filme> foundFilme = movieDao.findOne(filme.getId());

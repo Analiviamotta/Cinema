@@ -8,6 +8,7 @@ import br.edu.ifsp.cinema.domain.usecases.filme.FilmeDAO;
 import br.edu.ifsp.cinema.domain.usecases.utils.EntityAlreadyExistsException;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -29,10 +30,28 @@ public class MovieDaoSqlite implements FilmeDAO {
         return Optional.ofNullable(filme);
     }
 
+//    @Override
+//    public boolean isInExibicao(long filmeId) {
+//        return isAtivo(filmeId);
+//    }
+
     @Override
     public boolean isInExibicao(long filmeId) {
-        return isAtivo(filmeId);
+        String sql = "SELECT COUNT(*) FROM Exhibition WHERE movie_id = ? AND date_time > ?";
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+            stmt.setLong(1, filmeId);
+            stmt.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                return count > 0;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
     }
+
 
     public Filme create(Filme entity) {
         String sql = "INSERT INTO Movie (title, genre, synopsis, parental_rating, status) VALUES (?, ?, ?, ?, ?)";
