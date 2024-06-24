@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 public class ConnectionFactory implements AutoCloseable{
 
-    private static Connection connection;
+    public static Connection connection;
     private static PreparedStatement preparedStatement;
     private static Statement statement;
 

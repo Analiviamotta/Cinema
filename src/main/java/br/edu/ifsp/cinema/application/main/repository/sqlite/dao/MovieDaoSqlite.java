@@ -5,6 +5,7 @@ import br.edu.ifsp.cinema.domain.entities.filme.Filme;
 import br.edu.ifsp.cinema.domain.entities.filme.FilmeGenero;
 import br.edu.ifsp.cinema.domain.entities.filme.FilmeStatus;
 import br.edu.ifsp.cinema.domain.usecases.filme.FilmeDAO;
+import br.edu.ifsp.cinema.domain.usecases.utils.EntityAlreadyExistsException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,7 +13,6 @@ import java.util.List;
 import java.util.Optional;
 
 public class MovieDaoSqlite implements FilmeDAO {
-
     @Override
     public Optional<Filme> findByTitulo(String titulo) {
         String sql = "SELECT * FROM Movie WHERE title = ?";
@@ -34,7 +34,6 @@ public class MovieDaoSqlite implements FilmeDAO {
         return isAtivo(filmeId);
     }
 
-    @Override
     public Filme create(Filme entity) {
         String sql = "INSERT INTO Movie (title, genre, synopsis, parental_rating, status) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -59,6 +58,8 @@ public class MovieDaoSqlite implements FilmeDAO {
         }
         return entity;
     }
+
+
 
     @Override
     public Optional<Filme> findOne(Long id) {
@@ -104,7 +105,14 @@ public class MovieDaoSqlite implements FilmeDAO {
 
     @Override
     public boolean update(Filme entity) {
-        String sql = "UPDATE Movie SET titulo = ?, genero = ?, sinopse = ?, classificacaoIndicativa = ?, status = ? WHERE id = ?";
+        /*
+        Optional<Filme> existingFilm = findByTitulo(entity.getTitulo());
+        if (existingFilm.isPresent() && !existingFilm.get().getId().equals(entity.getId())) {
+            throw new EntityAlreadyExistsException("Já existe um filme com o mesmo título: " + entity.getTitulo());
+        }
+        */
+
+        String sql = "UPDATE Movie SET title = ?, genre = ?, synopsis = ?, parental_rating = ?, status = ? WHERE id = ?";
         try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setString(1, entity.getTitulo());
             stmt.setString(2, entity.getGenero().name());
@@ -145,7 +153,7 @@ public class MovieDaoSqlite implements FilmeDAO {
             stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return FilmeStatus.valueOf(rs.getString("status")) == FilmeStatus.ATIVO;
+                return FilmeStatus.valueOf(rs.getString("status").toUpperCase()) == FilmeStatus.ATIVO;
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -154,14 +162,19 @@ public class MovieDaoSqlite implements FilmeDAO {
     }
 
     private Filme mapResultSetToFilme(ResultSet rs) throws SQLException {
-        Filme filme = new Filme();
-        filme.setId(rs.getLong("id"));
-        filme.setTitulo(rs.getString("title"));
-        filme.setGenero(FilmeGenero.valueOf(rs.getString("genre").toUpperCase()));
-        filme.setSinopse(rs.getString("synopsis"));
-        filme.setClassificacaoIndicativa(rs.getString("parental_rating"));
-        filme.setStatus(FilmeStatus.valueOf(rs.getString("status").toUpperCase()));
+        Long id = rs.getLong("id");
+        String titulo = rs.getString("title");
+        FilmeGenero genero = FilmeGenero.fromString(rs.getString("genre"));
+        String sinopse = rs.getString("synopsis");
+        String classificacaoIndicativa = rs.getString("parental_rating");
+        FilmeStatus status = FilmeStatus.valueOf(rs.getString("status").toUpperCase());
+
+        Filme filme = new Filme(titulo, genero, sinopse, classificacaoIndicativa);
+        filme.setId(id);
+        filme.setStatus(status);
+
         return filme;
     }
+
 
 }

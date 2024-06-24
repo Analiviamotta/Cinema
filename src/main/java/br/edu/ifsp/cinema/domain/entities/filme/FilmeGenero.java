@@ -19,4 +19,13 @@ public enum FilmeGenero {
     public String toString() {
         return label;
     }
+
+    public static FilmeGenero fromString(String label) {
+        for (FilmeGenero genero : FilmeGenero.values()) {
+            if (genero.label.equalsIgnoreCase(label)) {
+                return genero;
+            }
+        }
+        throw new IllegalArgumentException("No enum constant for label: " + label);
+    }
 }
