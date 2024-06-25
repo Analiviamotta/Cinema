@@ -14,34 +14,50 @@ public class Sala {
     private SalaStatus status;
     private List<Assento> assentoList;
 
-    public Sala(){
-        status = SalaStatus.ATIVO;
-        this.assentoList = new ArrayList<>();
-    }
-
+//    public Sala(){
+//        status = SalaStatus.ATIVO;
+//        this.assentoList = new ArrayList<>();
+//    }
 
     public Sala(int numero, int numLinhas, int numColunas, int capacidade, List<Assento> assentos) {
         this.numero = numero;
         this.numLinhas = numLinhas;
         this.numColunas = numColunas;
-        this.capacidade = capacidade;
-        this.assentoList = new ArrayList<>();
+        this.capacidade = capacidade = numLinhas * numColunas;
+        List<Assento> assentosList = new ArrayList<>();
 
-        List<Assento> assentosInvalidos = new ArrayList<>();
+        for (int i = 1; i <= getNumLinhas(); i++) {
+            for (int j = 1; j <= getNumColunas(); j++) {
 
-        for (Assento assento : assentos) {
-            if (!verificarAssentoValido(assento)) {
-                assentosInvalidos.add(assento);
-            } else {
-                this.assentoList.add(assento);
+                this.assentoList.set(i * j, new Assento(i, j));
             }
-        }
-        if (!assentosInvalidos.isEmpty()) {
-            throw new IllegalArgumentException("Os seguintes assentos são inválidos para esta sala: " + assentosInvalidos);
         }
 
         this.status = SalaStatus.ATIVO;
     }
+
+//    public Sala(int numero, int numLinhas, int numColunas, int capacidade, List<Assento> assentos) {
+//        this.numero = numero;
+//        this.numLinhas = numLinhas;
+//        this.numColunas = numColunas;
+//        this.capacidade = capacidade;
+//        this.assentoList = new ArrayList<>();
+//
+//        List<Assento> assentosInvalidos = new ArrayList<>();
+//
+//        for (Assento assento : assentos) {
+//            if (!verificarAssentoValido(assento)) {
+//                assentosInvalidos.add(assento);
+//            } else {
+//                this.assentoList.add(assento);
+//            }
+//        }
+//        if (!assentosInvalidos.isEmpty()) {
+//            throw new IllegalArgumentException("Os seguintes assentos são inválidos para esta sala: " + assentosInvalidos);
+//        }
+//
+//        this.status = SalaStatus.ATIVO;
+//    }
 
     public long getId() {
         return id;
