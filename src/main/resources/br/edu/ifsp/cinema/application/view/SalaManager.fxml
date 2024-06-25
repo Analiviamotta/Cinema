@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #a4161a;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.cinema.application.controller.SalaMangerUI">
    <children>
-      <TableView layoutX="34.0" layoutY="43.0" prefHeight="258.0" prefWidth="534.0">
+      <TableView fx:id="tableView" layoutX="34.0" layoutY="43.0" prefHeight="258.0" prefWidth="534.0">
         <columns>
           <TableColumn fx:id="cNumero" prefWidth="75.0" style="-fx-background-color: #fdf0d5;" text="Número" />
           <TableColumn fx:id="cNumLinhas" prefWidth="125.20001983642578" style="-fx-background-color: #fdf0d5;" text="Número de Linhas" />
