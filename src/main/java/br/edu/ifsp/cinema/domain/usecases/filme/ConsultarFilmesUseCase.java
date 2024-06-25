@@ -9,13 +9,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ConsultarFilmesUseCase {
-    private FilmeDAO filmeDAO;
+    private static FilmeDAO filmeDAO;
 
     public ConsultarFilmesUseCase(SalaDAO salaDAO) {
         this.filmeDAO = filmeDAO;
     }
 
-    public List<Filme> findAll() {
+    public static List<Filme> findAll() {
         List<Filme> filmesAtivosList = filmeDAO.findAll().stream()
                 .filter(filme -> filme.getStatus() != FilmeStatus.INATIVO)
                 .collect(Collectors.toList());
