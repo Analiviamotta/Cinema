@@ -13,6 +13,8 @@ public class Assento {
         this.linha = linha;
     }
 
+
+
     public long getId() {
         return id;
     }
@@ -44,5 +46,9 @@ public class Assento {
         sb.append("}");
 
         return sb.toString();
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
