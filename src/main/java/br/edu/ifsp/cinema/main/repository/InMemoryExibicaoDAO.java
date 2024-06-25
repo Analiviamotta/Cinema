@@ -1,6 +1,7 @@
 package br.edu.ifsp.cinema.main.repository;
 
 import br.edu.ifsp.cinema.domain.entities.exibicao.Exibicao;
+import br.edu.ifsp.cinema.domain.entities.sala.Sala;
 import br.edu.ifsp.cinema.domain.usecases.exibicao.ExibicaoDAO;
 
 import java.util.*;
@@ -59,6 +60,7 @@ public class InMemoryExibicaoDAO implements ExibicaoDAO {
     public List<Exibicao> findBySalaId(long id) {
         return List.of();
     }
+
 
     @Override
     public boolean exibicaoExistenteNaMesmaDataHorarioSala(Exibicao exibicao) {

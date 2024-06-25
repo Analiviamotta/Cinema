@@ -6,7 +6,6 @@ import br.edu.ifsp.cinema.domain.usecases.filme.AtivarFilmeUseCase;
 import br.edu.ifsp.cinema.domain.usecases.filme.ConsultarFilmesUseCase;
 import br.edu.ifsp.cinema.domain.usecases.filme.ExcluirFilmeUseCase;
 import br.edu.ifsp.cinema.domain.usecases.filme.InativarFilmeUseCase;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

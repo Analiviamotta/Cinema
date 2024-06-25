@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 public class ExcluirExibicaoUseCase {
-    private ExibicaoDAO exibicaoDAO;
+    private static ExibicaoDAO exibicaoDAO;
 
     public ExcluirExibicaoUseCase(ExibicaoDAO exibicaoDAO) {
         this.exibicaoDAO = exibicaoDAO;
@@ -35,7 +35,7 @@ public class ExcluirExibicaoUseCase {
         return exibicaoDAO.deleteByKey(id);
     }
 
-    public boolean remove(Exibicao exibicao) {
+    public static boolean remove(Exibicao exibicao) {
         if (exibicao == null) {
             throw new IllegalArgumentException("A exibição informada não pode ser nula");
         }
