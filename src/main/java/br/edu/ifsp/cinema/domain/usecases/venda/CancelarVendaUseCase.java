@@ -10,14 +10,14 @@ import br.edu.ifsp.cinema.domain.usecases.utils.Notification;
 import java.util.Optional;
 
 public class CancelarVendaUseCase {
-    private VendaDAO vendaDAO;
+    private static VendaDAO vendaDAO;
     private VendaInputRequestValidator validator;
 
     public CancelarVendaUseCase(VendaDAO vendaDAO) {
-        this.vendaDAO = vendaDAO;
+        CancelarVendaUseCase.vendaDAO = vendaDAO;
     }
 
-    public boolean cancel(Long id){
+    public static boolean cancel(Long id){
         Optional<Venda> optionalVenda = vendaDAO.findOne(id);
         if(optionalVenda.isPresent()) {
             Venda venda = optionalVenda.get();

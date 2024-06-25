@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #a4161a;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.cinema.application.controller.VendaManagerUIController">
    <children>
-      <TableView fx:id="tableView" layoutX="14.0" layoutY="51.0" prefHeight="200.0" prefWidth="563.0">
+      <TableView fx:id="tableView" layoutX="14.0" layoutY="69.0" prefHeight="200.0" prefWidth="563.0">
         <columns>
           <TableColumn fx:id="cId" prefWidth="75.0" style="-fx-background-color: #fdf0d5;" text="ID Venda" />
           <TableColumn fx:id="cData" prefWidth="75.0" style="-fx-background-color: #fdf0d5;" text="Data" />
@@ -35,6 +35,23 @@
          </font>
       </Button>
       <Button layoutX="471.0" layoutY="286.0" mnemonicParsing="false" onAction="#print" style="-fx-background-color: #001d3d;" text="Imprimir" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font>
+      </Button>
+      <DatePicker fx:id="dateDataInicial" layoutX="15.0" layoutY="30.0" />
+      <DatePicker fx:id="dateDataFinal" layoutX="231.0" layoutY="29.0" />
+      <Label layoutX="19.0" layoutY="7.0" text="Data Inicial" textFill="#eae2e2">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="234.0" layoutY="6.0" text="Data Final" textFill="#eae2e2">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnFiltrar" layoutX="437.0" layoutY="29.0" mnemonicParsing="false" onAction="#filter" style="-fx-background-color: #001d3d;" text="Filtrar" textFill="WHITE">
          <font>
             <Font name="Monospaced Regular" size="14.0" />
          </font>
