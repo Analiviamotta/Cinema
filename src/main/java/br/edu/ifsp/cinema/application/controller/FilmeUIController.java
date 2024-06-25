@@ -35,8 +35,7 @@ public class FilmeUIController {
     private Button btnCancelar;
     private Filme filme;
 
-    @FXML public void initialize(){
-        cbGenero.getItems().setAll(Arrays.toString(FilmeGenero.values()));
+    @FXML public void initialize(){cbGenero.getItems().setAll(Arrays.toString(FilmeGenero.values()));
     }
 
     private void getEntityToView(){

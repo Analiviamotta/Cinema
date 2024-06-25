@@ -19,11 +19,6 @@
          <font>
             <Font name="Monospaced Regular" size="14.0" />
          </font></Button>
-      <Button fx:id="btnAdicionar" layoutX="112.0" layoutY="316.0" mnemonicParsing="false" onAction="#addSala" style="-fx-background-color: #001d3d;" text="Adicionar" textFill="WHITE">
-         <font>
-            <Font name="Monospaced Regular" size="14.0" />
-         </font>
-      </Button>
       <Button fx:id="btnInativar" layoutX="217.0" layoutY="316.0" mnemonicParsing="false" onAction="#inactive" style="-fx-background-color: #001d3d;" text="Inativar" textFill="WHITE">
          <font>
             <Font name="Monospaced Regular" size="14.0" />
