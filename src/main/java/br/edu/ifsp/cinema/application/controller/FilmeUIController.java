@@ -79,6 +79,7 @@ public class FilmeUIController {
     }
 
     private void configUpdateMode() {
+        txtTitulo.setDisable(true);
     }
 
 }
