@@ -55,7 +55,6 @@ public class ExibicaoUIController {
     private Exibicao exibicao;
 
 
-
     public ExibicaoUIController() {
 
     }
