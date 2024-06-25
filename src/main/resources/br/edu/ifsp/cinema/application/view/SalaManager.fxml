@@ -8,11 +8,11 @@
    <children>
       <TableView layoutX="34.0" layoutY="43.0" prefHeight="258.0" prefWidth="534.0">
         <columns>
-          <TableColumn prefWidth="75.0" style="-fx-background-color: #fdf0d5;" text="Numéro" />
-          <TableColumn prefWidth="125.20001983642578" style="-fx-background-color: #fdf0d5;" text="Número de Linhas" />
-            <TableColumn prefWidth="138.60000610351562" style="-fx-background-color: #fdf0d5;" text="Número de Colunas" />
-            <TableColumn prefWidth="91.80001831054688" style="-fx-background-color: #fdf0d5;" text="Capacidade" />
-            <TableColumn prefWidth="103.59994506835938" style="-fx-background-color: #fdf0d5;" text="Status" />
+          <TableColumn fx:id="cNumero" prefWidth="75.0" style="-fx-background-color: #fdf0d5;" text="Número" />
+          <TableColumn fx:id="cNumLinhas" prefWidth="125.20001983642578" style="-fx-background-color: #fdf0d5;" text="Número de Linhas" />
+            <TableColumn fx:id="cNumColunas" prefWidth="138.60000610351562" style="-fx-background-color: #fdf0d5;" text="Número de Colunas" />
+            <TableColumn fx:id="cCapacidade" prefWidth="91.80001831054688" style="-fx-background-color: #fdf0d5;" text="Capacidade" />
+            <TableColumn fx:id="cStatus" prefWidth="103.59994506835938" style="-fx-background-color: #fdf0d5;" text="Status" />
         </columns>
       </TableView>
       <Button fx:id="btnAdicionar" layoutX="32.0" layoutY="316.0" mnemonicParsing="false" onAction="#backToPreviousScene" style="-fx-background-color: #001d3d;" text="Voltar" textFill="WHITE">
