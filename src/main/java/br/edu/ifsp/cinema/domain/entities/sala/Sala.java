@@ -42,6 +42,15 @@ public class Sala {
         this.status = SalaStatus.ATIVO;
     }
 
+    public Sala(int numero, int numLinhas, int numColunas, int capacidade, SalaStatus status, List<Assento> assentoList) {
+        this.numero = numero;
+        this.numLinhas = numLinhas;
+        this.numColunas = numColunas;
+        this.capacidade = capacidade;
+        this.status = status;
+        this.assentoList = assentoList;
+    }
+
     public long getId() {
         return id;
     }
