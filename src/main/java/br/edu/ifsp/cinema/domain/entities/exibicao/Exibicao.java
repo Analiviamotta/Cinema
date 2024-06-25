@@ -1,7 +1,10 @@
 package br.edu.ifsp.cinema.domain.entities.exibicao;
 
 import br.edu.ifsp.cinema.domain.entities.filme.Filme;
+import br.edu.ifsp.cinema.domain.entities.ingresso.Ingresso;
 import br.edu.ifsp.cinema.domain.entities.sala.Sala;
+
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
@@ -13,19 +16,40 @@ public class Exibicao {
     private Duration tempoDuracao;
     private int qntIngressosDisponiveis;
     private ExibicaoStatus status;
+    private Ingresso[][] ingressos;
+    private BigDecimal precoIngresso;
 
     public Exibicao(){
         status = ExibicaoStatus.EFETUADA;
     }
 
-    public Exibicao(Sala sala, Filme filme, LocalDateTime horarioData, Duration tempoDuracao, int qntIngressosDisponiveis) {
+    public Exibicao(Sala sala, BigDecimal precoIngresso) {
+        if (precoIngresso.compareTo(BigDecimal.ZERO) > 0) {
+            throw new IllegalArgumentException("O valor do ingresso deve ser maior que 0");
+        }
         this.sala = sala;
-        this.filme = filme;
-        this.horarioData = horarioData;
-        this.tempoDuracao = tempoDuracao;
-        this.qntIngressosDisponiveis = qntIngressosDisponiveis;
-        this.status = ExibicaoStatus.EFETUADA;
+        int numLinhas = sala.getNumLinhas();
+        int numColunas = sala.getNumColunas();
+        this.qntIngressosDisponiveis = numLinhas * numColunas;
+        this.precoIngresso = precoIngresso;
+
+        for (int i = 0; i < numLinhas; i++) {
+            for (int j = 0; j < numColunas; j++) {
+                Ingresso ingresso = new Ingresso(sala.getAssento(i, j), this, precoIngresso);
+                ingressos[i][j] = ingresso;
+            }
+        }
+
     }
+
+//    public Exibicao(Sala sala, Filme filme, LocalDateTime horarioData, Duration tempoDuracao, int qntIngressosDisponiveis) {
+//        this.sala = sala;
+//        this.filme = filme;
+//        this.horarioData = horarioData;
+//        this.tempoDuracao = tempoDuracao;
+//        this.qntIngressosDisponiveis = qntIngressosDisponiveis;
+//        this.status = ExibicaoStatus.EFETUADA;
+//    }
 
     public Long getId() {
         return id;

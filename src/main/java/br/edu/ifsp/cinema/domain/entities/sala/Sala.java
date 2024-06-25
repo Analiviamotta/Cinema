@@ -12,24 +12,20 @@ public class Sala {
     private int numColunas;
     private int capacidade;
     private SalaStatus status;
-    private List<Assento> assentoList;
+    private Assento assentos[][];
 
-//    public Sala(){
-//        status = SalaStatus.ATIVO;
-//        this.assentoList = new ArrayList<>();
-//    }
+    public Sala(){
+        status = SalaStatus.ATIVO;
+        //this.assentoList = new ArrayList<>();
+    }
 
     public Sala(int numero, int numLinhas, int numColunas, int capacidade, List<Assento> assentos) {
         this.numero = numero;
         this.numLinhas = numLinhas;
         this.numColunas = numColunas;
-        this.capacidade = capacidade = numLinhas * numColunas;
-        List<Assento> assentosList = new ArrayList<>();
-
         for (int i = 1; i <= getNumLinhas(); i++) {
             for (int j = 1; j <= getNumColunas(); j++) {
-
-                this.assentoList.set(i * j, new Assento(i, j));
+                this.assentos[i-1][j-1] = new Assento(i, j);
             }
         }
 
@@ -79,31 +75,31 @@ public class Sala {
         return numLinhas;
     }
 
-    public void setNumLinhas(int numLinhas) {
-        if (!assentoList.isEmpty()) {
-            throw new IllegalStateException("Não é possível alterar o número de linhas após a adição de assentos à sala.");
-        }
-        this.numLinhas = numLinhas;
-    }
+//    public void setNumLinhas(int numLinhas) {
+//        if (!assentoList.isEmpty()) {
+//            throw new IllegalStateException("Não é possível alterar o número de linhas após a adição de assentos à sala.");
+//        }
+//        this.numLinhas = numLinhas;
+//    }
 
     public int getNumColunas() {
         return numColunas;
     }
 
-    public void setNumColunas(int numColunas) {
-        if (!assentoList.isEmpty()) {
-            throw new IllegalStateException("Não é possível alterar o número de colunas após a adição de assentos à sala.");
-        }
-        this.numColunas = numColunas;
-    }
+//    public void setNumColunas(int numColunas) {
+//        if (!assentoList.isEmpty()) {
+//            throw new IllegalStateException("Não é possível alterar o número de colunas após a adição de assentos à sala.");
+//        }
+//        this.numColunas = numColunas;
+//    }
 
     public int getCapacidade() {
         return capacidade;
     }
 
-    public void setCapacidade(int capacidade) {
-        this.capacidade = capacidade;
-    }
+//    public void setCapacidade(int capacidade) {
+//        this.capacidade = capacidade;
+//    }
 
     public SalaStatus getStatus() {
         return status;
@@ -113,13 +109,21 @@ public class Sala {
         this.status = status;
     }
 
-    public List<Assento> getAssentoList() {
-        return new ArrayList<>(assentoList);
+    public Assento[][] getAssentos() {
+        return assentos;
     }
 
-    public void setAssentoList(List<Assento> assentoList) {
-        this.assentoList = assentoList;
+    public Assento getAssento(int i, int j) {
+        return assentos[i][j];
     }
+
+    //    public List<Assento> getAssentoList() {
+//        return new ArrayList<>(assentoList);
+//    }
+
+//    public void setAssentoList(List<Assento> assentoList) {
+//        this.assentoList = assentoList;
+//    }
 
     public void inativarSala(){
         this.status = SalaStatus.INATIVO;
@@ -134,26 +138,33 @@ public class Sala {
                 assento.getColuna() >= 1 && assento.getColuna() <= numColunas;
     }
 
-    public void addAssento(Assento novoAssento) {
-        if (!verificarAssentoValido(novoAssento)) {
-            throw new IllegalArgumentException("O assento não é válido para esta sala");
-        }
-        assentoList.add(novoAssento);
-    }
+//    public void addAssento(Assento novoAssento) {
+//        if (!verificarAssentoValido(novoAssento)) {
+//            throw new IllegalArgumentException("O assento não é válido para esta sala");
+//        }
+//        assentoList.add(novoAssento);
+//    }
+//
+//    public void removeAssento(Assento assentoParaExcluir) {
+//        assentoList.remove(assentoParaExcluir);
+//    }
 
-    public void removeAssento(Assento assentoParaExcluir) {
-        assentoList.remove(assentoParaExcluir);
-    }
+
 
 
     @Override
     public String toString() {
         StringBuilder assentosString = new StringBuilder();
-        for (Assento assento : assentoList) {
-            assentosString.append(assento.toString()).append(", ");
+        for (int i = 0; i < getNumLinhas(); i++) {
+            for (int j = 0; j < getNumColunas(); j++) {
+                assentosString.append(assentos[i][j]);
+            }
         }
+//        for (Assento assento : assentoList) {
+//            assentosString.append(assento.toString()).append(", ");
+//        }
 
-        if (assentosString.length() > 0) {
+        if (!assentosString.isEmpty()) {
             assentosString.setLength(assentosString.length() - 2);
         }
 
@@ -164,7 +175,9 @@ public class Sala {
                 ", numColunas=" + numColunas +
                 ", capacidade=" + capacidade +
                 ", status=" + status +
-                ", assentoList=[" + assentosString +
+                ", assentos=[" + assentosString +
                 "]}";
     }
+
+
 }
