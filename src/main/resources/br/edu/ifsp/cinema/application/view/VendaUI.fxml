@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #a4161a;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.cinema.application.controller.VendaUIController">
+   <children>
+      <Button fx:id="btnVoltar" layoutX="55.0" layoutY="318.0" mnemonicParsing="false" onAction="#backToPreviousScene" style="-fx-background-color: #001d3d;" text="Voltar" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font></Button>
+      <Button fx:id="btnSalvar" layoutX="501.0" layoutY="315.0" mnemonicParsing="false" onAction="#save" style="-fx-background-color: #001d3d;" text="Salvar" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font></Button>
+      <TableView layoutX="52.0" layoutY="66.0" prefHeight="200.0" prefWidth="518.0">
+        <columns>
+          <TableColumn fx:id="cFilme" prefWidth="75.0" style="-fx-background-color: #fdf0d5;" text="Filme" />
+          <TableColumn fx:id="cDataEHora" prefWidth="75.0" style="-fx-background-color: #fdf0d5;" text="Data/Hora" />
+            <TableColumn fx:id="cSala" prefWidth="94.19998168945312" style="-fx-background-color: #fdf0d5;" text="Sala" />
+            <TableColumn fx:id="cDuracao" prefWidth="105.0" style="-fx-background-color: #fdf0d5;" text="Duração" />
+            <TableColumn fx:id="cNumeroDeIngressosDisponíveis" prefWidth="168.80001831054688" style="-fx-background-color: #fdf0d5;" text="nro de Ingressos Disponíveis" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnAdicionarIngressos" layoutX="300.0" layoutY="314.0" mnemonicParsing="false" onAction="#addTickets" style="-fx-background-color: #001d3d;" text="Adicionar Ingressos" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

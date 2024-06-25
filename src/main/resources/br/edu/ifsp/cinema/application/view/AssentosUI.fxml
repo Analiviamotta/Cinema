@@ -22,10 +22,5 @@
             <Font name="Monospaced Regular" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnAdicionar" layoutX="269.0" layoutY="339.0" mnemonicParsing="false" onAction="#addAssento" prefHeight="26.0" prefWidth="124.0" style="-fx-background-color: #001d3d;" text="Adicionar" textFill="WHITE">
-         <font>
-            <Font name="Monospaced Regular" size="14.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>
