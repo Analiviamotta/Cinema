@@ -8,13 +8,13 @@ import java.util.Optional;
 
 
 public class ExcluirSalaUseCase {
-    private SalaDAO salaDAO;
+    private static SalaDAO salaDAO;
 
     public ExcluirSalaUseCase(SalaDAO salaDAO) {
         this.salaDAO = salaDAO;
     }
 
-    public boolean remove(Long id) {
+    public static boolean remove(Long id) {
         Optional<Sala> salaOpt = salaDAO.findOne(id);
         if (salaOpt.isEmpty()) {
             throw new EntityNotFoundException("Sala não encontrada");
