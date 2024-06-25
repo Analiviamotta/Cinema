@@ -53,10 +53,11 @@ public class ExibicaoUIController {
     private Button btnVoltar;
 
     private Exibicao exibicao;
-    private ConsultarSalasUseCase consultarSalasUseCase;
 
-    public ExibicaoUIController(ConsultarSalasUseCase consultarSalasUseCase) {
-        this.consultarSalasUseCase = consultarSalasUseCase;
+
+
+    public ExibicaoUIController() {
+
     }
 
     private void getEntityToView() {
@@ -98,7 +99,7 @@ public class ExibicaoUIController {
     }
 
     private Sala findSalaByNumber(int numeroSala) {
-        List<Sala> salas = consultarSalasUseCase.findAll();
+        List<Sala> salas = ConsultarSalasUseCase.findAll();
         for (Sala sala : salas) {
             if (sala.getNumber() == numeroSala) {
                 return sala;

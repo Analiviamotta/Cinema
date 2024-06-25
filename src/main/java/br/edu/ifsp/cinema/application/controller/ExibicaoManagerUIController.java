@@ -78,7 +78,6 @@ public class ExibicaoManagerUIController {
         cDataEHora.setCellValueFactory(new PropertyValueFactory<>("dataEHora"));
         cDuracao.setCellValueFactory(new PropertyValueFactory<>("duracao"));
         cQuantidadeDeIngressosDeDisponiveis.setCellValueFactory(new PropertyValueFactory<>("quantidadeDeIngressosDisponiveis"));
-
     }
 
     private void bindTableViewToItemsList() {
@@ -109,7 +108,7 @@ public class ExibicaoManagerUIController {
     private void showExibicaoInMode(UIMode mode) throws IOException {
         Exibicao selectedItem = tableView.getSelectionModel().getSelectedItem();
         if(selectedItem != null){
-            HelloApplication.setRoot("exibicaoUI");
+            HelloApplication.setRoot("ExibicaoUI");
             ExibicaoUIController controller = (ExibicaoUIController) HelloApplication.getController();
             controller.setExibicao(selectedItem, mode);
         }

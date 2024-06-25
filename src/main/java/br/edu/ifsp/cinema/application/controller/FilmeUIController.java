@@ -71,14 +71,14 @@ public class FilmeUIController {
     }
 
     public void setFilme(Filme filme, UIMode uiMode) {
-        //criar erro e validar se é null
         this.filme = filme;
         setEntityIntoView();
         if(uiMode == UIMode.UPDATE){
-            configViewMode();
+            configUpdateMode();
         }
     }
 
-    private void configViewMode() {
+    private void configUpdateMode() {
     }
+
 }
