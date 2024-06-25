@@ -9,17 +9,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ConsultarFilmesUseCase {
-    private static FilmeDAO filmeDAO;
+    private FilmeDAO filmeDAO;
 
-    public ConsultarFilmesUseCase(SalaDAO salaDAO) {
+    // Corrigido: O construtor agora inicializa o filmeDAO corretamente
+    public ConsultarFilmesUseCase(FilmeDAO filmeDAO) {
         this.filmeDAO = filmeDAO;
     }
 
-    public static List<Filme> findAll() {
+    // Corrigido: Removida a palavra-chave static
+    public List<Filme> findAll() {
         List<Filme> filmesAtivosList = filmeDAO.findAll().stream()
                 .filter(filme -> filme.getStatus() != FilmeStatus.INATIVO)
                 .collect(Collectors.toList());
-        //remove os filmes com status inativo
+        // Remove os filmes com status inativo
 
         if(filmesAtivosList.isEmpty()) {
             throw new EntityNotFoundException("Não há filmes cadastrados ativos");
@@ -28,4 +30,3 @@ public class ConsultarFilmesUseCase {
         return filmesAtivosList;
     }
 }
-

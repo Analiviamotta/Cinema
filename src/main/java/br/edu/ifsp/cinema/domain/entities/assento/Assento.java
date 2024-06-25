@@ -13,8 +13,15 @@ public class Assento {
         this.linha = linha;
     }
 
+    public Assento(int column, int line, Long id) {
+    }
+
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public int getColuna() {

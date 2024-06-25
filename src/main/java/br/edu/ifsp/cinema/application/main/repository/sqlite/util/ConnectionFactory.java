@@ -1,4 +1,4 @@
-package br.edu.ifsp.cinema.main.repository.sqlite.util;
+package br.edu.ifsp.cinema.application.main.repository.sqlite.util;
 
 import org.sqlite.SQLiteDataSource;
 
@@ -13,11 +13,12 @@ public class ConnectionFactory implements AutoCloseable{
     private static PreparedStatement preparedStatement;
     private static Statement statement;
 
-    public static Connection createConnection(){
-        try {
-            instantiateConnectionIfNull();
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+    public static Connection createConnection() throws SQLException {
+        if (connection == null || connection.isClosed()) {
+            SQLiteDataSource ds = new SQLiteDataSource();
+            ds.setUrl("jdbc:sqlite:database.db");
+            connection = ds.getConnection();
         }
         return connection;
     }
@@ -55,9 +56,12 @@ public class ConnectionFactory implements AutoCloseable{
     }
 
     @Override
-    public void close() throws Exception {
-        closeStatementsIfNotNull();
-        closeConnectionIfNotNull();
+    public void close() {
+        try {
+            closeStatementsIfNotNull();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void closeConnectionIfNotNull() throws SQLException {

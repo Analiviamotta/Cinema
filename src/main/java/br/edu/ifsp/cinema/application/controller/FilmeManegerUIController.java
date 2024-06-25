@@ -1,9 +1,11 @@
 package br.edu.ifsp.cinema.application.controller;
 
+import br.edu.ifsp.cinema.application.main.repository.sqlite.dao.MovieDaoSqlite;
 import br.edu.ifsp.cinema.application.view.HelloApplication;
 import br.edu.ifsp.cinema.domain.entities.filme.Filme;
 import br.edu.ifsp.cinema.domain.usecases.filme.ConsultarFilmesUseCase;
 import br.edu.ifsp.cinema.domain.usecases.filme.InativarFilmeUseCase;
+import br.edu.ifsp.cinema.domain.usecases.filme.FilmeDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -46,8 +48,16 @@ public class FilmeManegerUIController {
 
     private ObservableList<Filme> tableData;
 
+    private ConsultarFilmesUseCase consultarFilmesUseCase;
+
+    public FilmeManegerUIController() {
+        FilmeDAO filmeDAO = new MovieDaoSqlite(); // Certifique-se de que esta é a implementação correta
+        this.consultarFilmesUseCase = new ConsultarFilmesUseCase(filmeDAO);
+    }
+
     @FXML
     public void initialize() {
+        tableData = FXCollections.observableArrayList(); // Inicialize tableData
         bindColumnsToValueSources();
         loadDataAndShow();
     }
@@ -61,11 +71,12 @@ public class FilmeManegerUIController {
     }
 
     private void loadDataAndShow() {
-        List<Filme> filmes = ConsultarFilmesUseCase.findAll();
+        List<Filme> filmes = consultarFilmesUseCase.findAll();
         tableData.clear();
         tableData.addAll(filmes);
-
+        tableView.setItems(tableData); // Certifique-se de que a tabela exibe os dados
     }
+
     public void addFilme(ActionEvent actionEvent) {
     }
 
@@ -76,19 +87,18 @@ public class FilmeManegerUIController {
     }
 
     public void inactivateFilme(ActionEvent actionEvent) {
-       Filme filme = tableView.getSelectionModel().getSelectedItem();
-       if(filme != null){
-           InativarFilmeUseCase.inativarFilme(filme.getId());
-           loadDataAndShow();
-       }
-
+        Filme filme = tableView.getSelectionModel().getSelectedItem();
+        if (filme != null) {
+            InativarFilmeUseCase.inativarFilme(filme.getId());
+            loadDataAndShow();
+        }
     }
 
     private void showFilmeInMode(UIMode uiMode) throws IOException {
         Filme filme = tableView.getSelectionModel().getSelectedItem();
-        if(filme != null) HelloApplication.setRoot("filmeUI");
-
+        if (filme != null) HelloApplication.setRoot("filmeUI");
     }
+
     public void deleteFilme(ActionEvent actionEvent) {
     }
 

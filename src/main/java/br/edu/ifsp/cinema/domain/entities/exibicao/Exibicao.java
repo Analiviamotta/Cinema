@@ -27,6 +27,7 @@ public class Exibicao {
         this.status = ExibicaoStatus.EFETUADA;
     }
 
+
     public Long getId() {
         return id;
     }

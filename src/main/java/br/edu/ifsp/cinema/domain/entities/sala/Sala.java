@@ -1,7 +1,6 @@
 package br.edu.ifsp.cinema.domain.entities.sala;
 
 import br.edu.ifsp.cinema.domain.entities.assento.Assento;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,40 +13,61 @@ public class Sala {
     private SalaStatus status;
     private List<Assento> assentoList;
 
-    public Sala(){
+    public Sala() {
         status = SalaStatus.ATIVO;
         this.assentoList = new ArrayList<>();
     }
 
-
-    public Sala(int numero, int numLinhas, int numColunas, int capacidade, List<Assento> assentos) {
+    public Sala(int numero, int numLinhas, int numColunas, int capacidade) {
         this.numero = numero;
         this.numLinhas = numLinhas;
         this.numColunas = numColunas;
         this.capacidade = capacidade;
         this.assentoList = new ArrayList<>();
-
-        List<Assento> assentosInvalidos = new ArrayList<>();
-
-        for (Assento assento : assentos) {
-            if (!verificarAssentoValido(assento)) {
-                assentosInvalidos.add(assento);
-            } else {
-                this.assentoList.add(assento);
-            }
-        }
-        if (!assentosInvalidos.isEmpty()) {
-            throw new IllegalArgumentException("Os seguintes assentos são inválidos para esta sala: " + assentosInvalidos);
-        }
-
         this.status = SalaStatus.ATIVO;
+
+        if (numLinhas * numColunas > capacidade) {
+            throw new IllegalArgumentException("Número de assentos excede a capacidade da sala.");
+        }
+
+        criarAssentos(numLinhas, numColunas);
     }
 
-    public long getId() {
+
+    public Sala(int numero, int numLinhas, int numColunas, int capacidade, List<Assento> assentoList) {
+        this.numero = numero;
+        this.numLinhas = numLinhas;
+        this.numColunas = numColunas;
+        this.capacidade = capacidade;
+        this.assentoList = new ArrayList<>();
+        this.status = SalaStatus.ATIVO;
+
+        if (numLinhas * numColunas > capacidade) {
+            throw new IllegalArgumentException("Número de assentos excede a capacidade da sala.");
+        }
+
+        criarAssentos(numLinhas, numColunas);
+    }
+
+    private void criarAssentos(int numLinhas, int numColunas) {
+        List<Assento> assentosInvalidos = new ArrayList<>();
+        for (int linha = 0; linha < numLinhas; linha++) {
+            for (int coluna = 0; coluna < numColunas; coluna++) {
+                Assento assento = new Assento(linha, coluna);
+                if (verificarAssentoValido(assento)) {
+                    assentoList.add(assento);
+                } else {
+                    assentosInvalidos.add(assento);
+                }
+            }
+        }
+    }
+
+    public Long getId() {
         return id;
     }
 
-   public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -105,17 +125,17 @@ public class Sala {
         this.assentoList = assentoList;
     }
 
-    public void inativarSala(){
+    public void inativarSala() {
         this.status = SalaStatus.INATIVO;
     }
 
-    public void ativarSala(){
+    public void ativarSala() {
         this.status = SalaStatus.ATIVO;
     }
 
     public boolean verificarAssentoValido(Assento assento) {
-        return assento.getLinha() >= 1 && assento.getLinha() <= numLinhas &&
-                assento.getColuna() >= 1 && assento.getColuna() <= numColunas;
+        return assento.getLinha() >= 0 && assento.getLinha() < numLinhas &&
+                assento.getColuna() >= 0 && assento.getColuna() < numColunas;
     }
 
     public void addAssento(Assento novoAssento) {
@@ -128,7 +148,6 @@ public class Sala {
     public void removeAssento(Assento assentoParaExcluir) {
         assentoList.remove(assentoParaExcluir);
     }
-
 
     @Override
     public String toString() {

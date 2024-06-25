@@ -1,4 +1,4 @@
-package br.edu.ifsp.cinema.main.repository.sqlite.util;
+package br.edu.ifsp.cinema.application.main.repository.sqlite.util;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -80,7 +80,7 @@ public class DatabaseBuilder {
                     date_time DATETIME,
                     duration INTEGER,
                     tickets_number INT,
-                    status BOOLEAN,
+                    status VARCHAR(255),
                     movie_id INT,
                     room_id INT,
                     FOREIGN KEY (movie_id) REFERENCES Movie(id),
