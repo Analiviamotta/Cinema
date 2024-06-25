@@ -7,13 +7,13 @@ import br.edu.ifsp.cinema.domain.usecases.utils.Notification;
 import br.edu.ifsp.cinema.domain.usecases.utils.Validator;
 
 public class EditarFilmeUseCase {
-    private FilmeDAO filmeDAO;
+    private static FilmeDAO filmeDAO;
 
     public EditarFilmeUseCase(FilmeDAO filmeDAO) {
         this.filmeDAO = filmeDAO;
     }
 
-    public Boolean update(Filme filme) {
+    public static Boolean update(Filme filme) {
         Validator<Filme> validator= new FilmeInputRequestValidator();
         Notification notification = validator.validate(filme);
 
