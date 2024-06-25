@@ -91,7 +91,7 @@ public class ExibicaoManagerUIController {
     }
 
     public void addExibicao(ActionEvent actionEvent) throws IOException {
-        HelloApplication.setRoot("exibicaoUI");
+        HelloApplication.setRoot("ExibicaoUI");
     }
 
     public void edit(ActionEvent actionEvent) throws IOException {
