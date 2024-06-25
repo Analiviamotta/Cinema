@@ -2,7 +2,9 @@ package br.edu.ifsp.cinema.application.controller;
 
 import br.edu.ifsp.cinema.application.view.HelloApplication;
 import br.edu.ifsp.cinema.domain.entities.filme.Filme;
+import br.edu.ifsp.cinema.domain.usecases.filme.AtivarFilmeUseCase;
 import br.edu.ifsp.cinema.domain.usecases.filme.ConsultarFilmesUseCase;
+import br.edu.ifsp.cinema.domain.usecases.filme.ExcluirFilmeUseCase;
 import br.edu.ifsp.cinema.domain.usecases.filme.InativarFilmeUseCase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -66,13 +68,17 @@ public class FilmeManegerUIController {
         tableData.addAll(filmes);
 
     }
-    public void addFilme(ActionEvent actionEvent) {
+    public void addFilme(ActionEvent actionEvent) throws IOException {
+        HelloApplication.setRoot("filmeUI");
+
     }
 
-    public void editFilme(ActionEvent actionEvent) {
+    public void editFilme(ActionEvent actionEvent) throws IOException {
+        showFilmeInMode(UIMode.UPDATE);
     }
 
-    public void backToPreviousScene(ActionEvent actionEvent) {
+    public void backToPreviousScene(ActionEvent actionEvent) throws IOException {
+        HelloApplication.setRoot("MainUI");
     }
 
     public void inactivateFilme(ActionEvent actionEvent) {
@@ -86,12 +92,28 @@ public class FilmeManegerUIController {
 
     private void showFilmeInMode(UIMode uiMode) throws IOException {
         Filme filme = tableView.getSelectionModel().getSelectedItem();
-        if(filme != null) HelloApplication.setRoot("filmeUI");
+        if(filme != null) {
+            HelloApplication.setRoot("filmeUI");
+
+            FilmeUIController controller = (FilmeUIController) HelloApplication.getController();
+            controller.setFilme(filme, uiMode);
+
+        }
 
     }
     public void deleteFilme(ActionEvent actionEvent) {
+        Filme filme = tableView.getSelectionModel().getSelectedItem();
+        if(filme != null){
+            ExcluirFilmeUseCase.remove(filme);
+            loadDataAndShow();
+        }
     }
 
     public void active(ActionEvent actionEvent) {
+        Filme filme = tableView.getSelectionModel().getSelectedItem();
+        if(filme != null){
+            AtivarFilmeUseCase.ativarFilme(filme.getId());
+            loadDataAndShow();
+        }
     }
 }
