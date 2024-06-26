@@ -35,17 +35,20 @@ public class ExibicaoUIController {
     @FXML
     private TextField txtDuracao;
 
-    @FXML
-    private TableView<Filme> tableView;
-
-    @FXML
-    private TableColumn<Filme, String> cTituloDoFilme;
-
-    @FXML
-    private TableColumn<Filme, String> cClassificacaoIndicativa;
+//    @FXML
+//    private TableView<Filme> tableView;
+//
+//    @FXML
+//    private TableColumn<Filme, String> cTituloDoFilme;
+//
+//    @FXML
+//    private TableColumn<Filme, String> cClassificacaoIndicativa;
 
     @FXML
     private TextField txtQuantidadeIngressos;
+
+    @FXML
+    private TextField txtFilme;
 
     @FXML
     private Button btnSalvar;
@@ -113,12 +116,13 @@ public class ExibicaoUIController {
             txtNumeroDaSala.setText(String.valueOf(exibicao.getSala().getNumber()));
             dtDataEHorario.setValue(exibicao.getHorarioData().toLocalDate());
             txtDuracao.setText(String.valueOf(exibicao.getTempoDuracao().toMinutes()));
-            if (!tableView.getColumns().contains(cTituloDoFilme)) {
-                tableView.getColumns().add(cTituloDoFilme);
-            }
-            if (!tableView.getColumns().contains(cClassificacaoIndicativa)) {
-                tableView.getColumns().add(cClassificacaoIndicativa);
-            }
+            txtFilme.setText(exibicao.getFilme().getTitulo());
+//            if (!tableView.getColumns().contains(cTituloDoFilme)) {
+//                tableView.getColumns().add(cTituloDoFilme);
+//            }
+//            if (!tableView.getColumns().contains(cClassificacaoIndicativa)) {
+//                tableView.getColumns().add(cClassificacaoIndicativa);
+//            }
             txtQuantidadeIngressos.setText(String.valueOf(exibicao.getQntIngressosDisponiveis()));
         }
     }
