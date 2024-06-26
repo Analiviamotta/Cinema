@@ -61,11 +61,8 @@ public class AssentosUIController {
         }
     }
 
-    public void backToPreviousScene(ActionEvent actionEvent) throws IOException {
-        System.out.println("Voltando para a cena anterior...");
-        HelloApplication.setRoot("SalaManager");
-        System.out.println("Cena anterior carregada com sucesso.");
-
+    public void backToSalaScene(ActionEvent actionEvent) throws IOException {
+            HelloApplication.setRoot("SalaManager");
     }
 
 }
