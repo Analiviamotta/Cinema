@@ -6,13 +6,13 @@ import br.edu.ifsp.cinema.domain.usecases.utils.EntityAlreadyExistsException;
 import br.edu.ifsp.cinema.domain.usecases.utils.EntityNotFoundException;
 
 public class AtivarFilmeUseCase {
-    private FilmeDAO filmeDAO;
+    private static FilmeDAO filmeDAO;
 
     public AtivarFilmeUseCase(FilmeDAO filmeDAO) {
         this.filmeDAO = filmeDAO;
     }
 
-    public void ativarFilme(Long id) {
+    public static void ativarFilme(Long id) {
         Filme filme = filmeDAO.findOne(id)
                 .orElseThrow(() -> new EntityNotFoundException("Filme não encontrado"));
 

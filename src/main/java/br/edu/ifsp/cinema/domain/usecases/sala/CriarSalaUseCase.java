@@ -8,13 +8,13 @@ import br.edu.ifsp.cinema.domain.usecases.utils.Validator;
 
 public class CriarSalaUseCase {
 
-    private SalaDAO salaDAO;
+    private static SalaDAO salaDAO;
 
     public CriarSalaUseCase(SalaDAO salaDAO) {
         this.salaDAO = salaDAO;
     }
 
-    public Sala insert(Sala sala) {
+    public static Sala insert(Sala sala) {
         Validator<Sala> validator= new SalaInputRequestValidator();
         Notification notification = validator.validate(sala);
 

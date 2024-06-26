@@ -37,10 +37,11 @@ import java.util.List;
 
 public class HelloApplication extends Application {
     private static Scene scene;
+    private static Object controller;
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("MainUI"), 600, 400); // Defina o tamanho da cena
+        scene = new Scene(loadFXML("MainUI"), 600, 400);
         stage.setScene(scene);
         stage.setTitle("Cinema Management");
         stage.show();
@@ -52,9 +53,12 @@ public class HelloApplication extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = loadFXMLLoader(fxml);
-        return fxmlLoader.load();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxml + ".fxml"));
+        Parent parent = fxmlLoader.load();
+        controller = fxmlLoader.getController();
+        return parent;
     }
+
 
     public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
@@ -64,7 +68,10 @@ public class HelloApplication extends Application {
         launch();
     }
 
-//    @Override
+    public static Object getController() {
+        return controller;
+    }
+    //    @Override
 //    public void start(Stage stage) throws IOException {
 //        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
 //        Scene scene = new Scene(fxmlLoader.load(), 320, 240);

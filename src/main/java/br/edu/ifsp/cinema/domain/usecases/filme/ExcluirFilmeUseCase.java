@@ -7,7 +7,7 @@ import br.edu.ifsp.cinema.domain.usecases.utils.InactiveObjectException;
 import java.util.Optional;
 
 public class ExcluirFilmeUseCase {
-    private FilmeDAO filmeDAO;
+    private static FilmeDAO filmeDAO;
 
     public ExcluirFilmeUseCase(FilmeDAO filmeDAO) {
         this.filmeDAO = filmeDAO;
@@ -30,7 +30,7 @@ public class ExcluirFilmeUseCase {
         return filmeDAO.deleteByKey(id);
     }
 
-    public boolean remove(Filme filme) {
+    public static boolean remove(Filme filme) {
         if (filme == null) {
             throw new IllegalArgumentException("O filme informado não pode ser nulo");
         }

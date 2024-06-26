@@ -15,9 +15,9 @@ import java.util.List;
 // FEITO
 
 public class CriarVendaUseCase {
-    private VendaDAO vendaDAO;
-    private ConsultarExibicaoUseCase consultarExibicaoUseCase;
-    private VendaInputRequestValidator validator = new VendaInputRequestValidator();
+    private static VendaDAO vendaDAO;
+    private static ConsultarExibicaoUseCase consultarExibicaoUseCase;
+    private static VendaInputRequestValidator validator = new VendaInputRequestValidator();
 
     public CriarVendaUseCase(
             VendaDAO vendaDAO,
@@ -26,7 +26,7 @@ public class CriarVendaUseCase {
         this.consultarExibicaoUseCase = consultarExibicaoUseCase;
     }
 
-    public Venda criarVenda(Long exibicaoId, List<Ingresso> ingressos) {
+    public static Venda criarVenda(Long exibicaoId, List<Ingresso> ingressos) {
         Exibicao exibicao = consultarExibicaoUseCase.findOne(exibicaoId)
                 .orElseThrow(() -> new EntityNotFoundException("Exibição com id " + exibicaoId + " não encontrada"));
 

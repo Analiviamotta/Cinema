@@ -8,13 +8,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ConsultarSalasUseCase {
-    private SalaDAO salaDAO;
+    private static SalaDAO salaDAO;
 
     public ConsultarSalasUseCase(SalaDAO salaDAO) {
         this.salaDAO = salaDAO;
     }
 
-    public List<Sala> findAll() {
+    public static List<Sala> findAll() {
         List<Sala> salasAtivasList = salaDAO.findAll().stream()
                 .filter(sala -> sala.getStatus() != SalaStatus.INATIVO)
                 .collect(Collectors.toList());

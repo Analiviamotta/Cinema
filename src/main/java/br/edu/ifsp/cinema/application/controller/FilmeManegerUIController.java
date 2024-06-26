@@ -1,12 +1,11 @@
 package br.edu.ifsp.cinema.application.controller;
 
-import br.edu.ifsp.cinema.application.main.repository.sqlite.dao.MovieDaoSqlite;
 import br.edu.ifsp.cinema.application.view.HelloApplication;
 import br.edu.ifsp.cinema.domain.entities.filme.Filme;
+import br.edu.ifsp.cinema.domain.usecases.filme.AtivarFilmeUseCase;
 import br.edu.ifsp.cinema.domain.usecases.filme.ConsultarFilmesUseCase;
+import br.edu.ifsp.cinema.domain.usecases.filme.ExcluirFilmeUseCase;
 import br.edu.ifsp.cinema.domain.usecases.filme.InativarFilmeUseCase;
-import br.edu.ifsp.cinema.domain.usecases.filme.FilmeDAO;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -48,16 +47,8 @@ public class FilmeManegerUIController {
 
     private ObservableList<Filme> tableData;
 
-    private ConsultarFilmesUseCase consultarFilmesUseCase;
-
-    public FilmeManegerUIController() {
-        FilmeDAO filmeDAO = new MovieDaoSqlite(); // Certifique-se de que esta é a implementação correta
-        this.consultarFilmesUseCase = new ConsultarFilmesUseCase(filmeDAO);
-    }
-
     @FXML
     public void initialize() {
-        tableData = FXCollections.observableArrayList(); // Inicialize tableData
         bindColumnsToValueSources();
         loadDataAndShow();
     }
@@ -71,37 +62,57 @@ public class FilmeManegerUIController {
     }
 
     private void loadDataAndShow() {
-        List<Filme> filmes = consultarFilmesUseCase.findAll();
+        List<Filme> filmes = ConsultarFilmesUseCase.findAll();
         tableData.clear();
         tableData.addAll(filmes);
-        tableView.setItems(tableData); // Certifique-se de que a tabela exibe os dados
+
+    }
+    public void addFilme(ActionEvent actionEvent) throws IOException {
+        HelloApplication.setRoot("filmeUI");
+
     }
 
-    public void addFilme(ActionEvent actionEvent) {
+    public void editFilme(ActionEvent actionEvent) throws IOException {
+        showFilmeInMode(UIMode.UPDATE);
     }
 
-    public void editFilme(ActionEvent actionEvent) {
-    }
-
-    public void backToPreviousScene(ActionEvent actionEvent) {
+    public void backToPreviousScene(ActionEvent actionEvent) throws IOException {
+        HelloApplication.setRoot("MainUI");
     }
 
     public void inactivateFilme(ActionEvent actionEvent) {
         Filme filme = tableView.getSelectionModel().getSelectedItem();
-        if (filme != null) {
+        if(filme != null){
             InativarFilmeUseCase.inativarFilme(filme.getId());
             loadDataAndShow();
         }
+
     }
 
     private void showFilmeInMode(UIMode uiMode) throws IOException {
         Filme filme = tableView.getSelectionModel().getSelectedItem();
-        if (filme != null) HelloApplication.setRoot("filmeUI");
-    }
+        if(filme != null) {
+            HelloApplication.setRoot("filmeUI");
 
+            FilmeUIController controller = (FilmeUIController) HelloApplication.getController();
+            controller.setFilme(filme, uiMode);
+
+        }
+
+    }
     public void deleteFilme(ActionEvent actionEvent) {
+        Filme filme = tableView.getSelectionModel().getSelectedItem();
+        if(filme != null){
+            ExcluirFilmeUseCase.remove(filme);
+            loadDataAndShow();
+        }
     }
 
     public void active(ActionEvent actionEvent) {
+        Filme filme = tableView.getSelectionModel().getSelectedItem();
+        if(filme != null){
+            AtivarFilmeUseCase.ativarFilme(filme.getId());
+            loadDataAndShow();
+        }
     }
 }

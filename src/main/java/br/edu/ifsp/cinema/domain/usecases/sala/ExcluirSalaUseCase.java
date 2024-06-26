@@ -8,7 +8,7 @@ import java.util.Optional;
 
 
 public class ExcluirSalaUseCase {
-    private SalaDAO salaDAO;
+    private static SalaDAO salaDAO;
 
     public ExcluirSalaUseCase(SalaDAO salaDAO) {
         this.salaDAO = salaDAO;
@@ -31,7 +31,7 @@ public class ExcluirSalaUseCase {
         return salaDAO.deleteByKey(id);
     }
 
-    public boolean remove(Sala sala) {
+    public static boolean remove(Sala sala) {
         if (sala == null) {
             throw new IllegalArgumentException("A sala informada não pode ser nula");
         }

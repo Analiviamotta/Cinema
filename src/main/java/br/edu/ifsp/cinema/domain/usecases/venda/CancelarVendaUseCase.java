@@ -10,7 +10,7 @@ import br.edu.ifsp.cinema.domain.usecases.utils.Notification;
 import java.util.Optional;
 
 public class CancelarVendaUseCase {
-    private VendaDAO vendaDAO;
+    private static VendaDAO vendaDAO;
     private VendaInputRequestValidator validator;
 
     public CancelarVendaUseCase(VendaDAO vendaDAO) {
