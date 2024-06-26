@@ -25,4 +25,15 @@ public class ConsultarFilmesUseCase {
 
         return filmesAtivosList;
     }
+
+    public static List<Filme> findAtivos() {
+        List<Filme> filmesAtivosList = filmeDAO.findAll()
+                .stream().filter(filme -> filmeDAO.isAtivo(filme.getId())).toList();
+
+        if(filmesAtivosList.isEmpty()) {
+            throw new EntityNotFoundException("Não há filmes cadastrados ativos");
+        }
+
+        return filmesAtivosList;
+    }
 }
