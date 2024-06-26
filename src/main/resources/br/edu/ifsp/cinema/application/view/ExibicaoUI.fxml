@@ -29,8 +29,8 @@
             <Font name="Monospaced Regular" size="16.0" />
          </font>
       </Label>
-      <TextField layoutX="145.0" layoutY="101.0" prefHeight="26.0" prefWidth="358.0" />
-      <TableView layoutX="53.0" layoutY="178.0" prefHeight="188.0" prefWidth="453.0">
+      <TextField fx:id="txtDuracao" layoutX="145.0" layoutY="101.0" prefHeight="26.0" prefWidth="358.0" />
+      <TableView fx:id="tableView" layoutX="53.0" layoutY="178.0" prefHeight="188.0" prefWidth="453.0">
         <columns>
           <TableColumn fx:id="cTituloDoFilme" prefWidth="264.40000915527344" style="-fx-background-color: #fdf0d5;" text="Título do Filme" />
           <TableColumn fx:id="cClassificacaoIndicativa" prefWidth="211.5999755859375" style="-fx-background-color: #fdf0d5;" text="Classificação Indicativa" />
@@ -41,7 +41,7 @@
             <Font name="Monospaced Regular" size="16.0" />
          </font>
       </Label>
-      <TextField layoutX="409.0" layoutY="138.0" prefHeight="26.0" prefWidth="96.0" />
+      <TextField fx:id="txtQuantidadeIngressos" layoutX="409.0" layoutY="138.0" prefHeight="26.0" prefWidth="96.0" />
       <Button fx:id="btnSalvar" layoutX="315.0" layoutY="378.0" mnemonicParsing="false" onAction="#save" prefHeight="26.0" prefWidth="192.0" style="-fx-background-color: #001d3d;" text="Salvar" textFill="WHITE">
          <font>
             <Font name="Monospaced Regular" size="14.0" />

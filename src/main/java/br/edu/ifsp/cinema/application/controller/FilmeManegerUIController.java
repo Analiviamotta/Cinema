@@ -6,6 +6,7 @@ import br.edu.ifsp.cinema.domain.usecases.filme.AtivarFilmeUseCase;
 import br.edu.ifsp.cinema.domain.usecases.filme.ConsultarFilmesUseCase;
 import br.edu.ifsp.cinema.domain.usecases.filme.ExcluirFilmeUseCase;
 import br.edu.ifsp.cinema.domain.usecases.filme.InativarFilmeUseCase;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -50,6 +51,7 @@ public class FilmeManegerUIController {
     @FXML
     public void initialize() {
         bindColumnsToValueSources();
+        bindTableViewToList();
         loadDataAndShow();
     }
 
@@ -59,6 +61,11 @@ public class FilmeManegerUIController {
         cSinopse.setCellValueFactory(new PropertyValueFactory<>("sinopse"));
         cClassificacaoIndicativa.setCellValueFactory(new PropertyValueFactory<>("classificacaoIndicativa"));
         cStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+    }
+
+    private void bindTableViewToList(){
+        tableData = FXCollections.observableArrayList();
+        tableView.setItems(tableData);
     }
 
     private void loadDataAndShow() {

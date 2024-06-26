@@ -140,9 +140,12 @@ public class ExibicaoUIController {
     }
 
 
+    @FXML
     public void save(ActionEvent actionEvent) {
         getEntityToView();
-        if(String.valueOf(exibicao.getId()) == null){
+        System.out.println(exibicao);
+
+        if(exibicao.getId() == null){
             CriarExibicaoUseCase.insert(exibicao);
         }
     }

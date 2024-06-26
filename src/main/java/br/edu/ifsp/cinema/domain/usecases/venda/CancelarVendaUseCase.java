@@ -17,7 +17,7 @@ public class CancelarVendaUseCase {
         this.vendaDAO = vendaDAO;
     }
 
-    public boolean cancel(Long id){
+    public static boolean cancel(Long id){
         Optional<Venda> optionalVenda = vendaDAO.findOne(id);
         if(optionalVenda.isPresent()) {
             Venda venda = optionalVenda.get();

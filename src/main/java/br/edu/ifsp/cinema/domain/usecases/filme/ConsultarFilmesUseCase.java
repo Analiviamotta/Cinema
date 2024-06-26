@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class ConsultarFilmesUseCase {
     private static FilmeDAO filmeDAO;
 
-    public ConsultarFilmesUseCase(SalaDAO salaDAO) {
+    public ConsultarFilmesUseCase(FilmeDAO filmeDAO) {
         this.filmeDAO = filmeDAO;
     }
 

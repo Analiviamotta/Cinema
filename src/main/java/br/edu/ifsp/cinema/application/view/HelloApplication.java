@@ -1,28 +1,5 @@
 package br.edu.ifsp.cinema.application.view;
 
-import br.edu.ifsp.cinema.main.repository.InMeMemoryFilmeDAO;
-import br.edu.ifsp.cinema.main.repository.InMemoryExibicaoDAO;
-import br.edu.ifsp.cinema.main.repository.InMemorySalaDAO;
-import br.edu.ifsp.cinema.main.repository.InMemoryVendaDAO;
-import br.edu.ifsp.cinema.domain.entities.assento.Assento;
-import br.edu.ifsp.cinema.domain.entities.exibicao.Exibicao;
-import br.edu.ifsp.cinema.domain.entities.filme.Filme;
-import br.edu.ifsp.cinema.domain.entities.filme.FilmeGenero;
-import br.edu.ifsp.cinema.domain.entities.ingresso.Ingresso;
-import br.edu.ifsp.cinema.domain.entities.sala.Sala;
-import br.edu.ifsp.cinema.domain.entities.venda.Venda;
-import br.edu.ifsp.cinema.domain.usecases.sala.CriarSalaUseCase;
-import br.edu.ifsp.cinema.domain.usecases.sala.SalaDAO;
-import br.edu.ifsp.cinema.domain.usecases.exibicao.ConsultarExibicaoUseCase;
-import br.edu.ifsp.cinema.domain.usecases.exibicao.CriarExibicaoUseCase;
-import br.edu.ifsp.cinema.domain.usecases.exibicao.ExibicaoDAO;
-import br.edu.ifsp.cinema.domain.usecases.filme.CriarFilmeUseCase;
-import br.edu.ifsp.cinema.domain.usecases.filme.FilmeDAO;
-import br.edu.ifsp.cinema.domain.usecases.relatorios.RelatorioVendasUseCase;
-import br.edu.ifsp.cinema.domain.usecases.utils.export.PDFExporter;
-import br.edu.ifsp.cinema.domain.usecases.utils.export.PDFExporterIngressos;
-import br.edu.ifsp.cinema.domain.usecases.venda.CriarVendaUseCase;
-import br.edu.ifsp.cinema.domain.usecases.venda.VendaDAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,10 +7,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.time.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class HelloApplication extends Application {
     private static Scene scene;

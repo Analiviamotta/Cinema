@@ -64,7 +64,7 @@ public class VendaUIController {
 
 
     public void backToPreviousScene(ActionEvent actionEvent) throws IOException {
-        HelloApplication.setRoot("VendaManagerUI");
+        HelloApplication.setRoot("MainUI");
     }
 
     public void addTickets(ActionEvent actionEvent) throws IOException {

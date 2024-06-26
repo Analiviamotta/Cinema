@@ -1,4 +1,4 @@
-package br.edu.ifsp.cinema.main.repository;
+package br.edu.ifsp.cinema.application.main.repository.inmemory;
 
 import br.edu.ifsp.cinema.domain.entities.ingresso.Ingresso;
 import br.edu.ifsp.cinema.domain.entities.venda.Venda;

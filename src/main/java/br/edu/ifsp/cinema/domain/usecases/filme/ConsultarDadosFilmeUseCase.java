@@ -12,7 +12,7 @@ public class ConsultarDadosFilmeUseCase {
 
     private FilmeDAO filmeDAO;
 
-    public ConsultarDadosFilmeUseCase(SalaDAO salaDAO) {this.filmeDAO = filmeDAO;}
+    public ConsultarDadosFilmeUseCase(FilmeDAO filmeDAO) {this.filmeDAO = filmeDAO;}
 
     public Optional<Filme> findOne(long id) {
         Optional<Filme> filmeOpt = filmeDAO.findOne(id);

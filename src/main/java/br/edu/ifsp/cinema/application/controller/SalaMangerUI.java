@@ -100,7 +100,7 @@ public class SalaMangerUI {
     public void delete(ActionEvent actionEvent) {
         Sala sala = tableView.getSelectionModel().getSelectedItem();
         if (sala != null) {
-            ExcluirSalaUseCase.remove(sala.getId());
+            ExcluirSalaUseCase.remove(sala);
             loadDataAndShow();
         }
     }
