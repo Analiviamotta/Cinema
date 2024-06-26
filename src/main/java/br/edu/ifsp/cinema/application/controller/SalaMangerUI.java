@@ -3,9 +3,7 @@ package br.edu.ifsp.cinema.application.controller;
 import br.edu.ifsp.cinema.application.view.HelloApplication;
 import br.edu.ifsp.cinema.domain.entities.sala.Sala;
 import br.edu.ifsp.cinema.domain.entities.sala.SalaStatus;
-import br.edu.ifsp.cinema.domain.usecases.sala.ConsultarSalasUseCase;
-import br.edu.ifsp.cinema.domain.usecases.sala.EditarSalaUseCase;
-import br.edu.ifsp.cinema.domain.usecases.sala.ExcluirSalaUseCase;
+import br.edu.ifsp.cinema.domain.usecases.sala.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -75,7 +73,7 @@ public class SalaMangerUI {
     }
 
     private void loadDataAndShow() {
-        List<Sala> salas = ConsultarSalasUseCase.findAll();
+        List<Sala> salas = ConsultarSalasUseCase.findAllWithInativos();
         tableData = FXCollections.observableArrayList(salas);
         tableView.setItems(tableData);
     }
@@ -91,8 +89,7 @@ public class SalaMangerUI {
     public void active(ActionEvent actionEvent) {
         Sala sala = tableView.getSelectionModel().getSelectedItem();
         if (sala != null) {
-            sala.setStatus(SalaStatus.valueOf("Ativo"));
-            EditarSalaUseCase.update(sala);
+            AtivarSalaUseCase.ativarSala(sala.getId());
             loadDataAndShow();
         }
     }
@@ -108,8 +105,7 @@ public class SalaMangerUI {
     public void inactive(ActionEvent actionEvent) {
         Sala sala = tableView.getSelectionModel().getSelectedItem();
         if (sala != null) {
-            sala.setStatus(SalaStatus.valueOf("Inativo"));
-            EditarSalaUseCase.update(sala);
+            InativarSalaUseCase.inativarSala(sala.getId());
             loadDataAndShow();
         }
     }

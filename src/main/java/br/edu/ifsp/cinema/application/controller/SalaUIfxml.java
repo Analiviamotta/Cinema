@@ -80,7 +80,7 @@ public class SalaUIfxml {
     @FXML
     public void btnSave(ActionEvent actionEvent) {
         getEntityToView();
-        if(String.valueOf(sala.getId()) == null){
+        if(String.valueOf(sala.getId()) != null){
             CriarSalaUseCase.insert(sala);
         }
     }
@@ -91,7 +91,8 @@ public class SalaUIfxml {
 
     @FXML
     public void btnOpenAssentosScene(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("src/main/resources/br/edu/ifsp/cinema/application/view/AssentosUI.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/ifsp/cinema/application/view/AssentosUI.fxml"));
         Parent root = loader.load();
 
         AssentosUIController assentosController = loader.getController();
@@ -100,4 +101,6 @@ public class SalaUIfxml {
         Stage stage = (Stage) btnAssentos.getScene().getWindow();
         stage.setScene(new Scene(root));
     }
+
+
 }

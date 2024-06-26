@@ -6,13 +6,13 @@ import br.edu.ifsp.cinema.domain.usecases.utils.EntityNotFoundException;
 import br.edu.ifsp.cinema.domain.usecases.utils.InactiveObjectException;
 
 public class InativarSalaUseCase {
-    private SalaDAO salaDAO;
+    private static SalaDAO salaDAO;
 
     public InativarSalaUseCase (SalaDAO salaDAO) {
         this.salaDAO = salaDAO;
     }
 
-    public void inativarSala(Long id) {
+    public static void inativarSala(Long id) {
         Sala sala = salaDAO.findOne(id)
                 .orElseThrow(() -> new EntityNotFoundException("Sala não encontrada"));
 

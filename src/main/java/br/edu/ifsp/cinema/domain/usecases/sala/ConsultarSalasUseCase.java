@@ -15,7 +15,8 @@ public class ConsultarSalasUseCase {
     }
 
     public static List<Sala> findAll() {
-        List<Sala> salasAtivasList = salaDAO.findAll().stream()
+        List<Sala> salasAtivasList = salaDAO.findAll()
+                .stream()
                 .filter(sala -> sala.getStatus() != SalaStatus.INATIVO)
                 .collect(Collectors.toList());
         //remove as salas com status inativo
@@ -26,4 +27,15 @@ public class ConsultarSalasUseCase {
 
         return salasAtivasList;
     }
+
+    public static List<Sala> findAllWithInativos() {
+        List<Sala> salasAtivasList = salaDAO.findAll();
+
+        if(salasAtivasList.isEmpty()) {
+            throw new EntityNotFoundException("Não há salas cadastradas");
+        }
+
+        return salasAtivasList;
+    }
+
 }
