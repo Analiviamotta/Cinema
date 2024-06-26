@@ -15,6 +15,11 @@ public class InMemoryExibicaoDAO implements ExibicaoDAO {
     }
 
     @Override
+    public Exibicao findByVendaId(long id) {
+        return null;
+    }
+
+    @Override
     public Exibicao create(Exibicao exibicao) {
         exibicao.setId(idCont++);
         db.put(exibicao.getId(), exibicao);

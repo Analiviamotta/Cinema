@@ -12,5 +12,8 @@ public interface ExibicaoDAO extends DAO<Exibicao, Long> {
     List<Exibicao> findByFilmeId(long id);
     List<Exibicao> findBySalaId(long id);
     List<Exibicao> findAll();
+
+    Exibicao findByVendaId(long id);
+
     boolean exibicaoExistenteNaMesmaDataHorarioSala(Exibicao exibicao);
 }

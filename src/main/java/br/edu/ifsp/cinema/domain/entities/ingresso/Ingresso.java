@@ -23,6 +23,11 @@ public class Ingresso {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
     public Assento getAssento() {
         return assento;
     }

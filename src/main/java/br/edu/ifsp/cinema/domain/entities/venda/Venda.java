@@ -28,6 +28,13 @@ public class Venda {
         }
     }
 
+    public Venda(List<Ingresso> ingressoList, Exibicao exibicao, LocalDate data, VendaStatus status) {
+        this.ingressoList = ingressoList;
+        this.exibicao = exibicao;
+        this.data = data;
+        this.status = status;
+    }
+
     public Venda(Long id, Exibicao exibicao, Ingresso... ingressos) {
         this.id = id;
         this.exibicao = exibicao;

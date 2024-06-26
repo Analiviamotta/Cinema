@@ -326,6 +326,60 @@ public class ExhibitionDaoSqlite implements ExibicaoDAO {
     }
 
     @Override
+    public Exibicao findByVendaId(long id) {
+        String sql = """
+            SELECT e.id, e.date_time, e.duration, e.tickets_number, e.status, e.movie_id, e.room_id,
+                    m.title, m.genre, m.synopsis, m.parental_rating, m.status as movie_status,
+                    r.number, r.line_num, r.column_num, r.capacity, r.status as room_status
+            FROM Exhibition e
+            INNER JOIN Movie m ON e.movie_id = m.id
+            INNER JOIN Room r ON e.room_id = r.id
+            INNER JOIN Ticket t ON t.exhibition_id = e.id
+            WHERE t.sale_id = ?
+            """;
+        Exibicao exibicao = new Exibicao();
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+            stmt.setLong(1, id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    Filme filme = new Filme(
+                            rs.getString("title"),
+                            FilmeGenero.valueOf(rs.getString("genre")),
+                            rs.getString("synopsis"),
+                            rs.getString("parental_rating")
+                    );
+                    filme.setId(rs.getLong("movie_id"));
+                    filme.setStatus(FilmeStatus.valueOf(rs.getString("movie_status")));
+
+                    Sala sala = new Sala(
+                            rs.getInt("number"),
+                            rs.getInt("line_num"),
+                            rs.getInt("column_num"),
+                            rs.getInt("capacity"),
+                            new ArrayList<>()
+                    );
+                    sala.setId(rs.getLong("room_id"));
+                    sala.setStatus(SalaStatus.valueOf(rs.getString("room_status")));
+
+                     exibicao = new Exibicao(
+                            sala,
+                            filme,
+                            LocalDateTime.parse(rs.getString("date_time"), formatter),
+                            Duration.ofMinutes(rs.getInt("duration")),
+                            rs.getInt("tickets_number")
+                    );
+                    exibicao.setId(rs.getLong("id"));
+                    exibicao.setStatus(ExibicaoStatus.valueOf(rs.getString("status")));
+
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return exibicao;
+    }
+
+    @Override
     public boolean exibicaoExistenteNaMesmaDataHorarioSala(Exibicao exibicao) {
         String sql = """
             SELECT e.id
