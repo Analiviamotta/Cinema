@@ -1,5 +1,6 @@
 package br.edu.ifsp.cinema.application.main.repository.inmemory;
 
+import br.edu.ifsp.cinema.domain.entities.assento.Assento;
 import br.edu.ifsp.cinema.domain.entities.sala.Sala;
 import br.edu.ifsp.cinema.domain.entities.sala.SalaStatus;
 import br.edu.ifsp.cinema.domain.usecases.sala.SalaDAO;
@@ -27,6 +28,11 @@ public class InMemorySalaDAO implements SalaDAO {
     public boolean isInExibicao(long salaId) {
         return exibicaoDAO.findBySalaId(salaId).stream()
                 .anyMatch(exibicao -> exibicao.getHorarioData().isAfter(LocalDateTime.now()));
+    }
+
+    @Override
+    public List<Assento> findAllSeatByRoom(Long id) {
+        return List.of();
     }
 
     @Override

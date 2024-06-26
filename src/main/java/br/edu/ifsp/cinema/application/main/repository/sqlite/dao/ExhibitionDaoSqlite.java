@@ -10,6 +10,7 @@ import br.edu.ifsp.cinema.domain.entities.filme.FilmeStatus;
 import br.edu.ifsp.cinema.domain.entities.sala.Sala;
 import br.edu.ifsp.cinema.domain.entities.sala.SalaStatus;
 import br.edu.ifsp.cinema.domain.usecases.exibicao.ExibicaoDAO;
+import br.edu.ifsp.cinema.domain.usecases.sala.SalaDAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -134,6 +135,7 @@ public class ExhibitionDaoSqlite implements ExibicaoDAO {
         List<Exibicao> exibicoes = new ArrayList<>();
         try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
+            SalaDAO salaDAO = new RoomDaoSqlite();
             while (rs.next()) {
                 Filme filme = new Filme(
                         rs.getString("title"),
@@ -149,7 +151,7 @@ public class ExhibitionDaoSqlite implements ExibicaoDAO {
                         rs.getInt("line_num"),
                         rs.getInt("column_num"),
                         rs.getInt("capacity"),
-                        new ArrayList<>()
+                        salaDAO.findAllSeatByRoom(rs.getLong("room_id"))
                 );
                 sala.setId(rs.getLong("room_id"));
                 sala.setStatus(SalaStatus.valueOf(rs.getString("room_status").toUpperCase()));

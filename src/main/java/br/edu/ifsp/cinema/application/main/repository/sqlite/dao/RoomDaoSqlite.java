@@ -105,6 +105,21 @@ public class RoomDaoSqlite implements SalaDAO {
         }
     }
 
+    @Override
+    public List<Assento> findAllSeatByRoom(Long id) {
+        String sql = "SELECT * FROM Seat WHERE room_id = ?";
+        List<Assento> assentos = new ArrayList<>();
+        try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                assentos.add(mapResultSetToAssento(rs));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return assentos;
+    }
 
     @Override
     public Optional<Sala> findOne(Long id) {
@@ -226,7 +241,7 @@ public class RoomDaoSqlite implements SalaDAO {
         Integer capacidade = rs.getInt("capacity");
         SalaStatus status = SalaStatus.valueOf(rs.getString("status").toUpperCase());
 
-        List<Assento> assentos = new ArrayList<>();
+        List<Assento> assentos = findAllSeatByRoom(id);
 
         Sala sala = new Sala(numero, numLinhas, numColunas, capacidade);
         sala.setId(id);
@@ -234,6 +249,17 @@ public class RoomDaoSqlite implements SalaDAO {
         sala.setAssentoList(assentos);
 
         return sala;
+    }
+
+    private Assento mapResultSetToAssento(ResultSet rs) throws SQLException {
+        Long id = rs.getLong("id");
+        Integer coluna = rs.getInt("column");
+        Integer linha = rs.getInt("line");
+
+        Assento assento = new Assento(coluna,linha);
+        assento.setId(id);
+
+        return assento;
     }
 
 
