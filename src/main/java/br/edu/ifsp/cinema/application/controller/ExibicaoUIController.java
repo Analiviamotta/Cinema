@@ -6,6 +6,7 @@ import br.edu.ifsp.cinema.domain.entities.filme.Filme;
 import br.edu.ifsp.cinema.domain.entities.filme.FilmeGenero;
 import br.edu.ifsp.cinema.domain.entities.sala.Sala;
 import br.edu.ifsp.cinema.domain.usecases.exibicao.CriarExibicaoUseCase;
+import br.edu.ifsp.cinema.domain.usecases.exibicao.EditarExibicaoUseCase;
 import br.edu.ifsp.cinema.domain.usecases.filme.CriarFilmeUseCase;
 import br.edu.ifsp.cinema.domain.usecases.sala.ConsultarDadosSalaUseCase;
 import br.edu.ifsp.cinema.domain.usecases.sala.ConsultarSalasUseCase;
@@ -126,27 +127,24 @@ public class ExibicaoUIController {
         this.exibicao = exibicao;
         setEntityIntoView();
         if(uiMode == UIMode.UPDATE){
-            configViewMode(uiMode);
+            configUpdateMode();
         }
     }
 
-    private void configViewMode(UIMode uiMode) throws IOException {
-        if (exibicao != null) {
-            HelloApplication.setRoot("exibicaoUI");
-
-            ExibicaoUIController controller = (ExibicaoUIController) HelloApplication.getController();
-            controller.setExibicao(exibicao, uiMode);
-        }
+    private void configUpdateMode() {
+        //dtDataEHorario.setDisable(true);
     }
 
 
     @FXML
-    public void save(ActionEvent actionEvent) {
+    public void save(ActionEvent actionEvent) throws IOException {
         getEntityToView();
-        System.out.println(exibicao);
-
         if(exibicao.getId() == null){
             CriarExibicaoUseCase.insert(exibicao);
+        }
+        else{
+            EditarExibicaoUseCase.update(exibicao);
+            HelloApplication.setRoot("ExibicaoManeger");
         }
     }
 

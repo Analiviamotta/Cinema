@@ -89,7 +89,7 @@ public class MovieDaoSqlite implements FilmeDAO {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 String generoDoBanco = rs.getString("genre").toLowerCase();
-                FilmeGenero generoEnum = FilmeGenero.valueOf(generoDoBanco.toUpperCase());
+                FilmeGenero generoEnum = FilmeGenero.fromString(generoDoBanco.toUpperCase());
 
                 filme = new Filme(
                         rs.getString("title"),
@@ -98,6 +98,7 @@ public class MovieDaoSqlite implements FilmeDAO {
                         rs.getString("parental_rating")
                 );
                 filme.setId(rs.getLong("id"));
+                filme.setStatus(FilmeStatus.valueOf(rs.getString("status").toUpperCase()));
                 return Optional.of(filme);
             }
         } catch (SQLException e) {
@@ -134,10 +135,10 @@ public class MovieDaoSqlite implements FilmeDAO {
         String sql = "UPDATE Movie SET title = ?, genre = ?, synopsis = ?, parental_rating = ?, status = ? WHERE id = ?";
         try (PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)) {
             stmt.setString(1, entity.getTitulo());
-            stmt.setString(2, entity.getGenero().name());
+            stmt.setString(2, entity.getGenero().toString());
             stmt.setString(3, entity.getSinopse());
             stmt.setString(4, entity.getClassificacaoIndicativa());
-            stmt.setString(5, entity.getStatus().name());
+            stmt.setString(5, entity.getStatus().toString());
             stmt.setLong(6, entity.getId());
             stmt.executeUpdate();
             return true;

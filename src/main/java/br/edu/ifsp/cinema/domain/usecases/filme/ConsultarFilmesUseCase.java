@@ -16,9 +16,7 @@ public class ConsultarFilmesUseCase {
     }
 
     public static List<Filme> findAll() {
-        List<Filme> filmesAtivosList = filmeDAO.findAll().stream()
-                .filter(filme -> filme.getStatus() != FilmeStatus.INATIVO)
-                .collect(Collectors.toList());
+        List<Filme> filmesAtivosList = filmeDAO.findAll();
         //remove os filmes com status inativo
 
         if(filmesAtivosList.isEmpty()) {

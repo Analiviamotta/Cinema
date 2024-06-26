@@ -10,13 +10,13 @@ import br.edu.ifsp.cinema.domain.usecases.utils.Validator;
 // as mesmas verificações do CriarExibicao
 
 public class EditarExibicaoUseCase {
-    private ExibicaoDAO exibicaoDAO;
+    private static ExibicaoDAO exibicaoDAO;
 
     public EditarExibicaoUseCase(ExibicaoDAO exibicaoDAO) {
         this.exibicaoDAO = exibicaoDAO;
     }
 
-    public Boolean update(Exibicao exibicao) {
+    public static Boolean update(Exibicao exibicao) {
         Validator<Exibicao> validator = new ExibicaoInputRequestValidator();
         Notification notification = validator.validate(exibicao);
 

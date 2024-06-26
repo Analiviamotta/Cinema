@@ -15,7 +15,6 @@ public class AtivarFilmeUseCase {
     public static void ativarFilme(Long id) {
         Filme filme = filmeDAO.findOne(id)
                 .orElseThrow(() -> new EntityNotFoundException("Filme não encontrado"));
-
         if (filme.getStatus() == FilmeStatus.ATIVO) {
             throw new EntityAlreadyExistsException("O filme já está ativo");
         }

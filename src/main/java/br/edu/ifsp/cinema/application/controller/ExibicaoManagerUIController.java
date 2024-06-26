@@ -7,6 +7,7 @@ import br.edu.ifsp.cinema.domain.entities.sala.Sala;
 import br.edu.ifsp.cinema.domain.usecases.exibicao.ConsultarExibicaoUseCase;
 import br.edu.ifsp.cinema.domain.usecases.exibicao.ExcluirExibicaoUseCase;
 import br.edu.ifsp.cinema.domain.usecases.filme.InativarFilmeUseCase;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,10 +28,10 @@ public class ExibicaoManagerUIController {
     private TableView<Exibicao> tableView;
 
     @FXML
-    private TableColumn<Exibicao, Filme> cFilme;
+    private TableColumn<Exibicao, String> cFilme;
 
     @FXML
-    private TableColumn<Exibicao, Sala> cSala;
+    private TableColumn<Exibicao, String> cSala;
 
     @FXML
     private TableColumn<Exibicao, LocalDateTime> cDataEHora;
@@ -59,7 +60,7 @@ public class ExibicaoManagerUIController {
     private ObservableList<Exibicao> tableData;
 
     @FXML
-    private void intitalize(){
+    private void initialize(){
         bindTableViewToItemsList();
         bindColumnsToValueSources();
         loadDataAndShow();
@@ -69,15 +70,14 @@ public class ExibicaoManagerUIController {
         List<Exibicao> exibicoes = ConsultarExibicaoUseCase.findAll();
         tableData.clear();
         tableData.addAll(exibicoes);
-
     }
 
     private void bindColumnsToValueSources() {
-        cFilme.setCellValueFactory(new PropertyValueFactory<>("filme"));
-        cSala.setCellValueFactory(new PropertyValueFactory<>("sala"));
-        cDataEHora.setCellValueFactory(new PropertyValueFactory<>("dataEHora"));
-        cDuracao.setCellValueFactory(new PropertyValueFactory<>("duracao"));
-        cQuantidadeDeIngressosDeDisponiveis.setCellValueFactory(new PropertyValueFactory<>("quantidadeDeIngressosDisponiveis"));
+        cFilme.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getFilme().getTitulo()));
+        cSala.setCellValueFactory(cell -> new SimpleStringProperty(String.format("%s", cell.getValue().getSala().getNumber())));
+        cDataEHora.setCellValueFactory(new PropertyValueFactory<>("horarioData"));
+        cDuracao.setCellValueFactory(new PropertyValueFactory<>("tempoDuracao"));
+        cQuantidadeDeIngressosDeDisponiveis.setCellValueFactory(new PropertyValueFactory<>("qntIngressosDisponiveis"));
     }
 
     private void bindTableViewToItemsList() {

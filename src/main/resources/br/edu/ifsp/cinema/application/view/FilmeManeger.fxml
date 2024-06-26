@@ -15,32 +15,27 @@
            <TableColumn fx:id="cStatus" prefWidth="132.4000244140625" style="-fx-background-color: #fdf0d5;" text="Status" />
         </columns>
       </TableView>
-      <Button fx:id="btnAdicionar" layoutX="104.0" layoutY="329.0" mnemonicParsing="false" onAction="#addFilme" style="-fx-background-color: #001d3d;" text="Adicionar" textFill="WHITE">
+      <Button fx:id="btnAdicionar" layoutX="147.0" layoutY="329.0" mnemonicParsing="false" onAction="#addFilme" style="-fx-background-color: #001d3d;" text="Adicionar" textFill="WHITE">
          <font>
             <Font name="Monospaced Regular" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnDeletar" layoutX="217.0" layoutY="329.0" mnemonicParsing="false" onAction="#deleteFilme" style="-fx-background-color: #001d3d;" text="Deletar" textFill="WHITE">
+      <Button fx:id="btnDetalhar" layoutX="358.0" layoutY="329.0" mnemonicParsing="false" onAction="#inactivateFilme" prefHeight="26.0" prefWidth="95.0" style="-fx-background-color: #001d3d;" text="Inativar" textFill="WHITE">
          <font>
             <Font name="Monospaced Regular" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnDetalhar" layoutX="399.0" layoutY="329.0" mnemonicParsing="false" onAction="#inactivateFilme" prefHeight="26.0" prefWidth="95.0" style="-fx-background-color: #001d3d;" text="Inativar" textFill="WHITE">
+      <Button fx:id="btnEditar" layoutX="475.0" layoutY="329.0" mnemonicParsing="false" onAction="#editFilme" prefHeight="26.0" prefWidth="70.0" style="-fx-background-color: #001d3d;" text="Editar" textFill="WHITE">
          <font>
             <Font name="Monospaced Regular" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnEditar" layoutX="509.0" layoutY="329.0" mnemonicParsing="false" onAction="#editFilme" prefHeight="26.0" prefWidth="70.0" style="-fx-background-color: #001d3d;" text="Editar" textFill="WHITE">
+      <Button fx:id="btnVoltar" layoutX="60.0" layoutY="329.0" mnemonicParsing="false" onAction="#backToPreviousScene" style="-fx-background-color: #001d3d;" text="Voltar" textFill="WHITE">
          <font>
             <Font name="Monospaced Regular" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnVoltar" layoutX="19.0" layoutY="329.0" mnemonicParsing="false" onAction="#backToPreviousScene" style="-fx-background-color: #001d3d;" text="Voltar" textFill="WHITE">
-         <font>
-            <Font name="Monospaced Regular" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnAtivar" layoutX="312.0" layoutY="329.0" mnemonicParsing="false" onAction="#active" style="-fx-background-color: #001d3d;" text="Ativar" textFill="WHITE">
+      <Button fx:id="btnAtivar" layoutX="266.0" layoutY="329.0" mnemonicParsing="false" onAction="#active" style="-fx-background-color: #001d3d;" text="Ativar" textFill="WHITE">
          <font>
             <Font name="Monospaced Regular" size="14.0" />
          </font>

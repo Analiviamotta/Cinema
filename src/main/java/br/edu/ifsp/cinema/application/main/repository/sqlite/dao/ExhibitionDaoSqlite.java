@@ -74,7 +74,7 @@ public class ExhibitionDaoSqlite implements ExibicaoDAO {
                         rs.getString("parental_rating")
                 );
                 filme.setId(rs.getLong("movie_id"));
-                filme.setStatus(FilmeStatus.valueOf(rs.getString("movie_status")));
+                filme.setStatus(FilmeStatus.valueOf(rs.getString("movie_status").toUpperCase()));
 
                 // Carregar assentos da sala
                 List<Assento> assentos = new ArrayList<>();
@@ -99,7 +99,7 @@ public class ExhibitionDaoSqlite implements ExibicaoDAO {
                         assentos // Set assentos list
                 );
                 sala.setId(rs.getLong("room_id"));
-                sala.setStatus(SalaStatus.valueOf(rs.getString("room_status")));
+                sala.setStatus(SalaStatus.valueOf(rs.getString("room_status").toUpperCase()));
 
                 Exibicao exibicao = new Exibicao(
                         sala,
@@ -109,7 +109,7 @@ public class ExhibitionDaoSqlite implements ExibicaoDAO {
                         rs.getInt("tickets_number")
                 );
                 exibicao.setId(rs.getLong("id"));
-                exibicao.setStatus(ExibicaoStatus.valueOf(rs.getString("status")));
+                exibicao.setStatus(ExibicaoStatus.fromString(rs.getString("status")));
 
                 return Optional.of(exibicao);
             }
@@ -127,7 +127,7 @@ public class ExhibitionDaoSqlite implements ExibicaoDAO {
             SELECT e.id, e.date_time, e.duration, e.tickets_number, e.status, e.movie_id, e.room_id,
                     m.title, m.genre, m.synopsis, m.parental_rating, m.status as movie_status,
                     r.number, r.line_num, r.column_num, r.capacity, r.status as room_status
-            FROM Exhibition e 
+            FROM Exhibition e
             INNER JOIN Movie m ON e.movie_id = m.id
             INNER JOIN Room r ON e.room_id = r.id
             """;
@@ -142,7 +142,7 @@ public class ExhibitionDaoSqlite implements ExibicaoDAO {
                         rs.getString("parental_rating")
                 );
                 filme.setId(rs.getLong("movie_id"));
-                filme.setStatus(FilmeStatus.valueOf(rs.getString("movie_status")));
+                filme.setStatus(FilmeStatus.valueOf(rs.getString("movie_status").toUpperCase()));
 
                 Sala sala = new Sala(
                         rs.getInt("number"),
@@ -152,7 +152,7 @@ public class ExhibitionDaoSqlite implements ExibicaoDAO {
                         new ArrayList<>()
                 );
                 sala.setId(rs.getLong("room_id"));
-                sala.setStatus(SalaStatus.valueOf(rs.getString("room_status")));
+                sala.setStatus(SalaStatus.valueOf(rs.getString("room_status").toUpperCase()));
 
                 Exibicao exibicao = new Exibicao(
                         sala,
@@ -162,7 +162,7 @@ public class ExhibitionDaoSqlite implements ExibicaoDAO {
                         rs.getInt("tickets_number")
                 );
                 exibicao.setId(rs.getLong("id"));
-                exibicao.setStatus(ExibicaoStatus.valueOf(rs.getString("status")));
+                exibicao.setStatus(ExibicaoStatus.fromString(rs.getString("status")));
 
                 exibicoes.add(exibicao);
             }

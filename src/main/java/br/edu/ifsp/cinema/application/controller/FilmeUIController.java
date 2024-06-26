@@ -20,7 +20,7 @@ public class FilmeUIController {
     private TextField txtTitulo;
 
     @FXML
-    private ComboBox<String> cbGenero;
+    private ComboBox<FilmeGenero> cbGenero;
 
     @FXML
     private TextArea txtSinopse;
@@ -35,7 +35,8 @@ public class FilmeUIController {
     private Button btnCancelar;
     private Filme filme;
 
-    @FXML public void initialize(){cbGenero.getItems().setAll(Arrays.toString(FilmeGenero.values()));
+    @FXML public void initialize(){
+        cbGenero.getItems().setAll(FilmeGenero.values());
     }
 
     private void getEntityToView(){
@@ -45,18 +46,18 @@ public class FilmeUIController {
         filme.setTitulo(txtTitulo.getText());
         filme.setSinopse(txtSinopse.getText());
         filme.setClassificacaoIndicativa(txtClassificacaoIndicativa.getText());
-        filme.setGenero(FilmeGenero.valueOf(cbGenero.getValue()));
+        filme.setGenero(FilmeGenero.fromString(cbGenero.getValue().toString()));
     }
 
     private void setEntityIntoView(){
         txtTitulo.setText(filme.getTitulo());
         txtSinopse.setText(filme.getSinopse());
         txtClassificacaoIndicativa.setText(filme.getClassificacaoIndicativa());
-        cbGenero.setValue(filme.getGenero().toString());
+        cbGenero.setValue(filme.getGenero());
     }
     public void saveOrUpdate(ActionEvent actionEvent) throws IOException {
         getEntityToView();
-        if(String.valueOf(filme.getId()) == null){
+        if(filme.getId() == null){
             CriarFilmeUseCase.insert(filme);
         }
         else{
