@@ -4,6 +4,7 @@ import br.edu.ifsp.cinema.application.view.HelloApplication;
 import br.edu.ifsp.cinema.domain.entities.exibicao.Exibicao;
 import br.edu.ifsp.cinema.domain.entities.ingresso.Ingresso;
 import br.edu.ifsp.cinema.domain.entities.venda.Venda;
+import br.edu.ifsp.cinema.domain.usecases.exibicao.ConsultarExibicaoUseCase;
 import br.edu.ifsp.cinema.domain.usecases.venda.CriarVendaUseCase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -50,18 +51,22 @@ public class VendaUIController {
 
     @FXML
     public void initialize() {
-
         tableData = FXCollections.observableArrayList();
+
+        loadExibicoes();
         tableView.setItems(tableData);
 
-
+        // Configura as colunas da tabela
         cFilme.setCellValueFactory(new PropertyValueFactory<>("filme"));
-        cDataEHora.setCellValueFactory(new PropertyValueFactory<>("HorarioData"));
+        cDataEHora.setCellValueFactory(new PropertyValueFactory<>("horarioData")); // Verifique o nome do atributo na classe Exibicao
         cSala.setCellValueFactory(new PropertyValueFactory<>("sala"));
         cDuracao.setCellValueFactory(new PropertyValueFactory<>("tempoDuracao"));
         cNumeroDeIngressosDisponíveis.setCellValueFactory(new PropertyValueFactory<>("qntIngressosDisponiveis"));
     }
 
+    public void loadExibicoes() {
+        tableData.addAll(ConsultarExibicaoUseCase.findAll());
+    }
 
     public void backToPreviousScene(ActionEvent actionEvent) throws IOException {
         HelloApplication.setRoot("MainUI");
