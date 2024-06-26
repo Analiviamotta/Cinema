@@ -2,10 +2,14 @@ package br.edu.ifsp.cinema.application.controller;
 
 import br.edu.ifsp.cinema.application.view.HelloApplication;
 import br.edu.ifsp.cinema.domain.entities.exibicao.Exibicao;
+import br.edu.ifsp.cinema.domain.entities.filme.Filme;
 import br.edu.ifsp.cinema.domain.entities.ingresso.Ingresso;
+import br.edu.ifsp.cinema.domain.entities.sala.Sala;
 import br.edu.ifsp.cinema.domain.entities.venda.Venda;
 import br.edu.ifsp.cinema.domain.usecases.exibicao.ConsultarExibicaoUseCase;
 import br.edu.ifsp.cinema.domain.usecases.venda.CriarVendaUseCase;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -56,10 +60,18 @@ public class VendaUIController {
         loadExibicoes();
         tableView.setItems(tableData);
 
-        // Configura as colunas da tabela
-        cFilme.setCellValueFactory(new PropertyValueFactory<>("filme"));
-        cDataEHora.setCellValueFactory(new PropertyValueFactory<>("horarioData")); // Verifique o nome do atributo na classe Exibicao
-        cSala.setCellValueFactory(new PropertyValueFactory<>("sala"));
+        cFilme.setCellValueFactory(cellData -> {
+
+            Filme filme = cellData.getValue().getFilme();
+            return new SimpleStringProperty(filme.getTitulo());
+        });
+
+        cDataEHora.setCellValueFactory(new PropertyValueFactory<>("horarioData"));
+        cSala.setCellValueFactory(cellData -> {
+            Sala sala = cellData.getValue().getSala();
+            return new SimpleIntegerProperty(sala.getNumber()).asObject();
+        });
+
         cDuracao.setCellValueFactory(new PropertyValueFactory<>("tempoDuracao"));
         cNumeroDeIngressosDisponíveis.setCellValueFactory(new PropertyValueFactory<>("qntIngressosDisponiveis"));
     }
