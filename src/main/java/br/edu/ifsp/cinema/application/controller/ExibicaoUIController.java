@@ -7,6 +7,7 @@ import br.edu.ifsp.cinema.domain.entities.filme.FilmeGenero;
 import br.edu.ifsp.cinema.domain.entities.sala.Sala;
 import br.edu.ifsp.cinema.domain.usecases.exibicao.CriarExibicaoUseCase;
 import br.edu.ifsp.cinema.domain.usecases.exibicao.EditarExibicaoUseCase;
+import br.edu.ifsp.cinema.domain.usecases.filme.ConsultarDadosFilmeUseCase;
 import br.edu.ifsp.cinema.domain.usecases.filme.CriarFilmeUseCase;
 import br.edu.ifsp.cinema.domain.usecases.sala.ConsultarDadosSalaUseCase;
 import br.edu.ifsp.cinema.domain.usecases.sala.ConsultarSalasUseCase;
@@ -22,6 +23,8 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
+
+import static br.edu.ifsp.cinema.application.main.Main.consultarDadosFilmeUseCase;
 
 
 public class ExibicaoUIController {
@@ -58,6 +61,8 @@ public class ExibicaoUIController {
 
     private Exibicao exibicao;
 
+    static ConsultarDadosFilmeUseCase ConsultarDadosFilmeUseCase;
+
 
     public ExibicaoUIController() {
 
@@ -74,16 +79,35 @@ public class ExibicaoUIController {
                 exibicao.setSala(sala);
             } else {
                 System.out.println("Sala não encontrada!");
+                return;
             }
 
             LocalDate data = dtDataEHorario.getValue();
             LocalDateTime horarioData = data.atStartOfDay();
-
             exibicao.setHorarioData(horarioData);
+
             exibicao.setTempoDuracao(Duration.ofMinutes(Long.parseLong(txtDuracao.getText())));
             exibicao.setQntIngressosDisponiveis(Integer.parseInt(txtQuantidadeIngressos.getText()));
+
+            Filme filme = findFilmeByTitulo(txtFilme.getText());
+            if (filme != null) {
+                exibicao.setFilme(filme);
+            } else {
+                System.out.println("Filme não encontrado!");
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private Filme findFilmeByTitulo(String titulo) {
+        Optional<Filme> filmeOpt = consultarDadosFilmeUseCase.findByTitulo(titulo);
+        if (filmeOpt.isPresent()) {
+            return filmeOpt.get();
+        } else {
+            System.out.println("Nenhum filme com esse título foi encontrado");
+            return null;
         }
     }
 

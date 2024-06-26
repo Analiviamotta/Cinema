@@ -6,6 +6,7 @@ import br.edu.ifsp.cinema.domain.usecases.sala.SalaDAO;
 import br.edu.ifsp.cinema.domain.usecases.utils.EntityAlreadyExistsException;
 import br.edu.ifsp.cinema.domain.usecases.utils.InactiveObjectException;
 
+import java.util.List;
 import java.util.Optional;
 
 public class ConsultarDadosFilmeUseCase {
@@ -24,6 +25,23 @@ public class ConsultarDadosFilmeUseCase {
             throw new InactiveObjectException("Filme inativo");
         }
 
+        return filmeOpt;
+    }
+
+    public Optional<Filme> findByTitulo(String titulo) {
+        Optional<Filme> filmeOpt = filmeDAO.findByTitulo(titulo);
+        if (filmeOpt.isEmpty()) {
+            // Se não encontrar o filme, retorna Optional.empty()
+            return Optional.empty();
+        }
+
+        Filme filme = filmeOpt.get();
+        if (filme.getStatus() == FilmeStatus.INATIVO) {
+            // Se o filme encontrado estiver inativo, lança uma exceção
+            throw new InactiveObjectException("Filme inativo: " + filme.getTitulo());
+        }
+
+        // Retorna o filme encontrado
         return filmeOpt;
     }
 }
