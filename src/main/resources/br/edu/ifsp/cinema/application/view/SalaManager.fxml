@@ -15,20 +15,26 @@
             <TableColumn fx:id="cStatus" prefWidth="103.59994506835938" style="-fx-background-color: #fdf0d5;" text="Status" />
          </columns>
       </TableView>
-      <Button fx:id="btnAdicionar" layoutX="32.0" layoutY="316.0" mnemonicParsing="false" onAction="#backToPreviousScene" style="-fx-background-color: #001d3d;" text="Voltar" textFill="WHITE">
+      <Button fx:id="btnVoltar" layoutX="32.0" layoutY="316.0" mnemonicParsing="false" onAction="#backToPreviousScene" style="-fx-background-color: #001d3d;" text="Voltar" textFill="WHITE">
          <font>
             <Font name="Monospaced Regular" size="14.0" />
-         </font></Button>
+         </font>
+      </Button>
+      <Button fx:id="btnAdicionar" layoutX="112.0" layoutY="316.0" mnemonicParsing="false" onAction="#addSala" style="-fx-background-color: #001d3d;" text="Adicionar" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font>
+      </Button>
       <Button fx:id="btnInativar" layoutX="217.0" layoutY="316.0" mnemonicParsing="false" onAction="#inactive" style="-fx-background-color: #001d3d;" text="Inativar" textFill="WHITE">
          <font>
             <Font name="Monospaced Regular" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="410.0" layoutY="316.0" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: #001d3d;" text="Deletar" textFill="WHITE">
+      <!--<Button layoutX="410.0" layoutY="316.0" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: #001d3d;" text="Deletar" textFill="WHITE">
          <font>
             <Font name="Monospaced Regular" size="14.0" />
          </font>
-      </Button>
+      </Button> -->
       <Button layoutX="503.0" layoutY="316.0" mnemonicParsing="false" onAction="#edit" style="-fx-background-color: #001d3d;" text="Editar" textFill="WHITE">
          <font>
             <Font name="Monospaced Regular" size="14.0" />

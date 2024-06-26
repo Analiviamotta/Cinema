@@ -94,13 +94,13 @@ public class SalaMangerUI {
         }
     }
 
-    public void delete(ActionEvent actionEvent) {
-        Sala sala = tableView.getSelectionModel().getSelectedItem();
-        if (sala != null) {
-            ExcluirSalaUseCase.remove(sala);
-            loadDataAndShow();
-        }
-    }
+//    public void delete(ActionEvent actionEvent) {
+//        Sala sala = tableView.getSelectionModel().getSelectedItem();
+//        if (sala != null) {
+//            ExcluirSalaUseCase.remove(sala);
+//            loadDataAndShow();
+//        }
+//    }
 
     public void inactive(ActionEvent actionEvent) {
         Sala sala = tableView.getSelectionModel().getSelectedItem();
