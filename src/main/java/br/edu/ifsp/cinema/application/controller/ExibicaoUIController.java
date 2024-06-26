@@ -122,15 +122,21 @@ public class ExibicaoUIController {
         }
     }
 
-    public void setExibicao(Exibicao exibicao, UIMode uiMode) {
+    public void setExibicao(Exibicao exibicao, UIMode uiMode) throws IOException {
         this.exibicao = exibicao;
         setEntityIntoView();
         if(uiMode == UIMode.UPDATE){
-            configViewMode();
+            configViewMode(uiMode);
         }
     }
 
-    private void configViewMode() {
+    private void configViewMode(UIMode uiMode) throws IOException {
+        if (exibicao != null) {
+            HelloApplication.setRoot("exibicaoUI");
+
+            ExibicaoUIController controller = (ExibicaoUIController) HelloApplication.getController();
+            controller.setExibicao(exibicao, uiMode);
+        }
     }
 
 

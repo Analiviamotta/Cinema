@@ -43,7 +43,7 @@ public class IngressoUIController {
     private Button btnImprimir;
 
     private ObservableList<Ingresso> tableData;
-    private List<Ingresso> ingressosSelecionados;
+    private static List<Ingresso> ingressosSelecionados;
 
     private static Exibicao exibicaoSelecionada;
 
@@ -75,8 +75,8 @@ public class IngressoUIController {
 
     public void salvarIngressos() {
 
-        List<Ingresso> selectedItems = tableView.getSelectionModel().getSelectedItems();
-        ingressosSelecionados.addAll(selectedItems);
+        this.ingressosSelecionados = tableView.getSelectionModel().getSelectedItems();
+        ingressosSelecionados.addAll(ingressosSelecionados);
 
 
         try {
