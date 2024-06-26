@@ -25,5 +25,10 @@
             <Font name="Monospaced Regular" size="14.0" />
          </font>
       </Button>
+      <Button fx:id="btnAdicionar" layoutX="362.0" layoutY="281.0" mnemonicParsing="false" onAction="#salvarIngressos" style="-fx-background-color: #001d3d;" text="Adicionar" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

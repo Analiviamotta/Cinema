@@ -1,9 +1,12 @@
 package br.edu.ifsp.cinema.domain.entities.venda;
 
 import br.edu.ifsp.cinema.domain.entities.exibicao.Exibicao;
+import br.edu.ifsp.cinema.domain.entities.filme.Filme;
 import br.edu.ifsp.cinema.domain.entities.ingresso.Ingresso;
+import br.edu.ifsp.cinema.domain.entities.sala.Sala;
 
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ArrayList;
@@ -94,6 +97,21 @@ public class Venda {
         return status;
     }
 
+    public Filme getFilme(){
+        return exibicao.getFilme();
+    }
+
+    public Sala getSala(){
+        return exibicao.getSala();
+    }
+    public Duration getDuracao(){
+        return exibicao.getTempoDuracao();
+    }
+
+    public int getNumeroDeIngressoDisponiveis(){
+        return exibicao.getQntIngressosDisponiveis();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -120,4 +138,6 @@ public class Venda {
 
         return sb.toString();
     }
+
+
 }

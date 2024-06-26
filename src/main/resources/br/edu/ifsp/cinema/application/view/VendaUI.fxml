@@ -14,7 +14,7 @@
          <font>
             <Font name="Monospaced Regular" size="14.0" />
          </font></Button>
-      <TableView layoutX="52.0" layoutY="66.0" prefHeight="200.0" prefWidth="518.0">
+      <TableView fx:id="tableView" layoutX="52.0" layoutY="66.0" prefHeight="200.0" prefWidth="518.0">
         <columns>
           <TableColumn fx:id="cFilme" prefWidth="75.0" style="-fx-background-color: #fdf0d5;" text="Filme" />
           <TableColumn fx:id="cDataEHora" prefWidth="75.0" style="-fx-background-color: #fdf0d5;" text="Data/Hora" />
