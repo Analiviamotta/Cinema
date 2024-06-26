@@ -27,16 +27,6 @@ public class CriarSalaUseCase {
             throw new EntityAlreadyExistsException("A sala informada já existe");
         }
 
-        for (int linha = 1; linha <= sala.getNumLinhas(); linha++) {
-            for (int coluna = 1; coluna <= sala.getNumColunas(); coluna++) {
-                Assento assento = new Assento(coluna, linha);
-                if (!sala.verificarAssentoValido(assento)) {
-                    throw new IllegalArgumentException("O assento não é válido para esta sala: " + assento);
-                }
-                sala.addAssento(assento);
-            }
-        }
-
         return salaDAO.create(sala);
     }
 

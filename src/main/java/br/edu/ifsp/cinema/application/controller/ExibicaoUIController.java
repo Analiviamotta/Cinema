@@ -169,6 +169,7 @@ public class ExibicaoUIController {
         getEntityToView();
         if(exibicao.getId() == null){
             CriarExibicaoUseCase.insert(exibicao);
+            HelloApplication.setRoot("ExibicaoManeger");
         }
         else{
             EditarExibicaoUseCase.update(exibicao);

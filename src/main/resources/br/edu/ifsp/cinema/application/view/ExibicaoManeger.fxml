@@ -30,7 +30,7 @@
                 <Font name="Monospaced Regular" size="14.0" />
             </font>
         </Button>
-        <Button fx:id="btnInativar" layoutX="490.0" layoutY="303.0" mnemonicParsing="false" onAction="#inactive" style="-fx-background-color: #001d3d;" text="Inativar" textFill="WHITE">
+        <Button fx:id="btnInativar" layoutX="490.0" layoutY="303.0" mnemonicParsing="false" onAction="#inactive" style="-fx-background-color: #001d3d;" text="Cancelar" textFill="WHITE">
             <font>
                 <Font name="Monospaced Regular" size="14.0" />
             </font></Button>

@@ -181,6 +181,17 @@ public class MovieDaoSqlite implements FilmeDAO {
         return false;
     }
 
+    public void deteleAllFilmes() {
+        String deleteMovieSql = "DELETE FROM Movie";
+        try (PreparedStatement deleteMovieStmt = ConnectionFactory.createPreparedStatement(deleteMovieSql)) {
+            deleteMovieStmt.executeUpdate();
+            System.out.println("Todas os filmes foram excluídos.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     private Filme mapResultSetToFilme(ResultSet rs) throws SQLException {
         Long id = rs.getLong("id");
         String titulo = rs.getString("title");

@@ -17,7 +17,6 @@ public class ConsultarFilmesUseCase {
 
     public static List<Filme> findAll() {
         List<Filme> filmesAtivosList = filmeDAO.findAll();
-        //remove os filmes com status inativo
 
         if(filmesAtivosList.isEmpty()) {
             throw new EntityNotFoundException("Não há filmes cadastrados ativos");
