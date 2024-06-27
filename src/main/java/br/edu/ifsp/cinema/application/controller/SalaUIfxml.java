@@ -3,6 +3,7 @@ package br.edu.ifsp.cinema.application.controller;
 import br.edu.ifsp.cinema.application.view.HelloApplication;
 import br.edu.ifsp.cinema.domain.entities.sala.Sala;
 import br.edu.ifsp.cinema.domain.usecases.sala.CriarSalaUseCase;
+import br.edu.ifsp.cinema.domain.usecases.sala.EditarSalaUseCase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -75,13 +76,17 @@ public class SalaUIfxml {
     }
 
     private void configViewMode() {
+        txtNumero.setDisable(true);
     }
 
     @FXML
-    public void btnSave(ActionEvent actionEvent) {
+    public void btnSave(ActionEvent actionEvent) throws IOException {
         getEntityToView();
         if(String.valueOf(sala.getId()) != null){
             CriarSalaUseCase.insert(sala);
+            HelloApplication.setRoot("SalaManager");
+        }else{
+            EditarSalaUseCase.update(sala);
         }
     }
 

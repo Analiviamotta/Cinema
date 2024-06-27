@@ -112,6 +112,7 @@ public class SalaMangerUI {
 
     public void edit(ActionEvent actionEvent) throws IOException {
         showSalaInMode(UIMode.UPDATE);
+
     }
 
     private void showSalaInMode(UIMode uiMode) throws IOException {
